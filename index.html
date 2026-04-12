@@ -1637,6 +1637,52 @@
   // --- Portfolio Card System ---
   const portfolioProjects = [
     {
+      title: "Atlas Freight",
+      image: "IMG/atlas-freight-thumbnail.jpg",
+      description: "A platform built for owner-operator truckers to connect drivers to loadboards, manage freight, and secure funds through a patented arbitration engine.",
+      category: "Enterprise",
+      date: "2026",
+      projectType: "Web Application"
+    },
+    {
+      title: "Flux Energy",
+      image: "IMG/flux-energy-thumbnail.jpg",
+      description: "An integrated operations platform for wind energy companies, combining fleet management, royalty settlements, financial accounting, and wholesale market trading in a single workspace.",
+      link: "https://fluxenergy.app",
+      category: "Enterprise",
+      date: "2026",
+      projectType: "Web Application"
+    },
+    {
+      title: "Rainbow Conjunction",
+      image: "IMG/rainbow-conjunction-thumbnail.jpg",
+      description: "An interactive memoir exploring storytelling and healing through personal narratives about Hollywood, music production, and transformative life experiences.",
+      link: "https://rainbowconjunction.org",
+      category: ["Individual", "Creatives"],
+      date: "2026",
+      projectType: "Portfolio & Creative"
+    },
+    {
+      title: "File Conversion Online",
+      image: "IMG/file-conversion-thumbnail.jpg",
+      description: "A free online tool that instantly converts files across multiple formats—including PDF, images, video, and audio—without requiring sign-up or adding watermarks.",
+      link: "https://fileconversiononline.com",
+      category: "Interactive",
+      platform: "Custom",
+      date: "2025",
+      projectType: "Web Tool"
+    },
+    {
+      title: "FunWeb Games",
+      image: "IMG/funweb-games-thumbnail.jpg",
+      description: "A free online gaming platform offering 68+ browser-based games including classics like Solitaire, Snake, and Tetris—all playable instantly without downloads.",
+      link: "https://funweb.games",
+      category: "Interactive",
+      platform: "Custom",
+      date: "2025",
+      projectType: "Web App"
+    },
+    {
       title: "Last Seen in the Twilight Zone",
       image: "IMG/last-seen-thumbnail.jpg",
       description: "A podcast about missing people from the real-life 'Twilight Zone'—Binghamton, NY, hometown of Rod Serling.",
@@ -1886,6 +1932,7 @@
     "Non-Profit",
     "Individual",
     "Creatives",
+    "Interactive",
     "Products",
     "Services"
   ];
@@ -1919,7 +1966,7 @@
     
     // Apply category filter
     if (category !== "All") {
-      filtered = filtered.filter(p => p.category === category);
+      filtered = filtered.filter(p => Array.isArray(p.category) ? p.category.includes(category) : p.category === category);
     }
     
     // Apply year filter
@@ -2082,9 +2129,9 @@
 
   function renderPortfolioCardsOnly(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
-    
+
     // Apply filters
-    if (category !== "All") filtered = filtered.filter(p => p.category === category);
+    if (category !== "All") filtered = filtered.filter(p => Array.isArray(p.category) ? p.category.includes(category) : p.category === category);
     if (yearFilter !== "All") filtered = filtered.filter(p => p.date === yearFilter);
     if (typeFilter !== "All") filtered = filtered.filter(p => p.projectType === typeFilter);
     if (platformFilter !== "All") filtered = filtered.filter(p => p.platform === platformFilter);
@@ -2195,9 +2242,9 @@
 
   function renderPortfolioPagination(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
-    
+
     // Apply filters
-    if (category !== "All") filtered = filtered.filter(p => p.category === category);
+    if (category !== "All") filtered = filtered.filter(p => Array.isArray(p.category) ? p.category.includes(category) : p.category === category);
     if (yearFilter !== "All") filtered = filtered.filter(p => p.date === yearFilter);
     if (typeFilter !== "All") filtered = filtered.filter(p => p.projectType === typeFilter);
     if (platformFilter !== "All") filtered = filtered.filter(p => p.platform === platformFilter);
@@ -2248,7 +2295,7 @@
       if (cat === "All") {
         categoryCounts[cat] = portfolioProjects.length;
       } else {
-        categoryCounts[cat] = portfolioProjects.filter(p => p.category === cat).length;
+        categoryCounts[cat] = portfolioProjects.filter(p => Array.isArray(p.category) ? p.category.includes(cat) : p.category === cat).length;
       }
     });
     // Get unique years, project types, and platforms
