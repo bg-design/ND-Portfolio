@@ -1113,7 +1113,7 @@
                   <span class="service-text">solid <span class="highlight-word" id="feelAlive">development</span>,</span>
                 </div>
                 <div class="service-line" id="service3">
-                  <span class="service-text">and UX &amp; marketing that bring it home</span>
+                  <span class="service-text">and a user experience that makes you</span>
                 </div>
                 <div class="impact-line" id="impact">
                   <span class="impact-text">IMPOSSIBLE TO IGNORE</span>
@@ -1455,7 +1455,7 @@
         // Transition to next slide after the animation completes
         pauseableTimeout(() => {
           transitionToSlide(5);
-        }, 1800); // Wait 1.8 seconds for the animation to complete
+        }, 2800); // Impact dwell: animation + extra beat on "IMPOSSIBLE TO IGNORE"
       }, 6000);
     }
     
@@ -1522,7 +1522,7 @@
     
     function startUrgencyCounters() {
       // Calculate time since animation started (approximately when user started reading)
-      const startTime = Date.now() - (8400 + 2600); // Time from slide 1 to urgency slide
+      const startTime = Date.now() - (8400 + 3600); // ~time from hero start to urgency (+1s linger on impact slide)
       const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
       
       // Estimate realistic numbers based on elapsed time
