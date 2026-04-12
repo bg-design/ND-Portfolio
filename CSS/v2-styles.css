@@ -288,8 +288,12 @@ color: #aaa;
 }
 
 [data-theme="dark"] .pricing-package li {
-  color: #eee;
+  color: #f3e5bc;
   border-bottom-color: #333;
+}
+
+[data-theme="dark"] .pricing-package ul li::before {
+  color: #f3e5bc;
 }
 
 /* Dark mode styling for the pricing banner */
@@ -1051,12 +1055,19 @@ grid-template-columns: repeat(2, 1fr);
 [data-theme="dark"] .pricing-page p,
 [data-theme="dark"] .pricing-page li,
 [data-theme="dark"] .pricing-page ul {
-  color: #eee;
+  color: #f3e5bc;
   line-height: 1.65;
 }
 
 [data-theme="dark"] .pricing-page strong {
   color: #FFCB05;
+}
+
+/* List copy: warm gold like body prose; avoid neon yellow on bullets */
+[data-theme="dark"] .pricing-page li strong,
+[data-theme="dark"] .pricing-page ul strong {
+  color: #f5ecd4;
+  font-weight: 700;
 }
 
 [data-theme="dark"] .pricing-page em {
