@@ -1637,6 +1637,24 @@
   // --- Portfolio Card System ---
   const portfolioProjects = [
     {
+      title: "Rainbow Conjunction",
+      image: "IMG/RainbowConjunction-thumbnail.jpg",
+      description: "An interactive memoir exploring storytelling and healing through personal narratives about Hollywood, music production, and transformative life experiences.",
+      link: "https://rainbowconjunction.org",
+      category: ["Individual", "Creatives"],
+      date: "2026",
+      projectType: "Portfolio & Creative"
+    },
+    {
+      title: "Flux Energy",
+      image: "IMG/Flux-Energy-thumbnail.jpg",
+      description: "An integrated operations platform for wind energy companies, combining fleet management, royalty settlements, financial accounting, and wholesale market trading in a single workspace.",
+      link: "https://fluxenergy.app",
+      category: "Enterprise",
+      date: "2026",
+      projectType: "Web Application"
+    },
+    {
       title: "Atlas Freight",
       image: "IMG/atlas-freight-thumbnail.jpg",
       description: "A platform built for owner-operator truckers to connect drivers to loadboards, manage freight, and secure funds through a patented arbitration engine.",
@@ -1645,26 +1663,8 @@
       projectType: "Web Application"
     },
     {
-      title: "Flux Energy",
-      image: "IMG/flux-energy-thumbnail.jpg",
-      description: "An integrated operations platform for wind energy companies, combining fleet management, royalty settlements, financial accounting, and wholesale market trading in a single workspace.",
-      link: "https://fluxenergy.app",
-      category: "Enterprise",
-      date: "2026",
-      projectType: "Web Application"
-    },
-    {
-      title: "Rainbow Conjunction",
-      image: "IMG/rainbow-conjunction-thumbnail.jpg",
-      description: "An interactive memoir exploring storytelling and healing through personal narratives about Hollywood, music production, and transformative life experiences.",
-      link: "https://rainbowconjunction.org",
-      category: ["Individual", "Creatives"],
-      date: "2026",
-      projectType: "Portfolio & Creative"
-    },
-    {
       title: "File Conversion Online",
-      image: "IMG/file-conversion-thumbnail.jpg",
+      image: "IMG/FileConversionOnline-thumbnail.jpg",
       description: "A free online tool that instantly converts files across multiple formats—including PDF, images, video, and audio—without requiring sign-up or adding watermarks.",
       link: "https://fileconversiononline.com",
       category: "Interactive",
@@ -1673,8 +1673,8 @@
       projectType: "Web Tool"
     },
     {
-      title: "FunWeb Games",
-      image: "IMG/funweb-games-thumbnail.jpg",
+      title: "Fun Web Games",
+      image: "IMG/FunWebGames-thumbnail.jpg",
       description: "A free online gaming platform offering 68+ browser-based games including classics like Solitaire, Snake, and Tetris—all playable instantly without downloads.",
       link: "https://funweb.games",
       category: "Interactive",
@@ -1787,7 +1787,7 @@
       image: "IMG/blackfern-media-thumbnail.jpg",
       description: "Nuanced Design is partnered with Blackfern Media. Designed and built the site, launched May, 2022.",
       link: "https://blackfernmedia.com",
-      category: "Enterprise",
+      category: "Services",
       platform: "WordPress",
       date: "2022",
       projectType: "Business Website"
@@ -1900,7 +1900,7 @@
       ],
       description: "Fabrication and signage work for Calm Meditation App— for their San Francisco office.",
       link: "https://calm.com",
-      category: "Products",
+      category: "Enterprise",
       date: "2017",
       projectType: "Fabrication & Signage"
     },
@@ -1927,15 +1927,17 @@
   ];
 
   const portfolioCategories = [
-    "All",
     "Enterprise",
+    "Products",
+    "Services",
     "Non-Profit",
     "Individual",
     "Creatives",
     "Interactive",
-    "Products",
-    "Services"
+    "All"
   ];
+
+  const DEFAULT_PORTFOLIO_CATEGORY = "Enterprise";
 
   // Helper function to get button text and attributes for projects
   function getProjectButton(project) {
@@ -1961,7 +1963,7 @@
     return caseStudyProjects.includes(project.title) ? '' : 'target="_blank" rel="noopener"';
   }
 
-  function renderPortfolioCards(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
+  function renderPortfolioCards(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
     
     // Apply category filter
@@ -2127,7 +2129,7 @@
     return result;
   }
 
-  function renderPortfolioCardsOnly(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
+  function renderPortfolioCardsOnly(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
 
     // Apply filters
@@ -2240,7 +2242,7 @@
     return result;
   }
 
-  function renderPortfolioPagination(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
+  function renderPortfolioPagination(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
 
     // Apply filters
@@ -2288,7 +2290,7 @@
     `;
   }
 
-  function renderPortfolioFilters(activeCategory = "All") {
+  function renderPortfolioFilters(activeCategory = DEFAULT_PORTFOLIO_CATEGORY) {
     // Count projects in each category
     const categoryCounts = {};
     portfolioCategories.forEach(cat => {
@@ -2338,13 +2340,13 @@
     return mobileDropdown + desktopButtons + advanced;
   }
 
-  let currentPortfolioCategory = "All";
+  let currentPortfolioCategory = DEFAULT_PORTFOLIO_CATEGORY;
   let currentYearFilter = "All";
   let currentTypeFilter = "All";
   let currentPlatformFilter = "All";
   let currentPortfolioPage = 1;
 
-  function loadPortfolioSection(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All") {
+  function loadPortfolioSection(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All") {
     // Reset to page 1 when filters change
     currentPortfolioPage = 1;
     currentPortfolioCategory = category;
