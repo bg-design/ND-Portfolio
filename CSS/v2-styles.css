@@ -49,14 +49,15 @@ color: #eee;
 [data-theme="dark"] .markdown-content h3 {
 color: #eee;
 }
+/* Process page uses plain .markdown-content — softer cyan for main title in dark mode */
+[data-theme="dark"] .markdown-content:not(.pricing-page):not(.portfolio-page):not(.about-page) h1 {
+  color: #9ee5fb;
+}
 [data-theme="dark"] .portfolio-page {
   color: #39B54A;
 }
 [data-theme="dark"] .about-page {
   color: #EC008C;
-}
-[data-theme="dark"] .pricing-page {
-  color: #FFCB05;
 }
 [data-theme="dark"] .projectTile {
   color: #222;
@@ -117,7 +118,7 @@ color: #eee;
 [data-theme="light"] .markdown-content h1 {
   color: #00AEEF;
 }
-[data-theme="light"] .markdown-content h2 {
+[data-theme="light"] .markdown-content h2:not(.pricing-callout__title) {
   color: #00AEEF;
 }
 [data-theme="light"] .markdown-content h3 {
@@ -131,15 +132,19 @@ color: #eee;
   color: #222;
 }
 [data-theme="light"] .accordion-header {
-  background: #f7f7f7;
-  color: #00AEEF;
+  background: #e8f6fc;
+  color: #007a9e;
 }
 [data-theme="light"] .accordion-header.active, [data-theme="light"] .accordion-header:hover {
-  background: #e0f7fa;
-  color: #00AEEF;
+  background: #7ec8e4;
+  color: #023e52;
 }
 [data-theme="light"] .accordion-icon {
-  color: #00AEEF;
+  color: #007a9e;
+}
+[data-theme="light"] .accordion-header.active .accordion-icon,
+[data-theme="light"] .accordion-header:hover .accordion-icon {
+  color: #023e52;
 }
 [data-theme="light"] .projectTile {
   color: #222;
@@ -181,15 +186,7 @@ border-bottom: 3px solid #EC008C !important;
 [data-theme="light"] .about-page strong {
 color: #EC008C !important;
 }
-[data-theme="light"] .pricing-page h1, [data-theme="light"] .pricing-page h2, [data-theme="light"] .pricing-page h3, [data-theme="light"] .pricing-page h4 {
-color: #FFCB05 !important;
-}
-[data-theme="light"] .pricing-page h1 {
-border-bottom: 3px solid #FFCB05 !important;
-}
-[data-theme="light"] .pricing-page strong {
-color: #FFCB05 !important;
-}
+/* Light pricing typography: dark text, gold accent borders only (see .pricing-page block below) */
 [data-theme="light"] .portfolio-page h1, [data-theme="light"] .portfolio-page h2, [data-theme="light"] .portfolio-page h3, [data-theme="light"] .portfolio-page h4 {
 color: #39B54A;
 }
@@ -928,17 +925,6 @@ grid-template-columns: repeat(2, 1fr);
   max-width: 1400px !important;
 }
 
-.markdown-content h1 {
-  color: #00AEEF;
-  padding-bottom: 10px;
-}
-
-.markdown-content h2 {
-  color: #00AEEF;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
 .markdown-content h3 {
   color: #555;
   margin-top: 30px;
@@ -952,10 +938,6 @@ grid-template-columns: repeat(2, 1fr);
 
 .markdown-content li {
   margin-bottom: 8px;
-}
-
-.markdown-content strong {
-  color: #00AEEF;
 }
 
 .back-link {
@@ -1005,24 +987,151 @@ grid-template-columns: repeat(2, 1fr);
   color: #EC008C;
 }
 
-.pricing-page {
-  color: #FFCB05;
+/* Pricing: high-contrast body copy in light mode; brand yellow for accents in dark mode */
+[data-theme="light"] .markdown-content.pricing-page,
+[data-theme="light"] .pricing-page {
+  color: #1c1912;
 }
 
-.pricing-page h1, .pricing-page h2, .pricing-page h3, .pricing-page h4 {
-  color: #FFCB05;
+[data-theme="light"] .pricing-page p,
+[data-theme="light"] .pricing-page li,
+[data-theme="light"] .pricing-page ul {
+  color: #1c1912;
+  line-height: 1.65;
 }
 
-.pricing-page h1 {
+/* Light: amber-gold titles (readable on white, still “yellow” family); brand yellow on underline */
+[data-theme="light"] .pricing-page h1,
+[data-theme="light"] .pricing-page h2:not(.pricing-callout__title),
+[data-theme="light"] .pricing-page h3,
+[data-theme="light"] .pricing-page h4 {
+  color: #b38600;
+  border-bottom: 3px solid #ffcb05;
+}
+
+[data-theme="light"] .pricing-page h1 {
+  border-bottom-color: #ffcb05;
+}
+
+[data-theme="light"] .pricing-page strong {
+  color: #3d3518;
+  font-weight: 700;
+}
+
+[data-theme="light"] .pricing-page em {
+  color: #4a4030;
+}
+
+[data-theme="light"] .pricing-page a {
+  color: #5a4810;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+[data-theme="light"] .pricing-page a:hover {
+  color: #2d2408;
+}
+
+[data-theme="dark"] .pricing-page {
+  color: #f3e5bc;
+}
+
+[data-theme="dark"] .pricing-page h1,
+[data-theme="dark"] .pricing-page h2:not(.pricing-callout__title),
+[data-theme="dark"] .pricing-page h3,
+[data-theme="dark"] .pricing-page h4 {
+  color: #FFCB05;
   border-bottom: 3px solid #FFCB05;
 }
 
-.pricing-page strong {
+[data-theme="dark"] .pricing-page h1 {
+  border-bottom-color: #FFCB05;
+}
+
+[data-theme="dark"] .pricing-page p,
+[data-theme="dark"] .pricing-page li,
+[data-theme="dark"] .pricing-page ul {
+  color: #eee;
+  line-height: 1.65;
+}
+
+[data-theme="dark"] .pricing-page strong {
   color: #FFCB05;
 }
 
-.pricing-page a {
+[data-theme="dark"] .pricing-page em {
+  color: #e8dcc4;
+}
+
+[data-theme="dark"] .pricing-page a {
+  color: #ffe066;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+[data-theme="dark"] .pricing-page a:hover {
+  color: #fff8dc;
+}
+
+.pricing-page-divider {
+  margin: 30px 0;
+  border: none;
+  border-top: 2px solid #ffcb05;
+}
+
+[data-theme="dark"] .pricing-page-divider {
+  border-top-color: #FFCB05;
+}
+
+.pricing-callout {
+  padding: 1.1rem 1.25rem;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  text-align: center;
+  border: 2px solid #a67c00;
+  background: #fffbeb;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+}
+
+.pricing-callout__title {
+  color: #b38600;
+  font-size: 1.2em;
+  margin: 0 0 0.75rem;
+  font-weight: 700;
+  line-height: 1.35;
+  border-bottom: none !important;
+}
+
+.pricing-callout__text {
+  color: #1c1912;
+  font-size: 1em;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.pricing-callout__text strong {
+  color: #3d3518;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .pricing-callout {
+  background: #2c2618;
+  border-color: #d4a017;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .pricing-callout__title {
   color: #FFCB05;
+  border-bottom: none !important;
+}
+
+[data-theme="dark"] .pricing-callout__text,
+[data-theme="dark"] .pricing-callout__text strong {
+  color: #f5f5f5;
+}
+
+[data-theme="dark"] .pricing-callout__text strong {
+  color: #ffe066;
 }
 
 .portfolio-page {
@@ -1046,10 +1155,27 @@ grid-template-columns: repeat(2, 1fr);
   color: #39B54A;
 }
 
+[data-theme="dark"] .accordion-header {
+  background: #1c2e38;
+  color: #9ee5fb;
+}
+[data-theme="dark"] .accordion-header.active,
+[data-theme="dark"] .accordion-header:hover {
+  background: #2a5568;
+  color: #e8f8fd;
+}
+[data-theme="dark"] .accordion-icon {
+  color: #9ee5fb;
+}
+[data-theme="dark"] .accordion-header.active .accordion-icon,
+[data-theme="dark"] .accordion-header:hover .accordion-icon {
+  color: #e8f8fd;
+}
+
 /* Accordion styles for process page */
 .accordion-header {
-  background: #f7f7f7;
-  color: #00AEEF;
+  background: #e8f6fc;
+  color: #007a9e;
   font-weight: bold;
   width: 100%;
   text-align: left;
@@ -1057,11 +1183,12 @@ grid-template-columns: repeat(2, 1fr);
   border: none;
   outline: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   font-size: 1.1em;
 }
 .accordion-header.active, .accordion-header:hover {
-  background: #e0f7fa;
+  background: #7ec8e4;
+  color: #023e52;
 }
 
 .process-blue {
@@ -1070,12 +1197,12 @@ grid-template-columns: repeat(2, 1fr);
 
 @media (prefers-color-scheme: dark) {
   .accordion-header {
-    background: #181c20;
-    color: #00AEEF;
+    background: #1c2e38;
+    color: #9ee5fb;
   }
   .accordion-header.active, .accordion-header:hover {
-    background: #23272b;
-    color: #fff;
+    background: #2a5568;
+    color: #e8f8fd;
   }
 }
 
@@ -1086,11 +1213,19 @@ grid-template-columns: repeat(2, 1fr);
   margin-left: 0.5em;
   vertical-align: middle;
   transition: color 0.2s;
-  color: #00AEEF;
+  color: #007a9e;
+}
+.accordion-header.active .accordion-icon,
+.accordion-header:hover .accordion-icon {
+  color: #023e52;
 }
 @media (prefers-color-scheme: dark) {
   .accordion-icon {
-    color: #fff;
+    color: #9ee5fb;
+  }
+  .accordion-header.active .accordion-icon,
+  .accordion-header:hover .accordion-icon {
+    color: #e8f8fd;
   }
 }
 /* --- Portfolio Card Styles (from slick.html) --- */
@@ -1491,11 +1626,19 @@ grid-template-columns: repeat(2, 1fr);
   width: 100%;
   box-sizing: border-box;
 }
+
+[data-theme="light"] .pricing-package ul li {
+  color: #1c1912;
+}
+
+[data-theme="light"] .pricing-package ul li::before {
+  color: #8b6914;
+}
 .pricing-package-content {
   padding: 0 24px;
 }
 [data-theme="light"] .tab-bar::before, [data-theme="light"] .tab-bar::after {
-  background: #bbb;
+  background: linear-gradient(180deg, rgba(255, 203, 5, 0.45), rgba(179, 134, 0, 0.25));
 }
 
 .portfolio-cards {
@@ -1907,7 +2050,7 @@ grid-template-columns: repeat(2, 1fr);
 }
 .service-web:hover {
   border-color: #00AEEF;
-  box-shadow: 0 4px 12px rgba(0, 174, 239, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 174, 239, 0.2);
 }
 
 .service-social {
@@ -4535,13 +4678,15 @@ gap: 8px;
 }
 
 [data-theme="dark"] .what-you-get-box {
-  background: #00AEEF;
-  color: white;
-  border: none;
+  background: #152f3a;
+  color: #e3f4f9;
+  border: 2px solid rgba(0, 174, 239, 0.45);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
-[data-theme="dark"] .markdown-content .what-you-get-box p strong {
-  color: black
+[data-theme="dark"] .what-you-get-box strong {
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .services-section {
@@ -4949,13 +5094,8 @@ animation: scroll-marquee 15s linear infinite;
 100% { transform: translateX(-50%); }
 }
 
-/* --- Added for process page markdown/accordion support --- */
+/* --- Markdown / accordion (process & shared) --- */
 
-.markdown-content h2 {
-  color: #00AEEF;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
 .markdown-content h3 {
   color: #555;
   margin-top: 30px;
@@ -4981,10 +5121,10 @@ animation: scroll-marquee 15s linear infinite;
   color: #888;
 }
 .accordion { max-width: 600px; margin: 2em auto; }
-.accordion-item { border-bottom: 1px solid #eee; }
+.accordion-item { border-bottom: none; }
 .accordion-header {
-  background: #f7f7f7;
-  color: #00AEEF;
+  background: #e8f6fc;
+  color: #007a9e;
   font-weight: bold;
   width: 100%;
   text-align: left;
@@ -4992,11 +5132,12 @@ animation: scroll-marquee 15s linear infinite;
   border: none;
   outline: none;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   font-size: 1.1em;
 }
 .accordion-header.active, .accordion-header:hover {
-  background: #e0f7fa;
+  background: #7ec8e4;
+  color: #023e52;
 }
 .accordion-content {
   display: none;
@@ -5013,7 +5154,11 @@ animation: scroll-marquee 15s linear infinite;
   margin-left: 0.5em;
   vertical-align: middle;
   transition: color 0.2s;
-  color: #00AEEF;
+  color: #007a9e;
+}
+.accordion-header.active .accordion-icon,
+.accordion-header:hover .accordion-icon {
+  color: #023e52;
 }
 @media (prefers-color-scheme: dark) {
   .markdown-content {
@@ -5026,16 +5171,13 @@ animation: scroll-marquee 15s linear infinite;
   .accordion {
     background: none;
   }
-  .accordion-item {
-    border-bottom: 1px solid #333;
-  }
   .accordion-header {
-    background: #181c20;
-    color: #00AEEF;
+    background: #1c2e38;
+    color: #9ee5fb;
   }
   .accordion-header.active, .accordion-header:hover {
-    background: #23272b;
-    color: #fff;
+    background: #2a5568;
+    color: #e8f8fd;
   }
   .accordion-content {
     background: #222;
@@ -5048,10 +5190,14 @@ animation: scroll-marquee 15s linear infinite;
     color: #aaa;
   }
   .accordion-icon {
-    color: #fff;
+    color: #9ee5fb;
+  }
+  .accordion-header.active .accordion-icon,
+  .accordion-header:hover .accordion-icon {
+    color: #e8f8fd;
   }
 }
-/* --- End process page styles --- */
+/* --- End markdown / accordion --- */
 
 /* --- Increased specificity for light mode page styles --- */
 html[data-theme="light"] .markdown-content,
@@ -5075,15 +5221,21 @@ body[data-theme="light"] .markdown-content li {
 }
 html[data-theme="light"] .accordion-header,
 body[data-theme="light"] .accordion-header {
-  background: #f7f7f7;
-  color: #00AEEF;
+  background: #e8f6fc;
+  color: #007a9e;
 }
 html[data-theme="light"] .accordion-header.active,
 html[data-theme="light"] .accordion-header:hover,
 body[data-theme="light"] .accordion-header.active,
 body[data-theme="light"] .accordion-header:hover {
-  background: #e0f7fa;
-  color: #00AEEF;
+  background: #7ec8e4;
+  color: #023e52;
+}
+html[data-theme="light"] .accordion-header.active .accordion-icon,
+html[data-theme="light"] .accordion-header:hover .accordion-icon,
+body[data-theme="light"] .accordion-header.active .accordion-icon,
+body[data-theme="light"] .accordion-header:hover .accordion-icon {
+  color: #023e52;
 }
 html[data-theme="light"] .accordion-content,
 body[data-theme="light"] .accordion-content {
@@ -5106,28 +5258,29 @@ body[data-theme="light"] .portfolio-page strong {
   color: #39B54A;
 }
 html[data-theme="light"] .pricing-page h1,
-html[data-theme="light"] .pricing-page h2,
+html[data-theme="light"] .pricing-page h2:not(.pricing-callout__title),
 html[data-theme="light"] .pricing-page h3,
 html[data-theme="light"] .pricing-page h4,
 body[data-theme="light"] .pricing-page h1,
-body[data-theme="light"] .pricing-page h2,
+body[data-theme="light"] .pricing-page h2:not(.pricing-callout__title),
 body[data-theme="light"] .pricing-page h3,
 body[data-theme="light"] .pricing-page h4 {
-  color: #FFCB05;
-  border-bottom: 3px solid #FFCB05;
+  color: #b38600;
+  border-bottom: 3px solid #ffcb05;
 }
 html[data-theme="light"] .pricing-page strong,
 body[data-theme="light"] .pricing-page strong {
-  color: #FFCB05;
+  color: #3d3518;
 }
 /* --- End increased specificity for light mode --- */
 
-/* --- Dark mode: Pricing flexible banner override --- */
-[data-theme="dark"] .pricing-page .pricing-package + h2 + p + h2 + p + h2 + div[style*="box-shadow"] p {
-  color: #fff !important;
+/* --- Dark mode: pricing callout (legacy inline banner selectors kept harmless) --- */
+[data-theme="dark"] .pricing-page .pricing-callout__text,
+[data-theme="dark"] .pricing-page .pricing-callout__text strong {
+  color: #f5f5f5 !important;
 }
-[data-theme="dark"] .pricing-page div[style*="box-shadow"] p {
-  color: #fff !important;
+[data-theme="dark"] .pricing-page .pricing-callout__text strong {
+  color: #ffe066 !important;
 }
 
 /* --- Dark mode: Fortune Cookie Modal (already present, but ensure specificity) --- */
@@ -5155,15 +5308,15 @@ body[data-theme="light"] .portfolio-page h4 {
   border-bottom: 3px solid #39B54A !important;
 }
 html[data-theme="light"] .pricing-page h1,
-html[data-theme="light"] .pricing-page h2,
+html[data-theme="light"] .pricing-page h2:not(.pricing-callout__title),
 html[data-theme="light"] .pricing-page h3,
 html[data-theme="light"] .pricing-page h4,
 body[data-theme="light"] .pricing-page h1,
-body[data-theme="light"] .pricing-page h2,
+body[data-theme="light"] .pricing-page h2:not(.pricing-callout__title),
 body[data-theme="light"] .pricing-page h3,
 body[data-theme="light"] .pricing-page h4 {
-  color: #FFCB05 !important;
-  border-bottom: 3px solid #FFCB05 !important;
+  color: #b38600 !important;
+  border-bottom: 3px solid #ffcb05 !important;
 }
 html[data-theme="dark"] .portfolio-page h1,
 html[data-theme="dark"] .portfolio-page h2,
@@ -5177,11 +5330,11 @@ body[data-theme="dark"] .portfolio-page h4 {
   border-bottom: 3px solid #39B54A !important;
 }
 html[data-theme="dark"] .pricing-page h1,
-html[data-theme="dark"] .pricing-page h2,
+html[data-theme="dark"] .pricing-page h2:not(.pricing-callout__title),
 html[data-theme="dark"] .pricing-page h3,
 html[data-theme="dark"] .pricing-page h4,
 body[data-theme="dark"] .pricing-page h1,
-body[data-theme="dark"] .pricing-page h2,
+body[data-theme="dark"] .pricing-page h2:not(.pricing-callout__title),
 body[data-theme="dark"] .pricing-page h3,
 body[data-theme="dark"] .pricing-page h4 {
   color: #FFCB05 !important;
@@ -5263,14 +5416,22 @@ body[data-theme="dark"] .pricing-page h4 {
 
 hr {
   border: none;
-  border-top: 2px solid #111;
+  border-top: 2px solid #00AEEF;
   margin: 2.5rem 0;
 }
 [data-theme="light"] hr {
-  border-top: 2px solid #111;
+  border: none;
+  border-top: 2px solid #00AEEF;
 }
 [data-theme="dark"] hr {
-  border-top: 2px solid #fff;
+  border: none;
+  border-top: 2px solid #00AEEF;
+}
+
+/* Pricing uses <hr class="pricing-page-divider"> — keep gold after generic hr cyan */
+[data-theme="light"] hr.pricing-page-divider,
+[data-theme="dark"] hr.pricing-page-divider {
+  border-top-color: #ffcb05;
 }
 
 .markdown-content h1 {

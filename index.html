@@ -825,7 +825,7 @@
 
               <div class="message received">
                 <div class="message-bubble">
-                      <p>It follows the 4 D's: Discover, Design, Develop, Deliver. No templates, no assumptions—just real understanding of your needs.</p>
+                      <p>It centers on Design, Development, UX, and Marketing—no templates, no assumptions—just real understanding of your needs.</p>
                 </div>
                 <div class="message-time">10:06 AM</div>
               </div>
@@ -937,7 +937,7 @@
             // Convert italic text
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             // Convert horizontal rules
-            .replace(/^---$/gim, '<hr style="margin: 30px 0; border: none; border-top: 2px solid #FFCB05;">')
+            .replace(/^---$/gim, '<hr class="pricing-page-divider">')
             // Convert unordered lists properly
             .replace(/^((?:- .*\n?)+)/gm, function(match) {
               const items = match.split('\n').filter(line => line.trim().startsWith('- '));
@@ -981,11 +981,11 @@
           
           // Add the flexible pricing banner
           const bannerHtml = `
-            <div style="padding: 16px; border-radius: 12px; margin: 20px 0; text-align: center; box-shadow: 0 4px 16px rgba(255,203,5,0.2); border: 2px solid #FFCB05;">
-              <h2 style="color: #FFCB05; margin-bottom: 12px; font-size: 1.2em;">💡 Flexible Pricing for Every Budget</h2>
-              <p style="color: #333; font-size: 1em; margin: 0; line-height: 1.4;margin:0 auto;">
-                <strong>Prices listed are estimates only.</strong> Project scope can vary significantly, and Nuanced Design is committed to working with your budget. 
-                Whether you're a startup with limited resources or an established business, services can be tailored to fit your needs. 
+            <div class="pricing-callout" role="note" aria-label="Pricing flexibility">
+              <h2 class="pricing-callout__title">💡 Flexible Pricing for Every Budget</h2>
+              <p class="pricing-callout__text">
+                <strong>Prices listed are estimates only.</strong> Project scope can vary significantly, and Nuanced Design is committed to working with your budget.
+                Whether you're a startup with limited resources or an established business, services can be tailored to fit your needs.
                 <strong>Please reach out for a personalized quote!</strong>
               </p>
             </div>
@@ -1089,16 +1089,16 @@
                   <h2 class="services-title" id="servicesTitle">Services</h2>
                   <div class="services-list" id="servicesList">
                     <div class="service-item service-web">
-                      <h3>Web Design</h3>
+                      <h3>Design</h3>
                     </div>
                     <div class="service-item service-social">
-                      <h3>Marketing</h3>
+                      <h3>Development</h3>
                     </div>
                     <div class="service-item service-print">
-                      <h3>Consulting</h3>
+                      <h3>UX</h3>
                     </div>
                     <div class="service-item service-brand">
-                      <h3>Strategic Planning</h3>
+                      <h3>Marketing</h3>
                     </div>
                   </div>
                 </div>
@@ -1107,13 +1107,13 @@
               <!-- Slide 4: Services -->
               <div class="slide slide-4" id="slide4">
                 <div class="service-line" id="service1">
-                  <span class="service-text">Making your brand <span class="highlight-word" id="lookLegit">look legit</span>,</span>
+                  <span class="service-text">Thoughtful <span class="highlight-word" id="lookLegit">design</span>,</span>
                 </div>
                 <div class="service-line" id="service2">
-                  <span class="service-text">your website <span class="highlight-word" id="feelAlive">feel alive</span>,</span>
+                  <span class="service-text">solid <span class="highlight-word" id="feelAlive">development</span>,</span>
                 </div>
                 <div class="service-line" id="service3">
-                  <span class="service-text">and your digital presence</span>
+                  <span class="service-text">and UX &amp; marketing that bring it home</span>
                 </div>
                 <div class="impact-line" id="impact">
                   <span class="impact-text">IMPOSSIBLE TO IGNORE</span>
