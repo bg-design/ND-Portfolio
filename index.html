@@ -1927,15 +1927,17 @@
   ];
 
   const portfolioCategories = [
-    "All",
     "Enterprise",
+    "Products",
+    "Services",
     "Non-Profit",
     "Individual",
     "Creatives",
     "Interactive",
-    "Products",
-    "Services"
+    "All"
   ];
+
+  const DEFAULT_PORTFOLIO_CATEGORY = "Enterprise";
 
   // Helper function to get button text and attributes for projects
   function getProjectButton(project) {
@@ -1961,7 +1963,7 @@
     return caseStudyProjects.includes(project.title) ? '' : 'target="_blank" rel="noopener"';
   }
 
-  function renderPortfolioCards(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
+  function renderPortfolioCards(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
     
     // Apply category filter
@@ -2127,7 +2129,7 @@
     return result;
   }
 
-  function renderPortfolioCardsOnly(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
+  function renderPortfolioCardsOnly(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
 
     // Apply filters
@@ -2240,7 +2242,7 @@
     return result;
   }
 
-  function renderPortfolioPagination(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
+  function renderPortfolioPagination(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
     let filtered = portfolioProjects;
 
     // Apply filters
@@ -2288,7 +2290,7 @@
     `;
   }
 
-  function renderPortfolioFilters(activeCategory = "All") {
+  function renderPortfolioFilters(activeCategory = DEFAULT_PORTFOLIO_CATEGORY) {
     // Count projects in each category
     const categoryCounts = {};
     portfolioCategories.forEach(cat => {
@@ -2338,13 +2340,13 @@
     return mobileDropdown + desktopButtons + advanced;
   }
 
-  let currentPortfolioCategory = "All";
+  let currentPortfolioCategory = DEFAULT_PORTFOLIO_CATEGORY;
   let currentYearFilter = "All";
   let currentTypeFilter = "All";
   let currentPlatformFilter = "All";
   let currentPortfolioPage = 1;
 
-  function loadPortfolioSection(category = "All", yearFilter = "All", typeFilter = "All", platformFilter = "All") {
+  function loadPortfolioSection(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All") {
     // Reset to page 1 when filters change
     currentPortfolioPage = 1;
     currentPortfolioCategory = category;
