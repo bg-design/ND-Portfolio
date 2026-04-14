@@ -825,7 +825,7 @@
 
               <div class="message received">
                 <div class="message-bubble">
-                      <p>It follows the 4 D's: Discover, Design, Develop, Deliver. No templates, no assumptions—just real understanding of your needs.</p>
+                      <p>It centers on Design, Development, UX, and Marketing—no templates, no assumptions—just real understanding of your needs.</p>
                 </div>
                 <div class="message-time">10:06 AM</div>
               </div>
@@ -937,7 +937,7 @@
             // Convert italic text
             .replace(/\*(.*?)\*/g, '<em>$1</em>')
             // Convert horizontal rules
-            .replace(/^---$/gim, '<hr style="margin: 30px 0; border: none; border-top: 2px solid #FFCB05;">')
+            .replace(/^---$/gim, '<hr class="pricing-page-divider">')
             // Convert unordered lists properly
             .replace(/^((?:- .*\n?)+)/gm, function(match) {
               const items = match.split('\n').filter(line => line.trim().startsWith('- '));
@@ -981,11 +981,11 @@
           
           // Add the flexible pricing banner
           const bannerHtml = `
-            <div style="padding: 16px; border-radius: 12px; margin: 20px 0; text-align: center; box-shadow: 0 4px 16px rgba(255,203,5,0.2); border: 2px solid #FFCB05;">
-              <h2 style="color: #FFCB05; margin-bottom: 12px; font-size: 1.2em;">💡 Flexible Pricing for Every Budget</h2>
-              <p style="color: #333; font-size: 1em; margin: 0; line-height: 1.4;margin:0 auto;">
-                <strong>Prices listed are estimates only.</strong> Project scope can vary significantly, and Nuanced Design is committed to working with your budget. 
-                Whether you're a startup with limited resources or an established business, services can be tailored to fit your needs. 
+            <div class="pricing-callout" role="note" aria-label="Pricing flexibility">
+              <h2 class="pricing-callout__title">💡 Flexible Pricing for Every Budget</h2>
+              <p class="pricing-callout__text">
+                <strong>Prices listed are estimates only.</strong> Project scope can vary significantly, and Nuanced Design is committed to working with your budget.
+                Whether you're a startup with limited resources or an established business, services can be tailored to fit your needs.
                 <strong>Please reach out for a personalized quote!</strong>
               </p>
             </div>
@@ -1089,16 +1089,16 @@
                   <h2 class="services-title" id="servicesTitle">Services</h2>
                   <div class="services-list" id="servicesList">
                     <div class="service-item service-web">
-                      <h3>Web Design</h3>
+                      <h3>Design</h3>
                     </div>
                     <div class="service-item service-social">
-                      <h3>Marketing</h3>
+                      <h3>Development</h3>
                     </div>
                     <div class="service-item service-print">
-                      <h3>Consulting</h3>
+                      <h3>UX</h3>
                     </div>
                     <div class="service-item service-brand">
-                      <h3>Strategic Planning</h3>
+                      <h3>Marketing</h3>
                     </div>
                   </div>
                 </div>
@@ -1107,13 +1107,13 @@
               <!-- Slide 4: Services -->
               <div class="slide slide-4" id="slide4">
                 <div class="service-line" id="service1">
-                  <span class="service-text">Making your brand <span class="highlight-word" id="lookLegit">look legit</span>,</span>
+                  <span class="service-text">Thoughtful <span class="highlight-word" id="lookLegit">design</span>,</span>
                 </div>
                 <div class="service-line" id="service2">
-                  <span class="service-text">your website <span class="highlight-word" id="feelAlive">feel alive</span>,</span>
+                  <span class="service-text">solid <span class="highlight-word" id="feelAlive">development</span>,</span>
                 </div>
                 <div class="service-line" id="service3">
-                  <span class="service-text">and your digital presence</span>
+                  <span class="service-text">and a user experience that makes you</span>
                 </div>
                 <div class="impact-line" id="impact">
                   <span class="impact-text">IMPOSSIBLE TO IGNORE</span>
@@ -1455,7 +1455,7 @@
         // Transition to next slide after the animation completes
         pauseableTimeout(() => {
           transitionToSlide(5);
-        }, 1800); // Wait 1.8 seconds for the animation to complete
+        }, 2800); // Impact dwell: animation + extra beat on "IMPOSSIBLE TO IGNORE"
       }, 6000);
     }
     
@@ -1522,7 +1522,7 @@
     
     function startUrgencyCounters() {
       // Calculate time since animation started (approximately when user started reading)
-      const startTime = Date.now() - (8400 + 2600); // Time from slide 1 to urgency slide
+      const startTime = Date.now() - (8400 + 3600); // ~time from hero start to urgency (+1s linger on impact slide)
       const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
       
       // Estimate realistic numbers based on elapsed time
@@ -1650,7 +1650,7 @@
       image: "IMG/Flux-Energy-thumbnail.jpg",
       description: "An integrated operations platform for wind energy companies, combining fleet management, royalty settlements, financial accounting, and wholesale market trading in a single workspace.",
       link: "https://fluxenergy.app",
-      category: "Enterprise",
+      category: ["Enterprise", "App"],
       date: "2026",
       projectType: "Web Application"
     },
@@ -1658,7 +1658,7 @@
       title: "Atlas Freight",
       image: "IMG/atlas-freight-thumbnail.jpg",
       description: "A platform built for owner-operator truckers to connect drivers to loadboards, manage freight, and secure funds through a patented arbitration engine.",
-      category: "Enterprise",
+      category: ["Enterprise", "App"],
       date: "2026",
       projectType: "Web Application"
     },
@@ -1856,7 +1856,7 @@
       title: "Siempo",
       image: "IMG/Siempo/Mindful-Morning-mock.png",
       description: "App Concepts for Siempo, a non-profit focused on digital wellness and mindfulness technology, such as screentime monitoring and setting intentions.",
-      category: "Non-Profit",
+      category: ["Non-Profit", "App"],
       date: "2019",
       projectType: "Mobile App"
     },
@@ -1875,7 +1875,7 @@
       image: "IMG/awa-fit-mock2.jpg",
       description: "Fitness and wellness platform for AWA Fit.",
       link: "awa-fit.html",
-      category: "Products",
+      category: "App",
       date: "2018",
       projectType: "Mobile App"
     },
@@ -1900,7 +1900,7 @@
       ],
       description: "Fabrication and signage work for Calm Meditation App— for their San Francisco office.",
       link: "https://calm.com",
-      category: "Enterprise",
+      category: ["Enterprise", "App"],
       date: "2017",
       projectType: "Fabrication & Signage"
     },
@@ -1919,7 +1919,7 @@
       image: "IMG/Safe-Harbor/safe-harbor-mock2.jpg",
       description: "Winner of 2015 Global Entrepreneuship Summit Hackathon, Safe Harbor is a mobile app concept that helps vicitms of domestic abuse find safe shelter.",
       link: "safe-harbor.html",
-      category: "Non-Profit",
+      category: ["Non-Profit", "App"],
       platform: "Hackathon",
       date: "2015",
       projectType: "Mobile App"
@@ -1928,6 +1928,7 @@
 
   const portfolioCategories = [
     "Enterprise",
+    "App",
     "Products",
     "Services",
     "Non-Profit",
