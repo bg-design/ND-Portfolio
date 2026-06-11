@@ -536,6 +536,9 @@ grid-template-columns: repeat(2, 1fr);
   box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
   overflow-y: auto;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 700px) {
   .booking-page {
@@ -544,15 +547,11 @@ grid-template-columns: repeat(2, 1fr);
     min-height: 0;
   }
   .bookingContent {
-    position: static !important;
     width: 95vw;
     max-width: 500px;
-    margin: 100px auto 0 auto;
+    margin: 0 auto;
     padding: 10px 6px 16px 6px;
     border-radius: 16px;
-    bottom: auto;
-    left: auto;
-    transform: none;
   }
   .bookingContent h2 {
     font-size: 1.3em;
@@ -575,6 +574,7 @@ grid-template-columns: repeat(2, 1fr);
   pointer-events: none;
   bottom: -60px;
   animation: float-up 8s linear infinite;
+  will-change: transform, top, opacity;
 }
 
 .bg-balloon::after {
@@ -706,19 +706,28 @@ grid-template-columns: repeat(2, 1fr);
 
 .bookingContent {
   max-width: 500px;
+  width: 90vw;
   text-align: center;
   background: white;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 35px 100px rgba(0,0,0,0.4), 0 15px 50px rgba(0,0,0,0.25), 0 5px 20px rgba(0,0,0,0.15);
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
+  position: relative;
   border: 3px solid;
   border-image: linear-gradient(135deg, #00AEEF, #EC008C, #39B54A, #FFCB05) 1;
   border-radius: 0px;
-  animation: float 3s ease-in-out infinite;
+  animation: content-float 3s ease-in-out infinite;
   z-index: 10;
+  flex-shrink: 0;
+}
+
+@keyframes content-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .bookingContent h2 {
@@ -779,10 +788,6 @@ grid-template-columns: repeat(2, 1fr);
     padding: 50px 20px 20px 20px;
   }
   
-  .bookingContent {
-    bottom: 35px;
-  }
-  
   .bookingContent h2 {
     font-size: 1.8em;
     margin-bottom: 18px;
@@ -808,7 +813,6 @@ grid-template-columns: repeat(2, 1fr);
   }
   
   .bookingContent {
-    bottom: 30px;
     width: 90vw;
     padding: 15px;
   }
@@ -841,7 +845,6 @@ grid-template-columns: repeat(2, 1fr);
   .bookingContent {
     width: 85vw;
     padding: 12px;
-    bottom: 15px;
   }
   
   .bookingContent h2 {
@@ -859,7 +862,6 @@ grid-template-columns: repeat(2, 1fr);
   }
   
   .bookingContent {
-    bottom: 40px;
     width: 80vw;
   }
   
@@ -870,18 +872,8 @@ grid-template-columns: repeat(2, 1fr);
 
 /* Tablets in landscape orientation */
 @media (min-width: 768px) and (max-width: 1366px) and (orientation: landscape) {
-  .bookingContent {
-    bottom: 40px;
-  }
-
   .booking-page {
     height: 82%;
-  }
-}
-
- @media (min-width: 700px) {
-  .bookingContent {
-    margin-left:-250px;
   }
 }
 

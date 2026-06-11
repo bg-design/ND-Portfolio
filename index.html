@@ -341,7 +341,7 @@
     </div>
   </footer>
   <div class="booking-page" id="bookingPage" style="opacity: 0; visibility: hidden;">
-  <button class="close-btn" onclick="closeBooking()"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Nevermind</button>
+  <button class="close-btn" onclick="closeBooking()"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> 🤷 Nevermind</button>
 
     <!-- Background floating balloons -->
     <div class="bg-balloon color-1"></div>
@@ -801,6 +801,7 @@
     barWrapper.classList.add('active');
     bar.classList.remove('hidden');
     siteHeaderBar.classList.remove('hidden');
+    bookingBalloonController.start();
   }
 
   function closeBooking() {
@@ -811,6 +812,7 @@
     bookingPage.classList.remove('open');
     bookingOverlay.style.display = 'none';
     barWrapper.classList.remove('active');
+    bookingBalloonController.stop();
     
     // Remove transition class after animation completes
     setTimeout(() => {
@@ -834,6 +836,114 @@
   
   // Assign colors when page loads
   assignRandomColors();
+
+  const BALLOON_LEFT_POSITIONS = [10, 25, 40, 60, 80, 15, 70, 90];
+
+  function initBookingBalloons() {
+    const balloons = bookingPage.querySelectorAll('.bg-balloon');
+    const states = [];
+    const FLOAT_DURATION = 8; // seconds per cycle — matches CSS float-up
+    const REPEL_RADIUS = 110;
+    const REPEL_STRENGTH = 220; // px/s at closest approach
+
+    balloons.forEach((el, i) => {
+      el.style.animation = 'none';
+      el.style.bottom = 'auto';
+      states.push({
+        el,
+        leftPct: BALLOON_LEFT_POSITIONS[i % BALLOON_LEFT_POSITIONS.length],
+        offsetX: 0,
+        vx: 0,
+        progress: ((i * 1.0 + Math.random() * 0.5) % FLOAT_DURATION) / FLOAT_DURATION,
+        durationScale: 0.85 + Math.random() * 0.3
+      });
+    });
+
+    let mouseX = -9999;
+    let mouseY = -9999;
+    let active = false;
+    let rafId = null;
+    let lastTime = null;
+
+    bookingPage.addEventListener('mousemove', (e) => {
+      const rect = bookingPage.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    });
+
+    bookingPage.addEventListener('mouseleave', () => {
+      mouseX = -9999;
+      mouseY = -9999;
+    });
+
+    function tick(now) {
+      if (!active) return;
+
+      if (!lastTime) lastTime = now;
+      const dt = Math.min((now - lastTime) / 1000, 0.05);
+      lastTime = now;
+
+      const rect = bookingPage.getBoundingClientRect();
+      const height = rect.height;
+      const width = rect.width;
+
+      states.forEach((state) => {
+        state.progress += (dt / FLOAT_DURATION) * state.durationScale;
+        if (state.progress >= 1) state.progress -= 1;
+
+        const baseX = (state.leftPct / 100) * width;
+        const baseY = height + 60 - state.progress * (height + 120);
+
+        let opacity = 0.15;
+        if (state.progress < 0.1) {
+          opacity = state.progress * 1.5;
+        } else if (state.progress > 0.9) {
+          opacity = (1 - state.progress) * 1.5;
+        }
+
+        const centerX = baseX + state.offsetX;
+        const centerY = baseY - 25;
+        const dx = centerX - mouseX;
+        const dy = centerY - mouseY;
+        const dist = Math.hypot(dx, dy);
+
+        // Horizontal nudge only — offsetX persists as the balloon rises
+        if (dist < REPEL_RADIUS && dist > 1) {
+          const factor = (REPEL_RADIUS - dist) / REPEL_RADIUS;
+          state.vx += (dx / dist) * factor * REPEL_STRENGTH * dt;
+        }
+
+        state.vx *= Math.exp(-4 * dt);
+        state.offsetX += state.vx * dt;
+
+        state.el.style.left = `${state.leftPct}%`;
+        state.el.style.top = `${baseY}px`;
+        state.el.style.transform = `translateX(calc(-50% + ${state.offsetX}px))`;
+        state.el.style.opacity = String(opacity);
+      });
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    return {
+      start() {
+        if (active) return;
+        active = true;
+        lastTime = null;
+        rafId = requestAnimationFrame(tick);
+      },
+      stop() {
+        active = false;
+        lastTime = null;
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+    };
+  }
+
+  const bookingBalloonController = initBookingBalloons();
 
   function activateTab(el) {
     document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
@@ -1112,7 +1222,7 @@
 
               <div class="message received">
                 <div class="message-bubble">
-                      <p>It centers on Design, Development, UX, and Marketing—no templates, no assumptions—just real understanding of your needs.</p>
+                      <p>It centers on branding, websites, mobile apps, and print &amp; marketing—no templates, no assumptions—just real understanding of your needs.</p>
                 </div>
                 <div class="message-time">10:06 AM</div>
               </div>
@@ -1314,7 +1424,7 @@
               </ul>
             </div>
             <div class="rate-card">
-              <h3><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Mobile Apps <span class="rate-new">New</span></h3>
+              <h3><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Mobile Apps</h3>
               <ul>
                 <li><span>Clickable prototype</span><strong>$2.5K+</strong></li>
                 <li><span>iOS &amp; Android build</span><strong>from $8K</strong></li>
@@ -1324,14 +1434,13 @@
               <p class="rate-note">One codebase, both platforms &mdash; designed and shipped end to end.</p>
             </div>
             <div class="rate-card">
-              <h3><i class="fa-solid fa-server" aria-hidden="true"></i> Backend / Full-Stack <span class="rate-new">New</span></h3>
+              <h3><i class="fa-solid fa-server" aria-hidden="true"></i> Backend / Full-Stack</h3>
               <ul>
                 <li><span>API design &amp; build</span><strong>from $5K</strong></li>
                 <li><span>Database, auth &amp; infra</span><strong>$2.5K+</strong></li>
                 <li><span>SaaS MVP, end to end</span><strong>from $10K</strong></li>
                 <li><span>Integrations &amp; automation</span><strong>$85/hr</strong></li>
               </ul>
-              <p class="rate-note">The same full-stack engineering behind Flux Energy and Atlas Freight.</p>
             </div>
           </div>
 
@@ -1415,7 +1524,7 @@
                     <div class="team-photo-caption-large">
                       <div class="team-member">
                         <span class="team-name">Theo</span>
-                        <span class="team-title">UX Designer</span>
+                        <span class="team-title">Product Designer &amp; Engineer</span>
                       </div>
                     </div>
                   </div>
@@ -1425,19 +1534,19 @@
               <!-- Slide 3: Services -->
               <div class="slide slide-3" id="slide3">
                 <div class="services-section">
-                  <h2 class="services-title" id="servicesTitle">Services</h2>
+                  <h2 class="services-title" id="servicesTitle">Logo to launch</h2>
                   <div class="services-list" id="servicesList">
+                    <div class="service-item service-brand">
+                      <h3>Branding</h3>
+                    </div>
                     <div class="service-item service-web">
-                      <h3>Design</h3>
+                      <h3>Websites</h3>
                     </div>
                     <div class="service-item service-social">
-                      <h3>Development</h3>
+                      <h3>Mobile Apps</h3>
                     </div>
                     <div class="service-item service-print">
-                      <h3>UX</h3>
-                    </div>
-                    <div class="service-item service-brand">
-                      <h3>Marketing</h3>
+                      <h3>Print &amp; Marketing</h3>
                     </div>
                   </div>
                 </div>
