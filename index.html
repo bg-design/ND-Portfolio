@@ -31,6 +31,7 @@
   <meta name="twitter:description" content="Nuanced Design is a boutique web design studio offering custom websites, branding, and social media marketing. Creating human-centered digital experiences that feel personal, memorable, and uniquely you." />
   <meta name="twitter:image" content="IMG/your-team-studio-wine.jpg" />
   <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
+  <script src="JS/theme-init.js"></script>
 
   <!-- Preload critical fonts -->
   <link rel="preload" href="fonts/playfair-display-400.ttf" as="font" type="font/ttf" crossorigin>
@@ -1140,26 +1141,31 @@
           <!-- Our History Section -->
           <div class="journey-section">
             <h2 class="section-title">Our History</h2>
-            <p class="journey-sub">Two decades of making things for the screen — four eras of the web, one studio.</p>
+            <p class="journey-sub">Two decades of making things for the screen — five eras, one studio.</p>
             <div class="journey-eras">
               <div class="journey-era">
                 <span class="journey-era-tag">Web 1.0</span>
-                <span class="journey-era-name">West Coast Foundations</span>
+                <span class="journey-era-name">First Experiments</span>
               </div>
               <span class="journey-arrow" aria-hidden="true">&rarr;</span>
               <div class="journey-era">
                 <span class="journey-era-tag">Web 2.0</span>
-                <span class="journey-era-name">The Splash Era</span>
+                <span class="journey-era-name">West Coast Foundations</span>
+              </div>
+              <span class="journey-arrow" aria-hidden="true">&rarr;</span>
+              <div class="journey-era">
+                <span class="journey-era-tag">Web 2.5</span>
+                <span class="journey-era-name">The Proving Ground</span>
               </div>
               <span class="journey-arrow" aria-hidden="true">&rarr;</span>
               <div class="journey-era">
                 <span class="journey-era-tag">Web 3.0</span>
-                <span class="journey-era-name">The Studio Years</span>
+                <span class="journey-era-name">Putting Down Roots</span>
               </div>
               <span class="journey-arrow" aria-hidden="true">&rarr;</span>
               <div class="journey-era">
                 <span class="journey-era-tag journey-era-tag-agentic">Web 4.0</span>
-                <span class="journey-era-name">The Agentic Era</span>
+                <span class="journey-era-name">The New Craft</span>
               </div>
             </div>
             <a class="journey-cta" href="versions.html">Walk the full timeline <span class="cta-arrow" aria-hidden="true">&rarr;</span></a>
@@ -1640,6 +1646,13 @@
                 </div>
               </div>
             </div>
+            <button type="button" class="hero-scroll-hint" id="heroScrollHint" aria-label="Scroll to featured work">
+              <span class="hero-scroll-chevrons" aria-hidden="true">
+                <i class="hero-scroll-chevron"></i>
+                <i class="hero-scroll-chevron"></i>
+                <i class="hero-scroll-chevron"></i>
+              </span>
+            </button>
           </div>
         </div>
         
@@ -1849,6 +1862,24 @@
 
       // v3: scroll-driven reveals for the featured case studies
       requestAnimationFrame(() => initHomeAnimations());
+      initHeroScrollHint();
+    }
+
+    function initHeroScrollHint() {
+      const hint = document.getElementById('heroScrollHint');
+      if (!hint) return;
+
+      setTimeout(() => hint.classList.add('is-visible'), 2800);
+
+      hint.addEventListener('click', () => goFeatured());
+
+      const hero = document.querySelector('.homepage-hero');
+      if (hero && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(([entry]) => {
+          hint.classList.toggle('is-hidden', !entry.isIntersecting);
+        }, { threshold: 0.15 });
+        observer.observe(hero);
+      }
     }
 
     function startHomepageAnimations() {
@@ -2935,6 +2966,11 @@
       `<div class="markdown-content portfolio-page">
         <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Back to Home</a>
         
+        <div class="archive-header" id="archive">
+          <p class="micro-label no-rule archive-sub">2015 &mdash; 2026 &middot; ${archiveProjects.length} projects</p>
+          <h1 class="archive-title">Archive</h1>
+        </div>
+
         <!-- Clients and Platforms Section -->
         <div class="clients-platforms-section">
           <div class="clients-section">
@@ -2990,11 +3026,7 @@
             </div>
           </div>
         </div>
-        
-        <div class="archive-header" id="archive">
-          <p class="micro-label no-rule archive-sub">2015 &mdash; 2026 &middot; ${archiveProjects.length} projects</p>
-          <h1 class="archive-title">Archive</h1>
-        </div>
+
         ${renderPortfolioFilters(category)}
         ${renderPortfolioCardsOnly(category, yearFilter, typeFilter, platformFilter, currentPortfolioPage)}
         ${renderPortfolioPagination(category, yearFilter, typeFilter, platformFilter, currentPortfolioPage)}
@@ -3169,10 +3201,10 @@
       modeSwitch.style.background = '#eee';
       modeSwitch.style.color = '#222';
     }
+    try { localStorage.setItem('nd-theme', mode); } catch (e) {}
   }
-  // Detect system preference
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  setMode(prefersDark ? 'dark' : 'light');
+  const savedTheme = document.documentElement.getAttribute('data-theme');
+  setMode(savedTheme === 'dark' ? 'dark' : 'light');
   modeSwitch.onclick = function() {
     const current = document.documentElement.getAttribute('data-theme');
     setMode(current === 'dark' ? 'light' : 'dark');

@@ -6,13 +6,7 @@
   <title>The Story — Nuanced Design</title>
   <meta name="description" content="The story of Nuanced Design — two decades of making things for the screen, from the hand-coded web to the agentic era. Every version of the site, preserved." />
   <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
-  <script>
-    // Match system theme before paint
-    (function () {
-      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-    })();
-  </script>
+  <script src="JS/theme-init.js"></script>
   <style>
     @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/playfair-display-400.ttf') format('truetype'); }
     @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-display-700.ttf') format('truetype'); }
@@ -293,8 +287,8 @@
   <main style="flex:1;">
     <section class="tl-hero">
       <a class="versions-back" href="./">&larr; Back to the site</a>
-      <p class="micro-label" style="margin-top:42px;">Changelog &middot; 2002 &mdash; 2026</p>
-      <h1 class="tl-title">One designer.<br>Four <em>eras.</em></h1>
+      <p class="micro-label" style="margin-top:42px;">Changelog &middot; 1994 &mdash; 2026</p>
+      <h1 class="tl-title">One designer.<br>Five <em>eras.</em></h1>
       <p class="tl-sub">Two decades of making things for the screen &mdash; from hand-coded pages in San Francisco to agentic builds in Binghamton, with every version of this site preserved along the way. Scroll the decades.</p>
     </section>
 
@@ -305,16 +299,42 @@
       <div class="tl-era">
         <div class="tl-era-label">
           <span class="tl-era-tag">Web 1.0</span>
-          <span class="tl-era-name">West Coast Foundations</span>
+          <span class="tl-era-name">First Experiments</span>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">1994</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>First hardware test &#128521;</h3>
+            <p>Stuck a paperclip in a socket in kindergarten &mdash; my first hardware test. (Survived to tell the tale.)</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">1998</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Dr. Brain, Thinkin&rsquo; Things &amp; SimCity</h3>
+            <p>Built and swapped parts on several computers. Learned basic programming from <em>Castle of Dr. Brain</em> &mdash; programming a robotic arm through a maze &mdash; and <em>Thinkin&rsquo; Things</em>, where you choreographed a marching band halftime show one command at a time. <em>SimCity</em> opened a world of emergent programming &mdash; which is why it&rsquo;s the GOAT &#128016;</p>
+          </div>
         </div>
 
         <div class="tl-item" style="--dot:#9aa3b2;">
           <div class="tl-year">2002</div>
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>First websites &amp; Photoshop</h3>
-            <p>Built my first websites and learned Photoshop &mdash; the earliest experiments in making things for the screen.</p>
+            <h3>theawesome.tk</h3>
+            <p>Built my first website at <strong>theawesome.tk</strong> &mdash; a curated collection of the best and coolest things on the internet, so I could share them with my friends. Because that&rsquo;s what you do with websites, right? That, and crunchy cringey 90s GIF art. Also learned Photoshop along the way, and attempted to download all the world&rsquo;s music and movies and burn them all to my own personal CD &amp; DVD collection &mdash; brilliant! #agedlikemilk</p>
           </div>
+        </div>
+      </div>
+
+      <!-- ERA 2 -->
+      <div class="tl-era">
+        <div class="tl-era-label">
+          <span class="tl-era-tag">Web 2.0 &middot; from 2007</span>
+          <span class="tl-era-name">West Coast Foundations</span>
         </div>
 
         <div class="tl-item" style="--dot:#9aa3b2;">
@@ -373,14 +393,6 @@
             <p>Completed the UX Design Immersive at General Assembly in San Francisco &mdash; research, prototyping, and human-centered design, formalized.</p>
           </div>
         </div>
-      </div>
-
-      <!-- ERA 2 -->
-      <div class="tl-era">
-        <div class="tl-era-label">
-          <span class="tl-era-tag">Web 2.0</span>
-          <span class="tl-era-name">The Splash Era</span>
-        </div>
 
         <a class="tl-version" href="safe-harbor.html" style="--dot:#FFCB05;">
           <div class="tl-item">
@@ -390,6 +402,26 @@
               <h3>Safe Harbor wins Global Entrepreneurship Summit 🏆</h3>
               <p>A weekend hackathon at the GES for an app helping victims of domestic abuse find shelter &mdash; research, pivot, prototype, and a win on the global stage.</p>
               <span class="tl-visit">Safe Harbor Case Study <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ERA 3 -->
+      <div class="tl-era">
+        <div class="tl-era-label">
+          <span class="tl-era-tag">Web 2.5 &middot; from 2017</span>
+          <span class="tl-era-name">The Proving Ground</span>
+        </div>
+
+        <a class="tl-version" href="Archive/index-v2.html" style="--dot:#EC008C;">
+          <div class="tl-item">
+            <div class="tl-year">2017</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>v2.0 &mdash; &ldquo;Hi, I&rsquo;m Ben.&rdquo; <span class="tl-vtag">Version</span></h3>
+              <p>Peak-jQuery internet: a full-bleed splash photo, a time-of-day greeting script, and one big hello. The web was a front door, and this one stayed open for years.</p>
+              <span class="tl-visit">Visit v2.0 <span class="arr">&rarr;</span></span>
             </div>
           </div>
         </a>
@@ -411,24 +443,39 @@
           </div>
         </div>
 
-        <a class="tl-version" href="Archive/index-v2.html" style="--dot:#EC008C;">
-          <div class="tl-item">
-            <div class="tl-year">2017</div>
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <h3>v2.0 &mdash; &ldquo;Hi, I&rsquo;m Ben.&rdquo; <span class="tl-vtag">Version</span></h3>
-              <p>Peak-jQuery internet: a full-bleed splash photo, a time-of-day greeting script, and one big hello. The web was a front door, and this one stayed open for years.</p>
-              <span class="tl-visit">Visit v2.0 <span class="arr">&rarr;</span></span>
-            </div>
-          </div>
-        </a>
-
         <div class="tl-item" style="--dot:#9aa3b2;">
-          <div class="tl-year">2018</div>
+          <div class="tl-year">2020</div>
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>Ben becomes Theo</h3>
-            <p>A rebrand in the most literal sense. Nuanced Design carries on as a solo studio &mdash; new name, same hands on the keyboard.</p>
+            <h3>Origin Materials</h3>
+            <p>Corporate website for a sustainable-materials innovator &mdash; Craft CMS build, front-end design, and close collaboration with their marketing team through launch.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://originmaterials.com" target="_blank" rel="noopener">Origin Materials</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2021</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>LoanPal</h3>
+            <p>Enterprise web work for LoanPal &mdash; now GoodLeap &mdash; one of the largest home-improvement and solar-financing platforms in the U.S.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://goodleap.com" target="_blank" rel="noopener">GoodLeap</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2021</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Trendgraphix</h3>
+            <p>Full redesign and custom-coded build for Trendgraphix &mdash; real estate data and marketing insights for agents and homebuyers.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://trendgraphix.com" target="_blank" rel="noopener">Trendgraphix</a></li>
+            </ul>
           </div>
         </div>
 
@@ -436,13 +483,11 @@
           <div class="tl-year">&rsquo;20&ndash;&rsquo;21</div>
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>Later client work</h3>
-            <p>Enterprise sites, custom-coded builds, and full redesigns across the Bay Area and beyond.</p>
+            <h3>More client work</h3>
+            <p>Custom-coded builds and full redesigns across the Bay Area and beyond.</p>
             <ul class="tl-card-links">
-              <li><a href="https://originmaterials.com" target="_blank" rel="noopener">Origin Materials</a></li>
               <li><a href="https://gatherfacilitation.com" target="_blank" rel="noopener">Gather Facilitation</a></li>
               <li><a href="https://lilypad.house" target="_blank" rel="noopener">Lilypad</a></li>
-              <li><a href="https://trendgraphix.com" target="_blank" rel="noopener">Trendgraphix</a></li>
               <li><a href="https://evaorbuch.com" target="_blank" rel="noopener">Eva Orbuch</a></li>
               <li><a href="https://www.jordankersten.com/" target="_blank" rel="noopener">Jordan Kersten Studio</a></li>
             </ul>
@@ -450,11 +495,11 @@
         </div>
       </div>
 
-      <!-- ERA 3 -->
+      <!-- ERA 4 -->
       <div class="tl-era">
         <div class="tl-era-label">
           <span class="tl-era-tag">Web 3.0 &middot; from 2022</span>
-          <span class="tl-era-name">The Studio Years</span>
+          <span class="tl-era-name">Putting Down Roots</span>
         </div>
 
         <div class="tl-item" style="--dot:#9aa3b2;">
@@ -500,12 +545,24 @@
         </a>
       </div>
 
-      <!-- ERA 4 -->
+      <!-- ERA 5 -->
       <div class="tl-era">
         <div class="tl-era-label">
           <span class="tl-era-tag agentic">Web 4.0 &middot; from 2025</span>
-          <span class="tl-era-name">The Agentic Era</span>
+          <span class="tl-era-name">The New Craft</span>
         </div>
+
+        <a class="tl-version" href="./" style="--dot:#39B54A;">
+          <div class="tl-item">
+            <div class="tl-year">2025</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>v3.0 &mdash; The Portfolio, Reforged <span class="tl-vtag">Current</span></h3>
+              <p>Designed by Theo, built alongside AI agents. Enterprise case studies, a curated archive, floating reviews, and a GSAP-driven landing experience &mdash; the site you&rsquo;re standing in.</p>
+              <span class="tl-visit">Back to v3.0 <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
 
         <a class="tl-version" href="nuanced-studios.html" style="--dot:#39B54A;">
           <div class="tl-item">
@@ -555,17 +612,6 @@
           </div>
         </a>
 
-        <a class="tl-version" href="./" style="--dot:#39B54A;">
-          <div class="tl-item">
-            <div class="tl-year">2026</div>
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <h3>v3.0 &mdash; The Portfolio, Reforged <span class="tl-vtag">Current</span></h3>
-              <p>Designed by Theo, built alongside AI agents. Enterprise case studies, a curated archive, floating reviews, and a GSAP-driven landing experience &mdash; the site you&rsquo;re standing in.</p>
-              <span class="tl-visit">Back to v3.0 <span class="arr">&rarr;</span></span>
-            </div>
-          </div>
-        </a>
       </div>
     </section>
 
@@ -575,6 +621,7 @@
     </div>
   </main>
 
+  <script src="JS/site-chrome.js"></script>
   <script src="JS/footer.js"></script>
 
   <script>

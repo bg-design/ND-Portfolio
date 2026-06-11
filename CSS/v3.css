@@ -111,7 +111,7 @@ html[data-theme="dark"] body {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 50;
+  z-index: 60;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -924,6 +924,102 @@ html[data-theme="dark"] body {
 }
 .impact-text {
   letter-spacing: 0.04em !important;
+}
+
+/* Hero scroll hint — nested chevrons, cascading fade */
+.hero-scroll-hint {
+  position: fixed;
+  right: clamp(28px, 6vw, 96px);
+  bottom: clamp(248px, 30vh, 320px);
+  left: auto;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.hero-scroll-hint.is-visible {
+  opacity: 1;
+}
+.hero-scroll-hint.is-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+.hero-scroll-hint:focus-visible {
+  outline: 2px solid var(--v3-cyan);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+.hero-scroll-hint:hover .hero-scroll-chevron,
+.hero-scroll-hint:focus-visible .hero-scroll-chevron {
+  border-color: var(--v3-cyan);
+}
+
+.hero-scroll-chevrons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-scroll-chevron {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid var(--v3-muted);
+  border-bottom: 1.5px solid var(--v3-muted);
+  transform: rotate(45deg);
+  margin-top: -4px;
+  opacity: 0.2;
+  animation: hero-scroll-cascade 2.4s ease-in-out infinite;
+}
+html[data-theme="dark"] .hero-scroll-chevron {
+  border-color: rgba(232, 234, 240, 0.42);
+}
+.hero-scroll-chevron:first-child {
+  margin-top: 0;
+}
+.hero-scroll-chevron:nth-child(1) { animation-delay: 0s; }
+.hero-scroll-chevron:nth-child(2) { animation-delay: 0.2s; }
+.hero-scroll-chevron:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes hero-scroll-cascade {
+  0%, 100% {
+    opacity: 0.16;
+  }
+  50% {
+    opacity: 0.78;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-hint {
+    transition: none;
+  }
+  .hero-scroll-chevron {
+    animation: none;
+    opacity: 0.45;
+    transform: rotate(45deg);
+  }
+  .hero-scroll-chevron:nth-child(2) { opacity: 0.32; }
+  .hero-scroll-chevron:nth-child(3) { opacity: 0.2; }
+}
+
+@media (max-width: 768px) {
+  .hero-scroll-hint {
+    right: 20px;
+    bottom: clamp(210px, 28vh, 260px);
+    padding: 8px 10px;
+  }
+  .hero-scroll-chevron {
+    width: 8px;
+    height: 8px;
+    margin-top: -3px;
+  }
 }
 
 /* Section cards: hairline borders instead of dotted rainbow boxes */
