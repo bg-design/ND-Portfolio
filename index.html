@@ -262,12 +262,13 @@
     </div>
   </div>
 
-  <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; position:relative; z-index:10;">
-    <a href="#menu" onclick="toggleMegaMenu(); return false;" class="header-logo" aria-label="Open menu" aria-haspopup="true" aria-controls="megaMenu" style="text-decoration:none; display:flex; align-items:center; transition:opacity 0.2s;">
-      <img src="IMG/nd-logo-v2c.png" alt="Nuanced Design Logo" style="width:60px; border-radius:50%;">
+  <header class="site-header-bar" id="siteHeaderBar">
+    <a href="#menu" onclick="toggleMegaMenu(); return false;" class="header-logo" aria-label="Open menu" aria-haspopup="true" aria-controls="megaMenu">
+      <img src="IMG/nd-logo-v2c.png" alt="Nuanced Design Logo">
     </a>
-    <button id="modeSwitch" style="padding:8px 18px; border-radius:20px; border:none; background:#eee; color:#222; font-weight:600; font-size:1em; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;"><i class="fa-solid fa-moon" aria-hidden="true"></i> Dark Mode</button>
-  </div>
+    <button id="modeSwitch"><i class="fa-solid fa-moon" aria-hidden="true"></i> Dark Mode</button>
+  </header>
+  <div class="site-header-spacer" aria-hidden="true"></div>
 
   <!-- Mega menu (opens from the logo) -->
   <div class="mega-menu" id="megaMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
@@ -302,14 +303,18 @@
     <div class="footer-inner">
       <div class="footer-top">
         <div class="footer-brand">
-          <span class="footer-wordmark">Nuanced Design</span>
+          <a href="./" class="footer-wordmark">
+            <span class="footer-wordmark-base">Nuanced Design</span>
+            <span class="footer-wordmark-fill" aria-hidden="true">Nuanced Design</span>
+          </a>
           <p class="footer-tag">Full-stack design &amp; engineering by Theo Grandy. Human-centered digital experiences, built with care.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
           <p class="footer-col-title">Explore</p>
-          <a href="#archive">Archive</a>
+          <a href="#featuredWork">Featured Work</a>
           <a href="#process">Process</a>
           <a href="#about">About</a>
+          <a href="#archive">Archive</a>
           <a href="#pricing">Pricing</a>
         </nav>
         <nav class="footer-nav footer-studios" aria-label="Nuanced Studios">
@@ -324,8 +329,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY</span>
-        <span class="footer-love">Proudly made with love in the USA 🇺🇸</span>
+        <p class="footer-copyright">&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY<br>Proudly made with love in the USA 🇺🇸</p>
         <a class="footer-version" href="versions.html" title="View site version history">v3.0</a>
       </div>
       <div class="footer-legal">
@@ -541,6 +545,7 @@
   let lastScroll = 0;
   const bar = document.getElementById('tabBar');
   const barWrapper = document.getElementById('tabBarWrapper');
+  const siteHeaderBar = document.getElementById('siteHeaderBar');
   const bookingPage = document.getElementById('bookingPage');
   const bookingOverlay = document.getElementById('bookingOverlay');
   
@@ -553,7 +558,8 @@
     '#about': openAbout,
     '#archive': loadPortfolioSection,
     '#portfolio': loadPortfolioSection, // legacy alias for old links
-    '#pricing': openPricing
+    '#pricing': openPricing,
+    '#featuredWork': openFeaturedWork
   };
   
   // Handle URL changes
@@ -601,34 +607,48 @@
   // Handle initial page load
   window.addEventListener('load', handleRoute);
 
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
+  function updateScrollChrome(currentScroll) {
     const documentHeight = document.documentElement.scrollHeight;
     const windowHeight = window.innerHeight;
     const maxScroll = documentHeight - windowHeight;
+    const megaMenuEl = document.getElementById('megaMenu');
 
-    // ✅ If booking page is open, never hide the tab bar
-    if (bookingPage.classList.contains('open')) {
+    const showChrome = () => {
       bar.classList.remove('hidden');
+      siteHeaderBar.classList.remove('hidden');
+    };
+    const hideChrome = () => {
+      bar.classList.add('hidden');
+      siteHeaderBar.classList.add('hidden');
+    };
+
+    // Keep chrome visible when booking or mega menu is open
+    if (bookingPage.classList.contains('open') || (megaMenuEl && megaMenuEl.classList.contains('open'))) {
+      showChrome();
       return;
     }
 
-    // Prevent showing tab bar when at the very bottom (within 10px)
+    // Hide at the very bottom (within 10px)
     if (currentScroll >= maxScroll - 10) {
-      bar.classList.add('hidden');
+      hideChrome();
       return;
     }
 
     if (currentScroll <= 0) {
-      bar.classList.remove('hidden');
+      showChrome();
       return;
     }
+
     if (currentScroll > lastScroll) {
-      bar.classList.add('hidden');
+      hideChrome();
     } else {
-      bar.classList.remove('hidden');
+      showChrome();
     }
     lastScroll = currentScroll;
+  }
+
+  window.addEventListener('scroll', () => {
+    updateScrollChrome(window.pageYOffset);
   });
 
     function setColor(color) {
@@ -779,7 +799,8 @@
     bookingPage.classList.add('open');
     bookingOverlay.style.display = 'block';
     barWrapper.classList.add('active');
-    bar.classList.remove('hidden'); // ✅ Keep bar visible when booking is open
+    bar.classList.remove('hidden');
+    siteHeaderBar.classList.remove('hidden');
   }
 
   function closeBooking() {
@@ -868,6 +889,19 @@
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && megaMenu.classList.contains('open')) closeMegaMenu();
   });
+
+  function openFeaturedWork() {
+    if (document.getElementById('featuredWork')) {
+      document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+      const featuredTab = document.querySelector('.tab-item.featured');
+      if (featuredTab) featuredTab.classList.add('active');
+      setColor('#222');
+      goFeatured();
+    } else {
+      loadDefaultContent();
+      setTimeout(openFeaturedWork, 700);
+    }
+  }
 
   // Star tab: jump to the featured case studies on the homepage
   function goFeatured() {
@@ -1533,7 +1567,7 @@
         </section>
 
         <!-- Testimonials Block: Floating Review Bubbles -->
-        <div class="dottedBox recommendations v3-reviews" id="testimonialsBlock" style="margin-top: 0;">
+        <div class="dottedBox recommendations v3-reviews" id="testimonialsBlock">
           <div class="reviews-header">
             <p class="micro-label">Client Reviews</p>
             <h2 class="reviews-title display-serif">Ten years of <em>kind words.</em></h2>
@@ -1548,7 +1582,7 @@
         </div>
 
         <!-- Fortune Cookie Section -->
-        <div class="dottedBox fortune-section" id="fortuneSection" style="margin-top: 0;">
+        <div class="dottedBox fortune-section" id="fortuneSection">
           <h2 class="fortune-section-title">A Fortune for Your Journey</h2>
           <div class="fortune-cookie-homepage" onclick="showFortune()">
             <div class="fortune-cookie-emoji">🥠</div>
@@ -1576,7 +1610,7 @@
         </div>
         
         <!-- Selling Points/Checklist Block (static, below testimonials) -->
-        <div class="dottedBox selling-points-static" id="sellingPointsStatic" style="margin-top: 0;">
+        <div class="dottedBox selling-points-static" id="sellingPointsStatic">
           <div class="selling-points-section">
             <h2 class="selling-points-title" id="sellingPointsTitle">Why Choose Nuanced Design?</h2>
             <div class="stats-grid" id="statsGrid">
@@ -2113,7 +2147,7 @@
       image: "IMG/christine-degrazia-thumbnail.jpg",
       description: "After dealing with burnout from the COVID pandemic, Christine DeGrazia, RN is on a mission to help other nurses and healthcare professionals find the tools for self-compassion and self-care.",
       link: "https://christinedegrazia.com/self-compassion-fatigue-book/",
-      category: "Creatives",
+      category: ["Individual", "Creatives"],
       platform: "WordPress",
       date: "2023",
       projectType: "Educational Content"
