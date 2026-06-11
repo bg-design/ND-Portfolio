@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Version History — Nuanced Design</title>
-  <meta name="description" content="A decade of nuanceddesign.com — from the hand-coded web to the agentic era. Every version of the site, preserved." />
+  <title>The Story — Nuanced Design</title>
+  <meta name="description" content="The story of Nuanced Design — two decades of making things for the screen, from the hand-coded web to the agentic era. Every version of the site, preserved." />
   <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
   <script>
     // Match system theme before paint
@@ -50,14 +50,18 @@
       max-width: 880px;
       margin: 30px auto 0;
       padding: 10px 28px 40px;
+      --tl-gutter: 28px;
+      --tl-year-col: 86px;
+      --tl-axis: calc(var(--tl-gutter) + var(--tl-year-col));
     }
     .tl-rail {
       position: absolute;
-      left: calc(28px + 86px);
+      left: var(--tl-axis);
       top: 0;
       bottom: 0;
       width: 2px;
       background: var(--v3-line);
+      transform: translateX(-50%);
     }
     .tl-rail-fill {
       position: absolute;
@@ -102,9 +106,10 @@
     .tl-item {
       position: relative;
       display: grid;
-      grid-template-columns: 86px 1fr;
+      grid-template-columns: var(--tl-year-col) 1fr;
       gap: 0 34px;
       padding: 16px 0;
+      --dot-accent: var(--dot, #9aa3b2);
     }
     .tl-year {
       font-family: var(--v3-serif);
@@ -119,15 +124,26 @@
     }
     .tl-dot {
       position: absolute;
-      left: 86px;
+      left: var(--tl-year-col);
       top: 30px;
       width: 14px;
       height: 14px;
       border-radius: 50%;
       background: var(--v3-bg);
-      border: 3px solid var(--dot, var(--v3-muted));
-      transform: translateX(-6px);
+      border: 3px solid var(--v3-line-strong);
+      transform: translateX(-50%);
       z-index: 2;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+    }
+    .tl-dot.is-lit {
+      border-color: var(--dot-lit, var(--dot-accent));
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--dot-lit, var(--dot-accent)) 22%, transparent);
+    }
+    .tl-item.is-neutral {
+      --dot-lit: #c5cad4;
+    }
+    html[data-theme="dark"] .tl-item.is-neutral {
+      --dot-lit: #8b939f;
     }
     .tl-card {
       background: var(--v3-surface);
@@ -141,7 +157,9 @@
     .tl-item:hover .tl-card {
       transform: translateY(-4px);
       box-shadow: var(--v3-shadow-lift);
-      border-color: var(--v3-line-strong);
+      border-top-color: var(--v3-line-strong);
+      border-right-color: var(--v3-line-strong);
+      border-bottom-color: var(--v3-line-strong);
     }
     .tl-card h3 {
       margin: 0 0 6px;
@@ -160,6 +178,27 @@
       line-height: 1.6;
       color: var(--v3-muted);
     }
+    .tl-card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 12px;
+      padding: 0;
+      list-style: none;
+    }
+    .tl-card-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--v3-ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--v3-line-strong);
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .tl-card-links a:hover {
+      color: var(--v3-cyan);
+      border-color: var(--v3-cyan);
+    }
     .tl-vtag {
       font-family: var(--v3-sans);
       font-size: 0.62rem;
@@ -175,7 +214,18 @@
       display: block;
       text-decoration: none;
     }
-    a.tl-version .tl-card { border-left: 3px solid var(--dot, var(--v3-line-strong)); }
+    a.tl-version .tl-card {
+      border-left: 3px solid var(--dot, var(--v3-line-strong));
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--dot, var(--v3-line-strong)) 12%, var(--v3-surface)),
+        var(--v3-surface) 42%
+      );
+    }
+    a.tl-version:hover .tl-card,
+    a.tl-version:focus-visible .tl-card {
+      border-left-color: var(--dot, var(--v3-line-strong));
+    }
     .tl-visit {
       display: inline-flex;
       align-items: center;
@@ -204,18 +254,36 @@
       color: var(--v3-muted);
       margin: 0;
     }
+    .tl-about-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 22px;
+      font-family: var(--v3-sans);
+      font-size: 0.88rem;
+      font-weight: 650;
+      color: var(--v3-ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--v3-ink);
+      padding-bottom: 3px;
+    }
+    .tl-about-link .arr { transition: transform 0.25s ease; display: inline-block; }
+    .tl-about-link:hover .arr { transform: translateX(5px); }
 
     @media (max-width: 599px) {
       .tl-hero { padding: 64px 22px 18px; }
-      .timeline { padding: 10px 22px 30px; }
-      .tl-rail { left: calc(22px + 12px); }
+      .timeline {
+        padding: 10px 22px 30px;
+        --tl-gutter: 22px;
+        --tl-year-col: 12px;
+      }
       .tl-item { grid-template-columns: 1fr; gap: 0; padding-left: 44px; }
       .tl-year { text-align: left; padding: 0 0 6px; font-size: 1rem; }
       .tl-dot { left: 12px; top: 8px; }
       .tl-era-label { margin-left: 44px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .tl-card, .tl-visit .arr { transition: none; }
+      .tl-card, .tl-visit .arr, .tl-dot { transition: none; }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
@@ -225,9 +293,9 @@
   <main style="flex:1;">
     <section class="tl-hero">
       <a class="versions-back" href="./">&larr; Back to the site</a>
-      <p class="micro-label" style="margin-top:42px;">Changelog &middot; 2014 &mdash; 2026</p>
-      <h1 class="tl-title">One designer.<br>Three <em>internets.</em></h1>
-      <p class="tl-sub">This site has been torn down and rebuilt across three eras of the web &mdash; every version preserved, warts and all. Scroll the decade.</p>
+      <p class="micro-label" style="margin-top:42px;">Changelog &middot; 2002 &mdash; 2026</p>
+      <h1 class="tl-title">One designer.<br>Four <em>eras.</em></h1>
+      <p class="tl-sub">Two decades of making things for the screen &mdash; from hand-coded pages in San Francisco to agentic builds in Binghamton, with every version of this site preserved along the way. Scroll the decades.</p>
     </section>
 
     <section class="timeline" aria-label="Site version timeline">
@@ -236,8 +304,35 @@
       <!-- ERA 1 -->
       <div class="tl-era">
         <div class="tl-era-label">
-          <span class="tl-era-tag">Pre-AI &middot; Era I</span>
-          <span class="tl-era-name">The Hand-Coded Web</span>
+          <span class="tl-era-tag">Web 1.0</span>
+          <span class="tl-era-name">West Coast Foundations</span>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2002</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>First websites &amp; Photoshop</h3>
+            <p>Built my first websites and learned Photoshop &mdash; the earliest experiments in making things for the screen.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">&rsquo;07&ndash;&rsquo;10</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>University of California &ndash; Davis</h3>
+            <p>Studied Landscape Architecture and Electrical Engineering &mdash; design thinking and systems thinking, side by side.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2011</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Moved to San Francisco</h3>
+            <p>Moved to San Francisco to work for my first start-up &mdash; the Bay Area chapter begins.</p>
+          </div>
         </div>
 
         <a class="tl-version" href="Archive/index-v1.html" style="--dot:#00AEEF;">
@@ -245,7 +340,7 @@
             <div class="tl-year">2014</div>
             <div class="tl-dot"></div>
             <div class="tl-card">
-              <h3>v1.0 &mdash; Where It All Started <span class="tl-vtag">Version</span></h3>
+              <h3>Nuanced Design Founded <span class="tl-vtag">v1.0</span></h3>
               <p>Every line typed by hand in San Francisco, back when that&rsquo;s what &ldquo;building a website&rdquo; meant. jQuery, Featherlight lightboxes, and a Creative Commons badge in the footer.</p>
               <span class="tl-visit">Visit v1.0 <span class="arr">&rarr;</span></span>
             </div>
@@ -256,8 +351,26 @@
           <div class="tl-year">2015</div>
           <div class="tl-dot"></div>
           <div class="tl-card">
+            <h3>TechShop fabrication</h3>
+            <p>Wood, metal, and 3D fabrication at TechShop &mdash; learning to make things with your hands, not just pixels.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2015</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
             <h3>First clients</h3>
-            <p>The freelance years begin &mdash; early product concepts like Safe Harbor and the first paying clients on the West Coast.</p>
+            <p>The freelance years begin &mdash; the first paying clients on the West Coast.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2016</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>UX Design Immersive at General Assembly</h3>
+            <p>Completed the UX Design Immersive at General Assembly in San Francisco &mdash; research, prototyping, and human-centered design, formalized.</p>
           </div>
         </div>
       </div>
@@ -265,8 +378,37 @@
       <!-- ERA 2 -->
       <div class="tl-era">
         <div class="tl-era-label">
-          <span class="tl-era-tag">Pre-AI &middot; Era II</span>
+          <span class="tl-era-tag">Web 2.0</span>
           <span class="tl-era-name">The Splash Era</span>
+        </div>
+
+        <a class="tl-version" href="safe-harbor.html" style="--dot:#FFCB05;">
+          <div class="tl-item">
+            <div class="tl-year">2016</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>Safe Harbor wins Global Entrepreneurship Summit 🏆</h3>
+              <p>A weekend hackathon at the GES for an app helping victims of domestic abuse find shelter &mdash; research, pivot, prototype, and a win on the global stage.</p>
+              <span class="tl-visit">Safe Harbor Case Study <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">&rsquo;16&ndash;&rsquo;19</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Early client work</h3>
+            <p>From EntheoZen to Slingshot Foods and Calm &mdash; Bay Area fabrication, signage, leather goods, fitness apps, and digital wellness concepts.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://entheozen.com" target="_blank" rel="noopener">EntheoZen</a></li>
+              <li><a href="slingshot.html">Slingshot Foods</a></li>
+              <li><a href="https://calm.com" target="_blank" rel="noopener">Calm</a></li>
+              <li><a href="oneof.html">OneOf</a></li>
+              <li><a href="awa-fit.html">AWA Fit</a></li>
+              <li><a href="https://www.siempo.com/" target="_blank" rel="noopener">Siempo</a></li>
+            </ul>
+          </div>
         </div>
 
         <a class="tl-version" href="Archive/index-v2.html" style="--dot:#EC008C;">
@@ -282,16 +424,7 @@
         </a>
 
         <div class="tl-item" style="--dot:#9aa3b2;">
-          <div class="tl-year">&rsquo;17&ndash;&rsquo;21</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <h3>The studio years</h3>
-            <p>Slingshot Foods, Calm, Origin Materials, TrendGraphix &mdash; the archive fills up with shipped work across brand, web, and product.</p>
-          </div>
-        </div>
-
-        <div class="tl-item" style="--dot:#9aa3b2;">
-          <div class="tl-year">2022</div>
+          <div class="tl-year">2018</div>
           <div class="tl-dot"></div>
           <div class="tl-card">
             <h3>Ben becomes Theo</h3>
@@ -299,12 +432,20 @@
           </div>
         </div>
 
-        <div class="tl-item" style="--dot:#c2633e;">
-          <div class="tl-year">2024</div>
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">&rsquo;20&ndash;&rsquo;21</div>
           <div class="tl-dot"></div>
           <div class="tl-card">
-            <h3>Rancho Bombero hits Men&rsquo;s Health</h3>
-            <p>The ranch-born body oil brand &mdash; designed and built here &mdash; lands a national press feature.</p>
+            <h3>Later client work</h3>
+            <p>Enterprise sites, custom-coded builds, and full redesigns across the Bay Area and beyond.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://originmaterials.com" target="_blank" rel="noopener">Origin Materials</a></li>
+              <li><a href="https://gatherfacilitation.com" target="_blank" rel="noopener">Gather Facilitation</a></li>
+              <li><a href="https://lilypad.house" target="_blank" rel="noopener">Lilypad</a></li>
+              <li><a href="https://trendgraphix.com" target="_blank" rel="noopener">Trendgraphix</a></li>
+              <li><a href="https://evaorbuch.com" target="_blank" rel="noopener">Eva Orbuch</a></li>
+              <li><a href="https://www.jordankersten.com/" target="_blank" rel="noopener">Jordan Kersten Studio</a></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -312,18 +453,107 @@
       <!-- ERA 3 -->
       <div class="tl-era">
         <div class="tl-era-label">
-          <span class="tl-era-tag agentic">Era III</span>
+          <span class="tl-era-tag">Web 3.0 &middot; from 2022</span>
+          <span class="tl-era-name">The Studio Years</span>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2022</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Moved to Binghamton, NY</h3>
+            <p>West Coast chapter closed, Southern Tier opened &mdash; new hometown, same studio, fresh ground to build on.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://www.yohancebailey.com/" target="_blank" rel="noopener">Yohance Bailey</a></li>
+              <li><a href="https://www.tricitiesopera.com/" target="_blank" rel="noopener">Tri-Cities Opera</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2022</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Joined Blackfern Media</h3>
+            <p>Stepped in as web designer for Blackfern Media &mdash; real estate photography, corporate work, and the web presence to match.</p>
+            <ul class="tl-card-links">
+              <li><a href="https://hiddenlakeresortpa.com" target="_blank" rel="noopener">Hidden Lake Resort</a></li>
+              <li><a href="https://slaughterland.com/" target="_blank" rel="noopener">Slaughterland</a></li>
+              <li><a href="https://blacktiebrothers.com" target="_blank" rel="noopener">Blacktie Brothers</a></li>
+              <li><a href="https://hhhsc.net" target="_blank" rel="noopener">Hidden Hollows Sporting Clays</a></li>
+              <li><a href="https://christinedegrazia.com/" target="_blank" rel="noopener">Christine DeGrazia</a></li>
+              <li><a href="https://theossavorysauces.com" target="_blank" rel="noopener">Theo&rsquo;s Savory Sauces</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="tl-version" href="rancho-bombero.html" style="--dot:#c2633e;">
+          <div class="tl-item">
+            <div class="tl-year">2024</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>Rancho Bombero hits Men&rsquo;s Health</h3>
+              <p>The ranch-born body oil brand &mdash; designed and built here &mdash; lands a national press feature.</p>
+              <span class="tl-visit">View case study <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- ERA 4 -->
+      <div class="tl-era">
+        <div class="tl-era-label">
+          <span class="tl-era-tag agentic">Web 4.0 &middot; from 2025</span>
           <span class="tl-era-name">The Agentic Era</span>
         </div>
 
-        <div class="tl-item" style="--dot:#f59e0b;">
-          <div class="tl-year">2026</div>
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <h3>The enterprise turn</h3>
-            <p>Flux Energy ($1B+ in wind assets) and Atlas Freight ship &mdash; full-stack product work, designed and engineered end to end.</p>
+        <a class="tl-version" href="nuanced-studios.html" style="--dot:#39B54A;">
+          <div class="tl-item">
+            <div class="tl-year">2025</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>Nuanced Studios launches</h3>
+              <p>The product arm of Nuanced Design &mdash; homegrown apps designed, built, and shipped in-house, no client briefs required.</p>
+              <span class="tl-visit">Explore the studio <span class="arr">&rarr;</span></span>
+            </div>
           </div>
-        </div>
+        </a>
+
+        <a class="tl-version" href="https://lastseenpodcast.com" target="_blank" rel="noopener" style="--dot:#EC008C;">
+          <div class="tl-item">
+            <div class="tl-year">Oct 2025</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>Last Seen in the Twilight Zone launches</h3>
+              <p>A true-crime podcast about missing people from the real-life &ldquo;Twilight Zone&rdquo; &mdash; Binghamton, NY, hometown of Rod Serling.</p>
+              <span class="tl-visit">Listen to the show <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="tl-version" href="atlas-freight.html" style="--dot:#ef4444;">
+          <div class="tl-item">
+            <div class="tl-year">Mar 2026</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>Lighthouse Apps founded</h3>
+              <p>A new app studio &mdash; homegrown products designed, built, and shipped in-house from the ground up.</p>
+              <span class="tl-visit">Atlas Freight Case Study <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+
+        <a class="tl-version" href="flux-energy.html" style="--dot:#00AEEF;">
+          <div class="tl-item">
+            <div class="tl-year">2026</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>The enterprise turn</h3>
+              <p>Flux Energy ($1B+ in wind assets) and Atlas Freight ship &mdash; full-stack product work, designed and engineered end to end.</p>
+              <span class="tl-visit">Flux Energy Case Study <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
 
         <a class="tl-version" href="./" style="--dot:#39B54A;">
           <div class="tl-item">
@@ -341,30 +571,55 @@
 
     <div class="tl-end">
       <p>Same craft, new tools. See you at v4.</p>
+      <a class="tl-about-link" href="./#about">More about Theo today <span class="arr">&rarr;</span></a>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY<br>Proudly made with love in the USA 🇺🇸</p>
-        <span class="footer-version" style="cursor:default;">v3.0</span>
-      </div>
-    </div>
-  </footer>
+  <script src="JS/footer.js"></script>
 
   <script>
     window.addEventListener('load', function () {
       if (!window.gsap || !window.ScrollTrigger) return;
       gsap.registerPlugin(ScrollTrigger);
+
+      var timeline = document.querySelector('.timeline');
+      var rail = document.querySelector('.tl-rail');
+      var railFill = document.getElementById('railFill');
+      var dots = document.querySelectorAll('.tl-dot');
+
+      document.querySelectorAll('.tl-item').forEach(function (item) {
+        var accent = getComputedStyle(item).getPropertyValue('--dot-accent').trim().toLowerCase();
+        if (!accent || accent === '#9aa3b2' || accent === 'rgb(154, 163, 178)') {
+          item.classList.add('is-neutral');
+        }
+      });
+
+      function updateTimelineProgress(progress) {
+        if (railFill) gsap.set(railFill, { scaleY: progress });
+        if (!rail || !dots.length) return;
+
+        var railRect = rail.getBoundingClientRect();
+        var fillY = railRect.top + progress * railRect.height;
+
+        dots.forEach(function (dot) {
+          var dotRect = dot.getBoundingClientRect();
+          var dotCenterY = dotRect.top + dotRect.height / 2;
+          dot.classList.toggle('is-lit', fillY >= dotCenterY);
+        });
+      }
+
       var mm = gsap.matchMedia();
       mm.add('(prefers-reduced-motion: no-preference)', function () {
         gsap.from('.tl-hero > *', { y: 26, opacity: 0, duration: 0.8, stagger: 0.09, ease: 'power3.out' });
 
-        // The rail draws itself as you scroll the decade
-        gsap.fromTo('#railFill', { scaleY: 0 }, {
-          scaleY: 1, ease: 'none',
-          scrollTrigger: { trigger: '.timeline', start: 'top 70%', end: 'bottom 60%', scrub: 0.4 }
+        ScrollTrigger.create({
+          trigger: timeline,
+          start: 'top 70%',
+          end: 'bottom 60%',
+          scrub: 0.4,
+          onUpdate: function (self) {
+            updateTimelineProgress(self.progress);
+          }
         });
 
         document.querySelectorAll('.tl-era-label').forEach(function (el) {
@@ -378,15 +633,16 @@
             y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
             scrollTrigger: { trigger: el, start: 'top 85%' }
           });
-          gsap.from(el.querySelector('.tl-dot'), {
-            scale: 0, duration: 0.5, ease: 'back.out(2.2)',
-            scrollTrigger: { trigger: el, start: 'top 85%' }
-          });
         });
         gsap.from('.tl-end p', {
           opacity: 0, y: 16, duration: 0.8,
           scrollTrigger: { trigger: '.tl-end', start: 'top 92%' }
         });
+      });
+
+      mm.add('(prefers-reduced-motion: reduce)', function () {
+        if (railFill) gsap.set(railFill, { scaleY: 1 });
+        dots.forEach(function (dot) { dot.classList.add('is-lit'); });
       });
     });
   </script>

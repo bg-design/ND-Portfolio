@@ -4140,7 +4140,8 @@ gap: 8px;
 
   .story-section,
   .how-we-work-section,
-  .personal-section {
+  .personal-section,
+  .about-page .journey-section {
     padding: 2rem 1rem;
   }
 

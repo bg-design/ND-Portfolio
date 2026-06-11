@@ -414,6 +414,30 @@
 }
 
 
+.logo {
+	position: absolute;
+	top: 0;
+	right: 100px;
+	width: 220px;
+	margin: 0 auto;
+	-webkit-transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	transform: rotateX(0deg);
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+.logo:hover {
+	backface-visibility: hidden;
+	-webkit-transform: rotateX(-180deg);
+	-moz-transform: rotateX(180deg);
+	transform: rotateX(180deg);
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+	opacity: 0;
+}
+
 .navbar {
 	position: fixed;
 	width: 100%;
@@ -440,12 +464,14 @@
 	margin-bottom: -1px;*/
 	
 }
+.navbar ul,
 .nav-menu {
 	max-width: 965px;
 	margin: 0 auto;
 	padding: 20px 0 0 0;
 	display: flex;
 	justify-content: space-evenly;
+	list-style: none;
 }
 
 .navbar li {

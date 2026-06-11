@@ -279,8 +279,9 @@
       <div class="menu-line-mask"><a class="menu-line" href="#archive" onclick="megaGo(event, 'archive')"><span class="menu-num">03</span><span class="menu-text">Archive</span></a></div>
       <div class="menu-line-mask"><a class="menu-line" href="#process" onclick="megaGo(event, 'process')"><span class="menu-num">04</span><span class="menu-text">Process</span></a></div>
       <div class="menu-line-mask"><a class="menu-line" href="#about" onclick="megaGo(event, 'about')"><span class="menu-num">05</span><span class="menu-text">About</span></a></div>
-      <div class="menu-line-mask"><a class="menu-line" href="#pricing" onclick="megaGo(event, 'pricing')"><span class="menu-num">06</span><span class="menu-text">Pricing</span></a></div>
-      <div class="menu-line-mask"><a class="menu-line menu-cta" href="#" onclick="event.preventDefault(); closeMegaMenu(); setTimeout(toggleBooking, 350);"><span class="menu-num">07</span><span class="menu-text">Book a Call <span class="menu-balloon" aria-hidden="true">🎈</span></span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="versions.html"><span class="menu-num">06</span><span class="menu-text">The Story</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="#pricing" onclick="megaGo(event, 'pricing')"><span class="menu-num">07</span><span class="menu-text">Pricing</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line menu-cta" href="#" onclick="event.preventDefault(); closeMegaMenu(); setTimeout(toggleBooking, 350);"><span class="menu-num">08</span><span class="menu-text">Book a Call <span class="menu-balloon" aria-hidden="true">🎈</span></span></a></div>
     </nav>
     <div class="mega-footer">
       <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>
@@ -307,13 +308,14 @@
             <span class="footer-wordmark-base">Nuanced Design</span>
             <span class="footer-wordmark-fill" aria-hidden="true">Nuanced Design</span>
           </a>
-          <p class="footer-tag">Full-stack design &amp; engineering by Theo Grandy. Human-centered digital experiences, built with care.</p>
+          <p class="footer-tag">Human-centered design work<br>Adding the human touch in the AI era.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
           <p class="footer-col-title">Explore</p>
           <a href="#featuredWork">Featured Work</a>
           <a href="#process">Process</a>
           <a href="#about">About</a>
+          <a href="versions.html">The Story</a>
           <a href="#archive">Archive</a>
           <a href="#pricing">Pricing</a>
         </nav>
@@ -548,7 +550,18 @@
   const siteHeaderBar = document.getElementById('siteHeaderBar');
   const bookingPage = document.getElementById('bookingPage');
   const bookingOverlay = document.getElementById('bookingOverlay');
-  
+  let pendingArchiveScroll = false;
+
+  function scrollToArchiveAnchor() {
+    requestAnimationFrame(function () {
+      var anchor = document.getElementById('archive');
+      if (anchor) {
+        anchor.scrollIntoView({ block: 'start' });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    });
+  }
   // URL routing system
   const routes = {
     '': loadDefaultContent,
@@ -568,6 +581,7 @@
     killScrollAnimations();
 
     const hash = window.location.hash || '#';
+    pendingArchiveScroll = hash === '#archive' || hash === '#portfolio';
     const route = routes[hash];
     
     if (route) {
@@ -1123,29 +1137,57 @@
             </div>
           </div>
 
+          <!-- Our History Section -->
+          <div class="journey-section">
+            <h2 class="section-title">Our History</h2>
+            <p class="journey-sub">Two decades of making things for the screen — four eras of the web, one studio.</p>
+            <div class="journey-eras">
+              <div class="journey-era">
+                <span class="journey-era-tag">Web 1.0</span>
+                <span class="journey-era-name">West Coast Foundations</span>
+              </div>
+              <span class="journey-arrow" aria-hidden="true">&rarr;</span>
+              <div class="journey-era">
+                <span class="journey-era-tag">Web 2.0</span>
+                <span class="journey-era-name">The Splash Era</span>
+              </div>
+              <span class="journey-arrow" aria-hidden="true">&rarr;</span>
+              <div class="journey-era">
+                <span class="journey-era-tag">Web 3.0</span>
+                <span class="journey-era-name">The Studio Years</span>
+              </div>
+              <span class="journey-arrow" aria-hidden="true">&rarr;</span>
+              <div class="journey-era">
+                <span class="journey-era-tag journey-era-tag-agentic">Web 4.0</span>
+                <span class="journey-era-name">The Agentic Era</span>
+              </div>
+            </div>
+            <a class="journey-cta" href="versions.html">Walk the full timeline <span class="cta-arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+
           <!-- How We Work Section -->
           <div class="how-we-work-section">
             <h2 class="section-title">How It Actually Works</h2>
             <div class="work-steps">
               <div class="work-step step-1">
                 <div class="step-number">1</div>
-                <h3>Listen</h3>
-                <p>No templates, no assumptions. It starts by understanding your real needs and goals.</p>
+                <h3>Research &amp; Listen</h3>
+                <p>UX research, competitive analysis, and listening closely to understand your real needs and goals—no templates, no assumptions.</p>
                 </div>
               <div class="work-step step-2">
                 <div class="step-number">2</div>
-                <h3>Think</h3>
-                <p>Taking time to figure out the best approach, not just the fastest one.</p>
+                <h3>Design &amp; Validate</h3>
+                <p>Wireframes, prototypes, and designs you can react to. We refine together through feedback until it feels right.</p>
               </div>
               <div class="work-step step-3">
                 <div class="step-number">3</div>
-                <h3>Build</h3>
-                <p>Creating something that actually works for your business and your customers.</p>
+                <h3>Build &amp; Launch</h3>
+                <p>Turning the approved design into something that works for your business and your customers—and getting it live.</p>
               </div>
               <div class="work-step step-4">
                 <div class="step-number">4</div>
                 <h3>Support</h3>
-                <p>Still here after launch to help you succeed, not just disappear.</p>
+                <p>Still here after launch for ongoing maintenance, site updates, and to help you succeed long-term.</p>
               </div>
             </div>
               </div>
@@ -1222,7 +1264,7 @@
 
               <div class="message received">
                 <div class="message-bubble">
-                      <p>It centers on branding, websites, mobile apps, and print &amp; marketing—no templates, no assumptions—just real understanding of your needs.</p>
+                      <p>My process is centered in UX research, competitive analysis, and deep research into what patterns, styles, and flows lead to a delightful user experience that will grow your business. The process is completely open—you can be as hands on or hands off as you would like. Some of my clients are much more opinionated and technical than others.</p>
                 </div>
                 <div class="message-time">10:06 AM</div>
               </div>
@@ -1250,14 +1292,14 @@
 
               <div class="message received">
                 <div class="message-bubble">
-                      <p>⏰ Realistic timelines, with updates every step of the way. Most projects take 4-8 weeks, and you'll get a specific timeline based on your needs.</p>
+                      <p>⏰ Leveraging AI can radically accelerate timelines—but every project is different. A simple logo can be turned around within a week, whereas a larger website is typically a 1–3 month project. Client availability, total scope, your business, and other resources all shape how fast we can move. You'll get a realistic timeline upfront and updates every step of the way.</p>
                 </div>
                 <div class="message-time">10:14 AM</div>
               </div>
 
               <div class="message received">
                 <div class="message-bubble">
-                      <p>And no disappearing after launch—Nuanced Design is here to help you succeed long-term! 🚀</p>
+                      <p>And no disappearing after launch—I'm here for ongoing maintenance, site updates, and to help you succeed long-term! 🚀</p>
                 </div>
                 <div class="message-time">10:16 AM</div>
               </div>
@@ -2949,7 +2991,7 @@
           </div>
         </div>
         
-        <div class="archive-header">
+        <div class="archive-header" id="archive">
           <p class="micro-label no-rule archive-sub">2015 &mdash; 2026 &middot; ${archiveProjects.length} projects</p>
           <h1 class="archive-title">Archive</h1>
         </div>
@@ -3040,6 +3082,11 @@
         }
       }
     }, 0);
+
+    if (pendingArchiveScroll) {
+      pendingArchiveScroll = false;
+      scrollToArchiveAnchor();
+    }
   }
 
   function changePortfolioPage(newPage) {
