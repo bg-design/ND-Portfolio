@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Policy — Nuanced Design</title>
+  <meta name="description" content="Cookie Policy for nuanceddesign.com — what we store locally and why." />
+  <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
+  <script>
+    (function () {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/playfair-display-400.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-display-700.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/playfair-display-900.ttf') format('truetype'); }
+  </style>
+  <link rel="stylesheet" href="CSS/v3.css">
+  <style>
+    .legal-page { min-height: 100vh; background: var(--v3-bg); color: var(--v3-ink); }
+    .legal-topbar { display: flex; align-items: center; padding: 1.25rem 2rem; border-bottom: 1px solid var(--v3-line); }
+    .legal-topbar a { color: var(--v3-ink-muted); text-decoration: none; font-size: 0.875rem; letter-spacing: 0.04em; }
+    .legal-topbar a:hover { color: var(--v3-ink); }
+    .legal-wrap { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .legal-eyebrow { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--v3-ink-muted); margin-bottom: 1rem; }
+    .legal-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(2rem, 4vw, 2.75rem); color: var(--v3-ink); margin: 0 0 0.5rem; line-height: 1.2; }
+    .legal-date { font-size: 0.8125rem; color: var(--v3-ink-muted); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--v3-line); }
+    .legal-wrap h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.25rem; color: var(--v3-ink); margin: 2.5rem 0 0.75rem; }
+    .legal-wrap p, .legal-wrap li { font-size: 0.9375rem; line-height: 1.75; color: var(--v3-ink-muted); }
+    .legal-wrap ul { padding-left: 1.5rem; margin: 0.5rem 0 1rem; }
+    .legal-wrap li { margin-bottom: 0.4rem; }
+    .legal-wrap a { color: var(--v3-ink); }
+    .legal-wrap strong { color: var(--v3-ink); font-weight: 600; }
+    .legal-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.875rem; }
+    .legal-table th { text-align: left; padding: 0.5rem 0.75rem; font-weight: 600; color: var(--v3-ink); border-bottom: 2px solid var(--v3-line); }
+    .legal-table td { padding: 0.625rem 0.75rem; color: var(--v3-ink-muted); border-bottom: 1px solid var(--v3-line); vertical-align: top; }
+    .legal-table code { font-size: 0.8125rem; background: var(--v3-surface-raised, rgba(0,0,0,.05)); padding: 0.1em 0.4em; border-radius: 4px; }
+  </style>
+</head>
+<body class="legal-page">
+
+  <header class="legal-topbar">
+    <a href="./">&larr; Nuanced Design</a>
+  </header>
+
+  <main class="legal-wrap">
+    <p class="legal-eyebrow">Legal</p>
+    <h1 class="legal-title">Cookie Policy</h1>
+    <p class="legal-date">Effective date: June 1, 2026 &nbsp;·&nbsp; Last updated: June 11, 2026</p>
+
+    <p>This Cookie Policy explains how <strong>Nuanced Design</strong> (nuanceddesign.com) uses cookies and similar local storage technologies on this Site. The short version: we keep this minimal.</p>
+
+    <h2>What Are Cookies?</h2>
+    <p>Cookies are small text files stored in your browser when you visit a website. "Similar technologies" include <code>localStorage</code> and <code>sessionStorage</code> — browser storage APIs that work like cookies but never leave your device.</p>
+
+    <h2>What We Store</h2>
+    <p>This Site stores only the following, strictly necessary items:</p>
+
+    <table class="legal-table">
+      <thead>
+        <tr>
+          <th>Name / Key</th>
+          <th>Type</th>
+          <th>Purpose</th>
+          <th>Expires</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>data-theme</code></td>
+          <td>HTML attribute / preference</td>
+          <td>Remembers your dark/light mode preference so the site loads in the right theme on return visits.</td>
+          <td>Session; re-detected on each visit from <code>prefers-color-scheme</code></td>
+        </tr>
+        <tr>
+          <td><code>nd_fortune_shown</code></td>
+          <td><code>sessionStorage</code></td>
+          <td>Tracks whether the fortune cookie intro has already played this session to avoid repeating it.</td>
+          <td>End of browser session</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>We do <strong>not</strong> use:</p>
+    <ul>
+      <li>Advertising or tracking cookies</li>
+      <li>Third-party analytics cookies (no Google Analytics, Meta Pixel, etc.)</li>
+      <li>Cross-site tracking of any kind</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>Some embedded third-party services loaded on this Site may set their own cookies:</p>
+    <ul>
+      <li><strong>Calendly</strong> — if you click a scheduling link, Calendly's cookie policy applies on their domain.</li>
+      <li><strong>CDN providers</strong> (jsDelivr, cdnjs) — used to load fonts and JavaScript libraries. These providers may log requests but do not set persistent cookies for tracking.</li>
+    </ul>
+
+    <h2>Your Choices</h2>
+    <p>Because we only use strictly necessary storage, there is nothing to opt out of on our end. If you'd like to clear stored preferences:</p>
+    <ul>
+      <li>Open your browser's developer tools (F12) → Application → Storage → clear <code>localStorage</code> and <code>sessionStorage</code> for nuanceddesign.com.</li>
+      <li>Or simply clear your browser's site data for this domain.</li>
+    </ul>
+    <p>Your browser settings also let you block or delete all cookies globally — however, this may affect functionality on other sites.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>If our cookie usage changes, we'll update this page and the "Last updated" date above.</p>
+
+    <h2>Contact</h2>
+    <p>Questions? Email <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>.</p>
+  </main>
+
+  <script src="JS/legal-footer.js"></script>
+
+</body>
+</html>

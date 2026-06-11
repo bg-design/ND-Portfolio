@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flux Energy — Case Study — Nuanced Design</title>
+  <meta name="description" content="Case study: Flux Energy, an enterprise SaaS operating system for wind power operators with over $1B in assets. Product design and full-stack engineering by Theo Grandy." />
+  <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
+  <script>
+    (function () {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/playfair-display-400.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-display-700.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/playfair-display-900.ttf') format('truetype'); }
+  </style>
+  <link rel="stylesheet" href="CSS/v3.css">
+  <link rel="stylesheet" href="CSS/case-study.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body class="cs-page" data-cs="flux">
+
+  <header class="cs-topbar">
+    <a href="./">&larr; Nuanced Design</a>
+    <span class="cs-topbar-title">Flux Energy</span>
+    <a href="atlas-freight.html">Next: Atlas Freight &rarr;</a>
+  </header>
+
+  <main>
+    <section class="cs-hero">
+      <div class="cs-wrap">
+        <p class="micro-label">Case Study &middot; 01 &middot; Enterprise SaaS</p>
+        <h1 class="cs-title">Flux Energy</h1>
+        <p class="cs-tagline">An operating system for wind power &mdash; telemetry, maintenance, and money in one place.</p>
+        <ul class="cs-meta">
+          <li><span>Role</span><strong>Product Design &middot; Full-Stack Engineering</strong></li>
+          <li><span>Sector</span><strong>Renewable Energy / Wind</strong></li>
+          <li><span>Year</span><strong>2026</strong></li>
+          <li><span>Live</span><strong><a href="https://fluxenergy.app" target="_blank" rel="noopener">fluxenergy.app</a></strong></li>
+        </ul>
+        <div class="cs-hero-media">
+          <span class="frame-chrome" aria-hidden="true"><i></i><i></i><i></i><b>fluxenergy.app</b></span>
+          <img src="IMG/Flux-Energy-thumbnail.jpg" alt="The Flux Energy operations platform" />
+        </div>
+
+        <div class="cs-stats">
+          <div class="cs-stat"><strong>$1B+</strong><span>in wind assets managed on the platform</span></div>
+          <div class="cs-stat"><strong>6 &rarr; 1</strong><span>point tools consolidated into a single pane of glass</span></div>
+          <div class="cs-stat"><strong>Live</strong><span>turbine telemetry, work orders, and portfolio finance</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-wrap">
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Overview</span>One platform for the whole wind farm</h2>
+          <div class="cs-body">
+            <p class="lede">Flux Energy is an enterprise SaaS operating system for wind power operators managing more than <strong>$1B in assets</strong>. It brings the three worlds an operator lives in &mdash; machine health, field maintenance, and portfolio finance &mdash; into one coherent product.</p>
+            <p>Before Flux, that picture was scattered across SCADA exports, spreadsheet trackers, a legacy CMMS, and accounting software that never agreed with any of them.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">The Problem</span>Six tools, zero shared truth</h2>
+          <div class="cs-body">
+            <p>Wind operations teams burn hours stitching together turbine telemetry, technician schedules, and asset-level P&amp;L. When a gearbox starts vibrating at 2 a.m., the alert, the work order, the parts inventory, and the revenue impact all live in different systems &mdash; and downtime is measured in thousands of dollars per hour.</p>
+            <p>The brief: design a system an operations director trusts at a glance, a field tech can drive from a truck, and a CFO can pull numbers from without asking anyone.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">My Role</span>Design and build, end to end</h2>
+          <div class="cs-body">
+            <p>I owned the product end to end: research with operations teams, information architecture, the design system, and the full-stack build. Designing in the same codebase the product ships from kept the distance between a Figma idea and a deployed screen close to zero.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Process</span>From control room to component library</h2>
+          <div class="cs-body">
+            <ul class="cs-steps">
+              <li><div><h3>Shadow the operators</h3><p>Sat with ops directors and field techs to map a day of real decisions &mdash; what they check first, what they ignore, and where the spreadsheets hide.</p></div></li>
+              <li><div><h3>Model the domain</h3><p>Built a shared vocabulary &mdash; sites, turbines, alerts, work orders, contracts &mdash; so the data model and the navigation are the same mental map.</p></div></li>
+              <li><div><h3>Design the system</h3><p>A dense-but-calm UI language: dark control-room surfaces, tabular numerals, status color used only for status. Every component built for live data first, empty states second.</p></div></li>
+              <li><div><h3>Ship and iterate</h3><p>Weekly releases against real turbine feeds. The dashboard you see today is the boring survivor of a dozen louder drafts.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Key Screens</span>The single pane of glass</h2>
+          <div class="cs-body">
+            <div class="cs-screens">
+              <figure class="cs-screen wide">
+                <div class="cs-screen-frame">
+                  <svg class="cs-mock" viewBox="0 0 1600 860" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flux Energy fleet overview dashboard">
+                    <defs>
+                      <linearGradient id="fxBg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0c1b2a"/><stop offset="1" stop-color="#10283d"/></linearGradient>
+                      <linearGradient id="fxArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00AEEF" stop-opacity="0.5"/><stop offset="1" stop-color="#00AEEF" stop-opacity="0.02"/></linearGradient>
+                    </defs>
+                    <rect width="1600" height="860" fill="url(#fxBg)"/>
+                    <rect x="0" y="0" width="110" height="860" fill="#081420"/>
+                    <rect x="30" y="36" width="50" height="50" rx="14" fill="#00AEEF"/>
+                    <text x="55" y="70" font-family="Arial" font-size="28" font-weight="700" fill="#081420" text-anchor="middle">F</text>
+                    <g fill="#27445e"><rect x="39" y="140" width="32" height="32" rx="9" fill="#00AEEF"/><rect x="39" y="208" width="32" height="32" rx="9"/><rect x="39" y="276" width="32" height="32" rx="9"/><rect x="39" y="344" width="32" height="32" rx="9"/></g>
+                    <text x="150" y="68" font-family="Arial" font-size="30" font-weight="700" fill="#e8f4fd">Fleet Overview</text>
+                    <text x="150" y="98" font-family="Arial" font-size="16" fill="#5b7d9b">High Plains &middot; 3 sites &middot; 142 turbines</text>
+                    <rect x="1320" y="44" width="230" height="44" rx="22" fill="#13314a" stroke="#1f4a6b" stroke-width="2"/>
+                    <circle cx="1350" cy="66" r="6" fill="#34d399"/>
+                    <text x="1368" y="72" font-family="Arial" font-size="17" fill="#a9c8e0">All systems nominal</text>
+                    <g font-family="Arial">
+                      <rect x="150" y="130" width="330" height="150" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                      <text x="180" y="172" font-size="15" fill="#5b7d9b" letter-spacing="2">FLEET AVAILABILITY</text>
+                      <text x="180" y="232" font-size="48" font-weight="800" fill="#e8f4fd">97.2%</text>
+                      <text x="180" y="262" font-size="15" fill="#34d399">&#9650; 0.8% vs last 30 days</text>
+                      <rect x="500" y="130" width="330" height="150" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                      <text x="530" y="172" font-size="15" fill="#5b7d9b" letter-spacing="2">OUTPUT NOW</text>
+                      <text x="530" y="232" font-size="48" font-weight="800" fill="#e8f4fd">412 MW</text>
+                      <text x="530" y="262" font-size="15" fill="#5b7d9b">wind 11.4 m/s avg</text>
+                      <rect x="850" y="130" width="330" height="150" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                      <text x="880" y="172" font-size="15" fill="#5b7d9b" letter-spacing="2">OPEN ALERTS</text>
+                      <text x="880" y="232" font-size="48" font-weight="800" fill="#fbbf24">14</text>
+                      <text x="880" y="262" font-size="15" fill="#fbbf24">3 high priority</text>
+                      <rect x="1200" y="130" width="350" height="150" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                      <text x="1230" y="172" font-size="15" fill="#5b7d9b" letter-spacing="2">REVENUE MTD</text>
+                      <text x="1230" y="232" font-size="48" font-weight="800" fill="#e8f4fd">$8.2M</text>
+                      <text x="1230" y="262" font-size="15" fill="#34d399">102% of forecast</text>
+                    </g>
+                    <rect x="150" y="320" width="860" height="500" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                    <text x="180" y="366" font-family="Arial" font-size="18" font-weight="700" fill="#e8f4fd">Power output &mdash; 24h</text>
+                    <g stroke="#16314a" stroke-width="2"><path d="M180 480 H980"/><path d="M180 580 H980"/><path d="M180 680 H980"/></g>
+                    <path d="M180 700 C 260 660, 320 560, 400 540 S 540 600, 620 520 S 760 420, 840 450 S 940 500, 980 470 L980 780 L180 780 Z" fill="url(#fxArea)"/>
+                    <path d="M180 700 C 260 660, 320 560, 400 540 S 540 600, 620 520 S 760 420, 840 450 S 940 500, 980 470" fill="none" stroke="#00AEEF" stroke-width="4"/>
+                    <circle cx="840" cy="450" r="8" fill="#00AEEF"/>
+                    <g font-family="Arial" font-size="13" fill="#5b7d9b"><text x="180" y="808">00:00</text><text x="560" y="808">12:00</text><text x="950" y="808">24:00</text></g>
+                    <rect x="1040" y="320" width="510" height="500" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                    <text x="1070" y="366" font-family="Arial" font-size="18" font-weight="700" fill="#e8f4fd">Turbines needing attention</text>
+                    <g font-family="Arial" font-size="16">
+                      <rect x="1070" y="396" width="450" height="74" rx="12" fill="#13314a"/>
+                      <circle cx="1100" cy="433" r="7" fill="#f87171"/>
+                      <text x="1122" y="427" fill="#e8f4fd" font-weight="700">WTG-117 &middot; Gearbox vibration</text>
+                      <text x="1122" y="452" fill="#5b7d9b" font-size="14">High Plains North &middot; alert 02:14 &middot; WO drafted</text>
+                      <rect x="1070" y="482" width="450" height="74" rx="12" fill="#112b42"/>
+                      <circle cx="1100" cy="519" r="7" fill="#fbbf24"/>
+                      <text x="1122" y="513" fill="#e8f4fd" font-weight="700">WTG-042 &middot; Pitch motor temp</text>
+                      <text x="1122" y="538" fill="#5b7d9b" font-size="14">Mesa Ridge &middot; trending 6h &middot; watch</text>
+                      <rect x="1070" y="568" width="450" height="74" rx="12" fill="#112b42"/>
+                      <circle cx="1100" cy="605" r="7" fill="#fbbf24"/>
+                      <text x="1122" y="599" fill="#e8f4fd" font-weight="700">WTG-088 &middot; Yaw misalignment</text>
+                      <text x="1122" y="624" fill="#5b7d9b" font-size="14">Mesa Ridge &middot; 1.2% energy loss est.</text>
+                      <rect x="1070" y="654" width="450" height="74" rx="12" fill="#112b42"/>
+                      <circle cx="1100" cy="691" r="7" fill="#34d399"/>
+                      <text x="1122" y="685" fill="#e8f4fd" font-weight="700">WTG-009 &middot; Service complete</text>
+                      <text x="1122" y="710" fill="#5b7d9b" font-size="14">High Plains North &middot; back online 14:40</text>
+                      <rect x="1070" y="748" width="450" height="48" rx="12" fill="none" stroke="#1f4a6b" stroke-width="2"/>
+                      <text x="1295" y="778" fill="#00AEEF" text-anchor="middle" font-weight="700">View all 142 turbines</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><strong>Fleet overview.</strong> Availability, live output, alerts, and revenue share one screen &mdash; status color is reserved for status, so amber means something.</figcaption>
+              </figure>
+
+              <figure class="cs-screen wide">
+                <div class="cs-screen-frame">
+                  <svg class="cs-mock" viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flux Energy work order detail">
+                    <rect width="1600" height="700" fill="#0c1b2a"/>
+                    <rect x="60" y="50" width="950" height="600" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                    <g font-family="Arial">
+                      <rect x="100" y="90" width="170" height="34" rx="17" fill="#3b1d22" stroke="#f87171" stroke-width="2"/>
+                      <text x="185" y="113" font-size="16" fill="#f87171" text-anchor="middle" font-weight="700">HIGH PRIORITY</text>
+                      <text x="100" y="178" font-size="34" font-weight="800" fill="#e8f4fd">WO-2381 &middot; Gearbox vibration &mdash; WTG-117</text>
+                      <text x="100" y="210" font-size="16" fill="#5b7d9b">Opened automatically from alert FLX-90412 &middot; High Plains North</text>
+                      <g font-size="16">
+                        <rect x="100" y="248" width="860" height="64" rx="12" fill="#13314a"/><circle cx="134" cy="280" r="10" fill="none" stroke="#34d399" stroke-width="3"/><path d="M129 280l4 4 7-8" stroke="#34d399" stroke-width="3" fill="none"/><text x="158" y="287" fill="#a9c8e0">Confirm vibration signature against SCADA history</text>
+                        <rect x="100" y="324" width="860" height="64" rx="12" fill="#13314a"/><circle cx="134" cy="356" r="10" fill="none" stroke="#34d399" stroke-width="3"/><path d="M129 356l4 4 7-8" stroke="#34d399" stroke-width="3" fill="none"/><text x="158" y="363" fill="#a9c8e0">Reserve crane window &amp; lockout-tagout plan</text>
+                        <rect x="100" y="400" width="860" height="64" rx="12" fill="#112b42"/><circle cx="134" cy="432" r="10" fill="none" stroke="#5b7d9b" stroke-width="3"/><text x="158" y="439" fill="#a9c8e0">Replace planetary bearing &mdash; part #GB-P114 (in stock, Bay 3)</text>
+                        <rect x="100" y="476" width="860" height="64" rx="12" fill="#112b42"/><circle cx="134" cy="508" r="10" fill="none" stroke="#5b7d9b" stroke-width="3"/><text x="158" y="515" fill="#a9c8e0">Post-service vibration baseline &amp; sign-off</text>
+                      </g>
+                      <rect x="100" y="572" width="220" height="50" rx="25" fill="#00AEEF"/>
+                      <text x="210" y="604" font-size="18" font-weight="700" fill="#081420" text-anchor="middle">Dispatch crew</text>
+                    </g>
+                    <rect x="1050" y="50" width="490" height="600" rx="18" fill="#0f2438" stroke="#1d3a55" stroke-width="2"/>
+                    <g font-family="Arial">
+                      <text x="1090" y="108" font-size="18" font-weight="700" fill="#e8f4fd">Impact if deferred</text>
+                      <text x="1090" y="170" font-size="44" font-weight="800" fill="#fbbf24">$3,400<tspan font-size="20" fill="#5b7d9b">/day</tspan></text>
+                      <text x="1090" y="200" font-size="15" fill="#5b7d9b">estimated revenue at risk</text>
+                      <rect x="1090" y="240" width="410" height="2" fill="#1d3a55"/>
+                      <text x="1090" y="296" font-size="18" font-weight="700" fill="#e8f4fd">Assigned crew</text>
+                      <circle cx="1112" cy="344" r="20" fill="#1f4a6b"/><text x="1112" y="351" font-size="16" fill="#a9c8e0" text-anchor="middle">MR</text>
+                      <circle cx="1162" cy="344" r="20" fill="#1f4a6b"/><text x="1162" y="351" font-size="16" fill="#a9c8e0" text-anchor="middle">JT</text>
+                      <text x="1196" y="351" font-size="15" fill="#5b7d9b">Rodriguez &amp; Tran &middot; ETA 06:30</text>
+                      <rect x="1090" y="392" width="410" height="2" fill="#1d3a55"/>
+                      <text x="1090" y="448" font-size="18" font-weight="700" fill="#e8f4fd">Vibration trend &mdash; 14 days</text>
+                      <path d="M1090 580 C 1140 575, 1190 570, 1240 560 S 1340 540, 1390 510 S 1460 470, 1500 440" fill="none" stroke="#f87171" stroke-width="4"/>
+                      <g stroke="#16314a" stroke-width="2"><path d="M1090 500 H1500"/><path d="M1090 540 H1500"/></g>
+                      <text x="1090" y="625" font-size="13" fill="#5b7d9b">alert threshold crossed Feb 12</text>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><strong>Work orders that know what they cost.</strong> Every maintenance task carries its revenue impact, parts availability, and crew logistics &mdash; the 2 a.m. alert arrives pre-triaged.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Outcome</span>The control room, consolidated</h2>
+          <div class="cs-body">
+            <p>Flux now runs the daily operating rhythm for portfolios totaling over $1B in wind assets. Six disconnected tools became one product: the morning fleet check, the maintenance queue, and the monthly investor numbers all read from the same source of truth.</p>
+            <div class="cs-pull">The measure of an enterprise tool isn&rsquo;t how impressive it looks in a demo &mdash; it&rsquo;s whether the operations director still trusts it at 2 a.m.</div>
+          </div>
+        </div>
+      </section>
+
+      <a class="cs-next-project" href="atlas-freight.html">
+        <span class="micro-label no-rule">Next case study</span>
+        <span class="cs-next-title">Atlas Freight <span class="cta-arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-wordmark">Nuanced Design</span>
+          <p class="footer-tag">Full-stack design &amp; engineering by Theo Grandy. Human-centered digital experiences, built with care.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-col-title">Explore</p>
+          <a href="./#archive">Archive</a>
+          <a href="./#process">Process</a>
+          <a href="./#about">About</a>
+          <a href="./#pricing">Pricing</a>
+        </nav>
+        <nav class="footer-nav footer-studios" aria-label="Nuanced Studios">
+          <p class="footer-col-title">Nuanced Studios</p>
+          <p class="footer-studios-desc">Homegrown apps built by Nuanced Design &mdash; designed, built, and shipped in-house.</p>
+          <a class="footer-studios-link" href="nuanced-studios.html">Explore the studio <span aria-hidden="true">&rarr;</span></a>
+        </nav>
+        <div class="footer-contact">
+          <p class="footer-col-title">Contact</p>
+          <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>
+          <a href="tel:6074445455">(607) 444-5455</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY</span>
+        <span class="footer-love">Proudly made with love in the USA 🇺🇸</span>
+        <a class="footer-version" href="versions.html" title="View site version history">v3.0</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        gsap.from('.cs-hero .cs-wrap > *', { y: 28, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out' });
+        document.querySelectorAll('.cs-section, .cs-next-project').forEach(function (sec) {
+          gsap.from(sec, {
+            y: 34, opacity: 0, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: sec, start: 'top 85%' }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-	<base href="https://bg-design.github.io/">
-	<link rel="canonical" href="https://bg-design.github.io/">
+	<link rel="canonical" href="index-v2.html">
 	<meta name="application-name" content="Ben Grandy's Portfolio">
 	<meta name="apple-mobile-web-app-title" content="Ben Grandy's Portfolio">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -20,13 +19,13 @@
   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
   crossorigin="anonymous"></script> -->
 
-    <link rel="stylesheet" type="text/css" href="CSS/styles.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="CSS/buttons-hvr.css" media="screen">
-	<link rel="icon" type="image/png" href="IMG/favicon.png">
+    <link rel="stylesheet" type="text/css" href="../CSS/styles.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../CSS/buttons-hvr.css" media="screen">
+	<link rel="icon" type="image/png" href="../IMG/favicon.png">
 	<style>
 
 		html {
-			background: URL('IMG/NM-hero2.jpg') no-repeat right top fixed;
+			background: #2b3138 URL('../IMG/NM-hero2.jpg') no-repeat right top fixed;
 			background-size: cover;
 			}
 
@@ -125,7 +124,7 @@
 	</div>
 	<section class="fade-in two">
 		<div id="splash">
-		<img src="IMG/NM-hero2.jpg" id="mobile-headshot" />
+		<img src="../IMG/NM-hero2.jpg" id="mobile-headshot" />
 		<h3 class="fade-in two"> <span id="greeting"></span> Hi, I’m Ben.</h3><br>
 
 			<p class="fade-in three">Thanks for taking the time to have a look around! I believe whole-heartedly in the ability of design to be a force for good in the world. Through design we can create the unimaginable and solve problems that seem to have no answers. No problem is too small or too big to be outside the profound reach of design thinking.</p>
@@ -141,8 +140,8 @@
 		</div>
 		</section>
 
-<script src="JS/logo.js"></script>
-<script src="JS/greeting.js"></script>
+<script src="../JS/logo.js"></script>
+<script src="greeting.js"></script>
 
 <script type="text/javascript">
 console.info('%cAhhh, you\'re the type of person that likes to look under the hood! I like that!', 'background: #fff; color: #000;font-family:serif;font-size:14px;');
@@ -151,5 +150,12 @@ console.log('%cI like to use jQuery and code that is short, to the point, elegan
 </script>
 
 
+<script>
+// v3 archive repair: the original loader-hide lived in JS/logo.js (no longer in the repo)
+window.addEventListener('load', function () {
+  var l = document.getElementById('who-loading');
+  if (l) { l.style.opacity = '0'; setTimeout(function () { l.style.display = 'none'; }, 1000); }
+});
+</script>
 </body>
 </html>

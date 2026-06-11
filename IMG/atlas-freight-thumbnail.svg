@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="afTitle afDesc">
+  <title id="afTitle">Atlas Freight loadboard dashboard</title>
+  <desc id="afDesc">A stylized view of the Atlas Freight platform: a route map, available loads, and fast-pay earnings for owner-operator truck drivers.</desc>
+  <defs>
+    <linearGradient id="afBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161d2b"/>
+      <stop offset="1" stop-color="#1f2940"/>
+    </linearGradient>
+    <linearGradient id="afAmber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="afMap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243049"/>
+      <stop offset="1" stop-color="#1d2638"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App background -->
+  <rect width="1600" height="1000" fill="url(#afBg)"/>
+
+  <!-- Sidebar -->
+  <rect x="0" y="0" width="120" height="1000" fill="#121826"/>
+  <rect x="32" y="40" width="56" height="56" rx="16" fill="url(#afAmber)"/>
+  <text x="60" y="78" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#121826" text-anchor="middle">A</text>
+  <g fill="#3b4763">
+    <rect x="44" y="160" width="32" height="32" rx="9"/>
+    <rect x="44" y="232" width="32" height="32" rx="9" fill="#f59e0b"/>
+    <rect x="44" y="304" width="32" height="32" rx="9"/>
+    <rect x="44" y="376" width="32" height="32" rx="9"/>
+    <rect x="44" y="448" width="32" height="32" rx="9"/>
+  </g>
+  <circle cx="60" cy="930" r="24" fill="#2a3450"/>
+
+  <!-- Top bar -->
+  <rect x="168" y="42" width="380" height="40" rx="12" fill="#27314a"/>
+  <text x="190" y="68" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#8b97b2">Find loads near Dallas, TX</text>
+  <rect x="1330" y="40" width="170" height="44" rx="22" fill="url(#afAmber)"/>
+  <text x="1415" y="69" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#121826" text-anchor="middle">Get Paid</text>
+  <circle cx="1268" cy="62" r="22" fill="#27314a"/>
+
+  <!-- Headline placeholders -->
+  <rect x="168" y="130" width="320" height="26" rx="13" fill="#e8ecf5"/>
+  <rect x="168" y="170" width="200" height="14" rx="7" fill="#55617d"/>
+
+  <!-- Map card -->
+  <g>
+    <rect x="168" y="220" width="820" height="520" rx="24" fill="url(#afMap)" stroke="#2e3b58" stroke-width="2"/>
+    <!-- faint road grid -->
+    <g stroke="#2c3854" stroke-width="2">
+      <path d="M200 340 H960"/>
+      <path d="M200 460 H960"/>
+      <path d="M200 580 H960"/>
+      <path d="M330 250 V710"/>
+      <path d="M560 250 V710"/>
+      <path d="M790 250 V710"/>
+    </g>
+    <!-- route -->
+    <path d="M300 620 C 430 540, 520 560, 620 440 S 830 320, 880 300" fill="none" stroke="url(#afAmber)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18"/>
+    <circle cx="300" cy="620" r="14" fill="#f59e0b"/>
+    <circle cx="300" cy="620" r="26" fill="#f59e0b" opacity="0.25"/>
+    <circle cx="880" cy="300" r="14" fill="#34d399"/>
+    <circle cx="880" cy="300" r="26" fill="#34d399" opacity="0.25"/>
+    <!-- truck chip on route -->
+    <g transform="translate(560,470)">
+      <rect x="-46" y="-28" width="92" height="56" rx="14" fill="#121826" stroke="#f59e0b" stroke-width="2.5"/>
+      <rect x="-30" y="-12" width="38" height="24" rx="5" fill="#f59e0b"/>
+      <rect x="10" y="-6" width="20" height="18" rx="4" fill="#fbbf24"/>
+      <circle cx="-16" cy="16" r="6" fill="#8b97b2"/>
+      <circle cx="18" cy="16" r="6" fill="#8b97b2"/>
+    </g>
+    <!-- map labels -->
+    <rect x="270" y="650" width="120" height="22" rx="11" fill="#121826" opacity="0.85"/>
+    <text x="330" y="666" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#cdd6e8" text-anchor="middle">Dallas, TX</text>
+    <rect x="830" y="246" width="140" height="22" rx="11" fill="#121826" opacity="0.85"/>
+    <text x="900" y="262" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#cdd6e8" text-anchor="middle">Memphis, TN</text>
+  </g>
+
+  <!-- Load cards column -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="1028" y="220" width="472" height="160" rx="20" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+    <rect x="1060" y="252" width="180" height="16" rx="8" fill="#e8ecf5"/>
+    <rect x="1060" y="284" width="240" height="12" rx="6" fill="#55617d"/>
+    <rect x="1060" y="320" width="120" height="30" rx="15" fill="#1b2438" stroke="#34d399" stroke-width="2"/>
+    <text x="1120" y="341" font-size="17" fill="#34d399" text-anchor="middle">Dry Van</text>
+    <text x="1438" y="290" font-size="34" font-weight="700" fill="#fbbf24" text-anchor="end">$2,840</text>
+    <text x="1438" y="320" font-size="16" fill="#8b97b2" text-anchor="end">452 mi &#183; $6.28/mi</text>
+
+    <rect x="1028" y="404" width="472" height="160" rx="20" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+    <rect x="1060" y="436" width="200" height="16" rx="8" fill="#e8ecf5"/>
+    <rect x="1060" y="468" width="220" height="12" rx="6" fill="#55617d"/>
+    <rect x="1060" y="504" width="130" height="30" rx="15" fill="#1b2438" stroke="#60a5fa" stroke-width="2"/>
+    <text x="1125" y="525" font-size="17" fill="#60a5fa" text-anchor="middle">Reefer</text>
+    <text x="1438" y="474" font-size="34" font-weight="700" fill="#fbbf24" text-anchor="end">$3,120</text>
+    <text x="1438" y="504" font-size="16" fill="#8b97b2" text-anchor="end">517 mi &#183; $6.03/mi</text>
+
+    <!-- Fast pay card -->
+    <rect x="1028" y="588" width="472" height="152" rx="20" fill="url(#afAmber)"/>
+    <text x="1060" y="636" font-size="18" font-weight="700" fill="#7c4a03" letter-spacing="2">FAST PAY</text>
+    <text x="1060" y="690" font-size="44" font-weight="800" fill="#121826">$8,460 cleared</text>
+    <text x="1060" y="720" font-size="17" fill="#7c4a03">Funds available in under 24 hours</text>
+  </g>
+
+  <!-- Bottom stat strip -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="168" y="772" width="404" height="150" rx="20" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+    <text x="200" y="830" font-size="40" font-weight="800" fill="#e8ecf5">98.4%</text>
+    <text x="200" y="866" font-size="16" fill="#8b97b2">on-time delivery</text>
+
+    <rect x="596" y="772" width="404" height="150" rx="20" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+    <text x="628" y="830" font-size="40" font-weight="800" fill="#e8ecf5">1,240</text>
+    <text x="628" y="866" font-size="16" fill="#8b97b2">loads matched this week</text>
+
+    <rect x="1028" y="772" width="472" height="150" rx="20" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+    <text x="1060" y="830" font-size="40" font-weight="800" fill="#34d399">&lt; 24 hrs</text>
+    <text x="1060" y="866" font-size="16" fill="#8b97b2">average time to payment</text>
+  </g>
+</svg>

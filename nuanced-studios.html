@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuanced Studios — Apps Designed, Built &amp; Shipped In-House</title>
+  <meta name="description" content="Nuanced Studios is the product arm of Nuanced Design — four homegrown apps spanning gaming, file tools, memoir, and true crime podcast, all designed and engineered by Theo Grandy." />
+  <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
+  <script>
+    (function () {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/playfair-display-400.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-display-700.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/playfair-display-900.ttf') format('truetype'); }
+  </style>
+  <link rel="stylesheet" href="CSS/v3.css">
+  <link rel="stylesheet" href="CSS/studios.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body class="studios-page">
+
+  <header class="st-topbar">
+    <a href="./">&larr; Nuanced Design</a>
+    <span class="st-topbar-title">Nuanced Studios</span>
+    <span style="font-size:0.82rem;font-weight:600;letter-spacing:0.04em;color:var(--v3-muted);">4 products</span>
+  </header>
+
+  <main>
+    <section class="st-hero">
+      <div class="st-wrap">
+        <p class="micro-label">Nuanced Studios &middot; Product Portfolio</p>
+        <h1 class="st-hero-title">Apps we <em>made</em><br>because we wanted them.</h1>
+        <p class="st-hero-tagline">Four homegrown products &mdash; designed, engineered, and shipped entirely in-house. Not client work. Not MVPs. Real tools, real audiences, real stakes.</p>
+        <div class="st-hero-stats">
+          <div><strong>4</strong><span>live products</span></div>
+          <div><strong>68+</strong><span>games on FunWeb</span></div>
+          <div><strong>0</strong><span>outside funding</span></div>
+          <div><strong>100%</strong><span>in-house design &amp; build</span></div>
+        </div>
+      </div>
+      <div class="st-ticker">
+        <div class="st-ticker-track" aria-hidden="true">
+          <span><b>funweb.games</b> &nbsp;&mdash;&nbsp; play free games in your browser &nbsp;&mdash;&nbsp; </span>
+          <span><b>fileconversiononline.com</b> &nbsp;&mdash;&nbsp; convert files, no download needed &nbsp;&mdash;&nbsp; </span>
+          <span><b>rainbowconjunction.org</b> &nbsp;&mdash;&nbsp; a memoir told in chapters &nbsp;&mdash;&nbsp; </span>
+          <span><b>lastseenpodcast.com</b> &nbsp;&mdash;&nbsp; true crime &middot; cold cases &middot; missing persons &nbsp;&mdash;&nbsp; </span>
+          <span><b>funweb.games</b> &nbsp;&mdash;&nbsp; play free games in your browser &nbsp;&mdash;&nbsp; </span>
+          <span><b>fileconversiononline.com</b> &nbsp;&mdash;&nbsp; convert files, no download needed &nbsp;&mdash;&nbsp; </span>
+          <span><b>rainbowconjunction.org</b> &nbsp;&mdash;&nbsp; a memoir told in chapters &nbsp;&mdash;&nbsp; </span>
+          <span><b>lastseenpodcast.com</b> &nbsp;&mdash;&nbsp; true crime &middot; cold cases &middot; missing persons &nbsp;&mdash;&nbsp; </span>
+        </div>
+      </div>
+    </section>
+
+    <div class="st-wrap">
+      <div class="st-list">
+
+        <!-- 01 — FunWeb.games -->
+        <a class="st-card" data-st="funweb" href="https://funweb.games" target="_blank" rel="noopener" aria-label="FunWeb.games — opens in new tab">
+          <div class="st-card-text">
+            <div class="st-card-eyebrow">
+              <span class="st-card-num">01</span>
+              <span class="st-card-cat">Browser Gaming</span>
+            </div>
+            <h2 class="st-card-title"><span class="st-underline">FunWeb.games</span></h2>
+            <p class="st-card-desc">Play <strong>68+ free games</strong> instantly in your browser &mdash; Solitaire, Snake, Tetris, arcade classics, puzzle games, and original indie titles. No downloads. No installs. No nonsense.</p>
+            <div class="st-chips">
+              <span>68+ titles</span>
+              <span>No downloads</span>
+              <span>Arcade &amp; puzzle</span>
+              <span>Original indie games</span>
+            </div>
+            <div class="st-visit">
+              Visit &rarr; <span class="st-domain">funweb.games</span>
+              <span class="st-arrow">&nbsp;&rarr;</span>
+            </div>
+          </div>
+          <div class="st-card-art" aria-hidden="true">
+            <svg viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg">
+              <!-- Screen chrome -->
+              <rect x="14" y="14" width="352" height="232" rx="12" class="tk-surf" stroke-width="1.5"/>
+              <rect x="14" y="14" width="352" height="232" rx="12" fill="none" class="tk-line" stroke-width="1.5"/>
+              <!-- Browser bar -->
+              <rect x="14" y="14" width="352" height="32" rx="12" fill="#EC008C" opacity="0.13"/>
+              <rect x="14" y="34" width="352" height="12" fill="#EC008C" opacity="0.08"/>
+              <circle cx="32" cy="30" r="5" fill="#EC008C" opacity="0.35"/>
+              <circle cx="48" cy="30" r="5" fill="#EC008C" opacity="0.22"/>
+              <circle cx="64" cy="30" r="5" fill="#EC008C" opacity="0.14"/>
+              <rect x="80" y="23" width="220" height="14" rx="7" fill="#EC008C" opacity="0.08"/>
+              <!-- Grid of game tiles -->
+              <g opacity="0.9">
+                <!-- Row 1 -->
+                <rect x="26" y="58" width="76" height="56" rx="8" fill="#EC008C" opacity="0.14"/>
+                <text x="64" y="82" font-family="Arial" font-size="22" font-weight="800" fill="#EC008C" text-anchor="middle" opacity="0.85">♠</text>
+                <text x="64" y="99" font-family="Arial" font-size="9" font-weight="700" fill="#EC008C" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">SOLITAIRE</text>
+
+                <rect x="112" y="58" width="76" height="56" rx="8" fill="#f97316" opacity="0.13"/>
+                <text x="150" y="83" font-family="Arial" font-size="24" fill="#f97316" text-anchor="middle" opacity="0.85">🐍</text>
+                <text x="150" y="99" font-family="Arial" font-size="9" font-weight="700" fill="#f97316" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">SNAKE</text>
+
+                <rect x="198" y="58" width="76" height="56" rx="8" fill="#6366f1" opacity="0.13"/>
+                <text x="236" y="82" font-family="Arial" font-size="22" fill="#6366f1" text-anchor="middle" opacity="0.85">⬛</text>
+                <text x="236" y="99" font-family="Arial" font-size="9" font-weight="700" fill="#6366f1" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">TETRIS</text>
+
+                <rect x="284" y="58" width="76" height="56" rx="8" fill="#00AEEF" opacity="0.13"/>
+                <text x="322" y="83" font-family="Arial" font-size="22" fill="#00AEEF" text-anchor="middle" opacity="0.85">💣</text>
+                <text x="322" y="99" font-family="Arial" font-size="9" font-weight="700" fill="#00AEEF" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">MINESWEEP</text>
+
+                <!-- Row 2 -->
+                <rect x="26" y="124" width="76" height="56" rx="8" fill="#eab308" opacity="0.13"/>
+                <text x="64" y="149" font-family="Arial" font-size="22" fill="#eab308" text-anchor="middle" opacity="0.85">🎯</text>
+                <text x="64" y="165" font-family="Arial" font-size="9" font-weight="700" fill="#eab308" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">DARTS</text>
+
+                <rect x="112" y="124" width="76" height="56" rx="8" fill="#EC008C" opacity="0.1"/>
+                <text x="150" y="149" font-family="Arial" font-size="22" fill="#EC008C" text-anchor="middle" opacity="0.85">🃏</text>
+                <text x="150" y="165" font-family="Arial" font-size="9" font-weight="700" fill="#EC008C" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">BLACKJACK</text>
+
+                <rect x="198" y="124" width="76" height="56" rx="8" fill="#34d399" opacity="0.13"/>
+                <text x="236" y="149" font-family="Arial" font-size="22" fill="#34d399" text-anchor="middle" opacity="0.85">🧩</text>
+                <text x="236" y="165" font-family="Arial" font-size="9" font-weight="700" fill="#34d399" text-anchor="middle" letter-spacing="0.08em" opacity="0.7">PUZZLES</text>
+
+                <!-- + counter -->
+                <rect x="284" y="124" width="76" height="56" rx="8" fill="#EC008C" opacity="0.22"/>
+                <text x="322" y="152" font-family="Arial" font-size="18" font-weight="900" fill="#EC008C" text-anchor="middle" opacity="0.95">62+</text>
+                <text x="322" y="168" font-family="Arial" font-size="9" font-weight="700" fill="#EC008C" text-anchor="middle" letter-spacing="0.06em" opacity="0.75">MORE</text>
+              </g>
+              <!-- Footer bar -->
+              <rect x="14" y="228" width="352" height="18" rx="0" fill="#EC008C" opacity="0.07"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 02 — FileConversionOnline -->
+        <a class="st-card" data-st="convert" href="https://fileconversiononline.com" target="_blank" rel="noopener" aria-label="FileConversionOnline — opens in new tab">
+          <div class="st-card-text">
+            <div class="st-card-eyebrow">
+              <span class="st-card-num">02</span>
+              <span class="st-card-cat">Productivity Tool</span>
+            </div>
+            <h2 class="st-card-title"><span class="st-underline">File&shy;Conversion&shy;Online</span></h2>
+            <p class="st-card-desc">Convert files instantly &mdash; <strong>PDF to Word, JPG to PNG, MP4 to MOV,</strong> and more. Fast, free, and entirely in the browser. No downloads, no accounts, no waiting.</p>
+            <div class="st-chips">
+              <span>PDF &rarr; Word</span>
+              <span>Image conversion</span>
+              <span>Video &amp; audio</span>
+              <span>No account needed</span>
+            </div>
+            <div class="st-visit">
+              Visit &rarr; <span class="st-domain">fileconversiononline.com</span>
+              <span class="st-arrow">&nbsp;&rarr;</span>
+            </div>
+          </div>
+          <div class="st-card-art" aria-hidden="true">
+            <svg viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" font-family="Arial">
+              <!-- Background card -->
+              <rect x="22" y="18" width="336" height="224" rx="14" class="tk-surf" stroke-width="1.5"/>
+              <rect x="22" y="18" width="336" height="224" rx="14" fill="none" class="tk-line" stroke-width="1.5"/>
+              <!-- Header strip -->
+              <rect x="22" y="18" width="336" height="38" rx="14" fill="#00AEEF" opacity="0.12"/>
+              <rect x="22" y="40" width="336" height="16" fill="#00AEEF" opacity="0.06"/>
+              <text x="190" y="41" font-size="11" font-weight="700" fill="#00AEEF" text-anchor="middle" letter-spacing="0.14em" opacity="0.8">FILE CONVERSION ONLINE</text>
+              <!-- Conversion flow -->
+              <!-- Left file -->
+              <rect x="46" y="72" width="88" height="110" rx="10" fill="#00AEEF" opacity="0.12"/>
+              <rect x="46" y="72" width="88" height="110" rx="10" fill="none" stroke="#00AEEF" stroke-width="1.5" opacity="0.4"/>
+              <polygon points="114,72 134,92 114,92" fill="#00AEEF" opacity="0.3"/>
+              <text x="90" y="116" font-size="13" font-weight="800" fill="#00AEEF" text-anchor="middle" opacity="0.9">.PDF</text>
+              <rect x="58" y="130" width="64" height="5" rx="2.5" fill="#00AEEF" opacity="0.25"/>
+              <rect x="58" y="141" width="50" height="5" rx="2.5" fill="#00AEEF" opacity="0.18"/>
+              <rect x="58" y="152" width="58" height="5" rx="2.5" fill="#00AEEF" opacity="0.12"/>
+              <!-- Arrow -->
+              <g transform="translate(190,127)">
+                <circle r="20" fill="#00AEEF" opacity="0.15"/>
+                <text font-size="18" font-weight="800" fill="#00AEEF" text-anchor="middle" dy="7" opacity="0.95">&rarr;</text>
+              </g>
+              <!-- Right file (result) -->
+              <rect x="246" y="72" width="88" height="110" rx="10" fill="#00AEEF" opacity="0.18"/>
+              <rect x="246" y="72" width="88" height="110" rx="10" fill="none" stroke="#00AEEF" stroke-width="2" opacity="0.6"/>
+              <text x="290" y="116" font-size="13" font-weight="800" fill="#00AEEF" text-anchor="middle" opacity="0.95">.DOCX</text>
+              <rect x="258" y="130" width="64" height="5" rx="2.5" fill="#00AEEF" opacity="0.4"/>
+              <rect x="258" y="141" width="50" height="5" rx="2.5" fill="#00AEEF" opacity="0.3"/>
+              <rect x="258" y="152" width="58" height="5" rx="2.5" fill="#00AEEF" opacity="0.2"/>
+              <!-- Conversion types row -->
+              <rect x="46" y="198" width="288" height="22" rx="11" fill="#00AEEF" opacity="0.07"/>
+              <text x="190" y="213" font-size="9.5" font-weight="600" fill="#00AEEF" text-anchor="middle" opacity="0.7" letter-spacing="0.12em">PDF &nbsp;&nbsp;·&nbsp;&nbsp; IMAGE &nbsp;&nbsp;·&nbsp;&nbsp; VIDEO &nbsp;&nbsp;·&nbsp;&nbsp; AUDIO &nbsp;&nbsp;·&nbsp;&nbsp; DOCS</text>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 03 — Rainbow Conjunction -->
+        <a class="st-card" data-st="rainbow" href="https://rainbowconjunction.org" target="_blank" rel="noopener" aria-label="Rainbow Conjunction — opens in new tab">
+          <div class="st-card-text">
+            <div class="st-card-eyebrow">
+              <span class="st-card-num">03</span>
+              <span class="st-card-cat">Memoir &middot; Storytelling</span>
+            </div>
+            <h2 class="st-card-title"><span class="st-underline">Rainbow Conjunction</span></h2>
+            <p class="st-card-desc">A medicine path through <strong>Hollywood, music production, long-haul miles, and life after the darkest frame.</strong> A memoir published as a living website &mdash; chapter by chapter, as it&rsquo;s written.</p>
+            <div class="st-chips">
+              <span>Memoir</span>
+              <span>Music production</span>
+              <span>Long-form storytelling</span>
+              <span>Living document</span>
+            </div>
+            <div class="st-visit">
+              Visit &rarr; <span class="st-domain">rainbowconjunction.org</span>
+              <span class="st-arrow">&nbsp;&rarr;</span>
+            </div>
+          </div>
+          <div class="st-card-art" aria-hidden="true">
+            <svg viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+              <!-- Dark moody background -->
+              <rect x="0" y="0" width="380" height="260" rx="0" fill="#1a0a2e" opacity="0.0"/>
+              <rect x="14" y="14" width="352" height="232" rx="12" fill="#16102a"/>
+              <rect x="14" y="14" width="352" height="232" rx="12" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+              <!-- Rainbow arc -->
+              <defs>
+                <linearGradient id="rbw" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%"   stop-color="#ef4444"/>
+                  <stop offset="20%"  stop-color="#f97316"/>
+                  <stop offset="40%"  stop-color="#eab308"/>
+                  <stop offset="60%"  stop-color="#34d399"/>
+                  <stop offset="80%"  stop-color="#60a5fa"/>
+                  <stop offset="100%" stop-color="#8b5cf6"/>
+                </linearGradient>
+              </defs>
+              <path d="M 34 190 Q 190 50 346 190" fill="none" stroke="url(#rbw)" stroke-width="12" stroke-linecap="round" opacity="0.45"/>
+              <path d="M 50 190 Q 190 68 330 190" fill="none" stroke="url(#rbw)" stroke-width="8" stroke-linecap="round" opacity="0.25"/>
+              <path d="M 65 190 Q 190 86 315 190" fill="none" stroke="url(#rbw)" stroke-width="5" stroke-linecap="round" opacity="0.15"/>
+              <!-- Stars -->
+              <circle cx="90" cy="52" r="1.5" fill="#fff" opacity="0.6"/>
+              <circle cx="152" cy="38" r="1" fill="#fff" opacity="0.45"/>
+              <circle cx="220" cy="44" r="2" fill="#fff" opacity="0.5"/>
+              <circle cx="295" cy="55" r="1.5" fill="#fff" opacity="0.4"/>
+              <circle cx="310" cy="34" r="1" fill="#fff" opacity="0.35"/>
+              <circle cx="66" cy="72" r="1" fill="#fff" opacity="0.3"/>
+              <circle cx="340" cy="80" r="1.5" fill="#fff" opacity="0.35"/>
+              <!-- Title block -->
+              <text x="190" y="134" font-size="15" font-weight="700" font-style="italic" fill="#c4b0fb" text-anchor="middle" opacity="0.9">The Grand</text>
+              <text x="190" y="158" font-size="22" font-weight="700" fill="#fff" text-anchor="middle" opacity="0.95">Rainbow Conjunction</text>
+              <!-- Tagline -->
+              <text x="190" y="180" font-size="9.5" fill="#8b7aac" text-anchor="middle" opacity="0.8">A medicine path. A memoir. A living document.</text>
+              <!-- Ground line -->
+              <rect x="14" y="196" width="352" height="50" rx="0" fill="#0d0920" opacity="0.7"/>
+              <rect x="14" y="196" width="352" height="1" fill="#8b5cf6" opacity="0.35"/>
+              <!-- Chapters row -->
+              <rect x="36" y="208" width="54" height="26" rx="6" fill="#8b5cf6" opacity="0.18"/>
+              <text x="63" y="225" font-size="9" font-weight="600" fill="#c4b0fb" text-anchor="middle" opacity="0.9">Ch. 1</text>
+              <rect x="100" y="208" width="54" height="26" rx="6" fill="#8b5cf6" opacity="0.14"/>
+              <text x="127" y="225" font-size="9" font-weight="600" fill="#c4b0fb" text-anchor="middle" opacity="0.7">Ch. 2</text>
+              <rect x="164" y="208" width="54" height="26" rx="6" fill="#8b5cf6" opacity="0.1"/>
+              <text x="191" y="225" font-size="9" font-weight="600" fill="#c4b0fb" text-anchor="middle" opacity="0.55">Ch. 3</text>
+              <rect x="228" y="208" width="54" height="26" rx="6" fill="#8b5cf6" opacity="0.06"/>
+              <text x="255" y="225" font-size="9" font-weight="600" fill="#c4b0fb" text-anchor="middle" opacity="0.4">Ch. 4</text>
+              <rect x="292" y="208" width="54" height="26" rx="6" fill="#8b5cf6" opacity="0.06"/>
+              <text x="319" y="225" font-size="9" font-weight="600" fill="#8b7aac" text-anchor="middle" opacity="0.35">More&hellip;</text>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 04 — Last Seen Podcast -->
+        <a class="st-card" data-st="lastseen" href="https://lastseenpodcast.com" target="_blank" rel="noopener" aria-label="Last Seen in the Twilight Zone podcast — opens in new tab">
+          <div class="st-card-text">
+            <div class="st-card-eyebrow">
+              <span class="st-card-num">04</span>
+              <span class="st-card-cat">True Crime Podcast</span>
+            </div>
+            <h2 class="st-card-title"><span class="st-underline">Last Seen</span><br>in the Twilight Zone</h2>
+            <p class="st-card-desc">A true crime podcast investigating <strong>cold cases, missing persons, and unsolved mysteries</strong> in the Binghamton, NY area. Hosted by Quinn and Allie. On Apple Podcasts, Spotify &amp; Audible.</p>
+            <div class="st-chips">
+              <span>True crime</span>
+              <span>Cold cases</span>
+              <span>Missing persons</span>
+              <span>Apple &amp; Spotify</span>
+            </div>
+            <div class="st-visit">
+              Visit &rarr; <span class="st-domain">lastseenpodcast.com</span>
+              <span class="st-arrow">&nbsp;&rarr;</span>
+            </div>
+          </div>
+          <div class="st-card-art" aria-hidden="true">
+            <svg viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" font-family="Arial">
+              <!-- Dark panel -->
+              <rect x="14" y="14" width="352" height="232" rx="12" fill="#1c0a0a"/>
+              <rect x="14" y="14" width="352" height="232" rx="12" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.28"/>
+              <!-- Fog gradient -->
+              <defs>
+                <radialGradient id="fog" cx="50%" cy="70%" r="55%">
+                  <stop offset="0%" stop-color="#ef4444" stop-opacity="0.12"/>
+                  <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect x="14" y="14" width="352" height="232" rx="12" fill="url(#fog)"/>
+              <!-- Podcast album art circle -->
+              <circle cx="190" cy="110" r="68" fill="#270d0d" stroke="#ef4444" stroke-width="1.5" opacity="0.9"/>
+              <circle cx="190" cy="110" r="52" fill="#1c0a0a" stroke="#ef4444" stroke-width="0.8" opacity="0.6"/>
+              <circle cx="190" cy="110" r="10" fill="#ef4444" opacity="0.8"/>
+              <!-- Microphone icon in circle -->
+              <rect x="184" y="74" width="12" height="22" rx="6" fill="#ef4444" opacity="0.7"/>
+              <path d="M178 89 Q178 102 190 102 Q202 102 202 89" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+              <line x1="190" y1="102" x2="190" y2="110" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+              <line x1="183" y1="110" x2="197" y2="110" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+              <!-- Waveform bars -->
+              <g opacity="0.55">
+                <rect x="44" y="92" width="4" height="36" rx="2" fill="#ef4444"/>
+                <rect x="52" y="80" width="4" height="60" rx="2" fill="#ef4444"/>
+                <rect x="60" y="97" width="4" height="26" rx="2" fill="#ef4444"/>
+                <rect x="68" y="74" width="4" height="72" rx="2" fill="#ef4444"/>
+                <rect x="76" y="89" width="4" height="42" rx="2" fill="#ef4444"/>
+                <rect x="84" y="102" width="4" height="16" rx="2" fill="#ef4444"/>
+                <rect x="92" y="86" width="4" height="48" rx="2" fill="#ef4444"/>
+                <rect x="100" y="96" width="4" height="28" rx="2" fill="#ef4444"/>
+                <!-- Right side -->
+                <rect x="276" y="92" width="4" height="36" rx="2" fill="#ef4444"/>
+                <rect x="284" y="78" width="4" height="64" rx="2" fill="#ef4444"/>
+                <rect x="292" y="99" width="4" height="22" rx="2" fill="#ef4444"/>
+                <rect x="300" y="72" width="4" height="76" rx="2" fill="#ef4444"/>
+                <rect x="308" y="87" width="4" height="46" rx="2" fill="#ef4444"/>
+                <rect x="316" y="103" width="4" height="14" rx="2" fill="#ef4444"/>
+                <rect x="324" y="84" width="4" height="52" rx="2" fill="#ef4444"/>
+                <rect x="332" y="95" width="4" height="30" rx="2" fill="#ef4444"/>
+              </g>
+              <!-- Title text -->
+              <text x="190" y="175" font-size="11" font-weight="700" fill="#fca5a5" text-anchor="middle" letter-spacing="0.1em" opacity="0.8">LAST SEEN IN THE TWILIGHT ZONE</text>
+              <text x="190" y="191" font-size="9" fill="#b91c1c" text-anchor="middle" opacity="0.7">True Crime &nbsp;·&nbsp; Cold Cases &nbsp;·&nbsp; Missing Persons</text>
+              <!-- Platform badges -->
+              <rect x="98" y="207" width="68" height="22" rx="11" fill="#ef4444" opacity="0.15" stroke="#ef4444" stroke-width="0.8" opacity="0.3"/>
+              <text x="132" y="222" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="middle" opacity="0.8">Apple Podcasts</text>
+              <rect x="174" y="207" width="44" height="22" rx="11" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="0.8" opacity="0.25"/>
+              <text x="196" y="222" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="middle" opacity="0.7">Spotify</text>
+              <rect x="226" y="207" width="44" height="22" rx="11" fill="#ef4444" opacity="0.08" stroke="#ef4444" stroke-width="0.8" opacity="0.2"/>
+              <text x="248" y="222" font-size="9" font-weight="700" fill="#fca5a5" text-anchor="middle" opacity="0.6">Audible</text>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Ethos / CTA -->
+    <section class="st-ethos">
+      <div class="st-wrap">
+        <div class="st-ethos-rule"></div>
+        <blockquote>&ldquo;Build things you actually want to exist. Ship them. See what happens.&rdquo;</blockquote>
+        <p>Every Nuanced Studios product started as a scratch-your-own-itch idea &mdash; then became a real product with real users. That&rsquo;s the studio model: no clients, no briefs, no compromises. Just the work.</p>
+        <a class="st-ethos-cta" href="./">&larr; Back to Nuanced Design</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-wordmark">Nuanced Design</span>
+          <p class="footer-tag">Full-stack design &amp; engineering by Theo Grandy. Human-centered digital experiences, built with care.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-col-title">Explore</p>
+          <a href="./#archive">Archive</a>
+          <a href="./#process">Process</a>
+          <a href="./#about">About</a>
+          <a href="./#pricing">Pricing</a>
+        </nav>
+        <nav class="footer-nav footer-studios" aria-label="Nuanced Studios">
+          <p class="footer-col-title">Nuanced Studios</p>
+          <p class="footer-studios-desc">Homegrown apps built by Nuanced Design &mdash; designed, built, and shipped in-house.</p>
+          <a class="footer-studios-link" href="nuanced-studios.html">Explore the studio <span aria-hidden="true">&rarr;</span></a>
+        </nav>
+        <div class="footer-contact">
+          <p class="footer-col-title">Contact</p>
+          <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>
+          <a href="tel:6074445455">(607) 444-5455</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY</span>
+        <span class="footer-love">Proudly made with love in the USA 🇺🇸</span>
+        <a class="footer-version" href="versions.html" title="View site version history">v3.0</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        gsap.from('.st-hero .st-wrap > *', { y: 24, opacity: 0, duration: 0.85, stagger: 0.07, ease: 'power3.out' });
+        gsap.from('.st-ticker', { opacity: 0, duration: 0.6, delay: 0.5, ease: 'power2.out' });
+        document.querySelectorAll('.st-card, .st-ethos').forEach(function (el) {
+          gsap.from(el, {
+            y: 36, opacity: 0, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 88%' }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

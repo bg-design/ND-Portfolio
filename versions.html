@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Version History — Nuanced Design</title>
+  <meta name="description" content="A decade of nuanceddesign.com — from the hand-coded web to the agentic era. Every version of the site, preserved." />
+  <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
+  <script>
+    // Match system theme before paint
+    (function () {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/playfair-display-400.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-display-700.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/playfair-display-900.ttf') format('truetype'); }
+    body { margin: 0; }
+  </style>
+  <link rel="stylesheet" href="CSS/v3.css">
+  <style>
+    /* ----- Timeline (page-specific) ----- */
+    .tl-hero {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 88px 28px 30px;
+    }
+    .tl-title {
+      font-family: var(--v3-serif);
+      font-weight: 900;
+      font-size: clamp(2.6rem, 7vw, 4.4rem);
+      line-height: 1.03;
+      letter-spacing: -0.015em;
+      margin: 18px 0 14px;
+      color: var(--v3-ink);
+    }
+    .tl-title em { font-style: italic; }
+    .tl-sub {
+      color: var(--v3-muted);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      max-width: 540px;
+      margin: 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 880px;
+      margin: 30px auto 0;
+      padding: 10px 28px 40px;
+    }
+    .tl-rail {
+      position: absolute;
+      left: calc(28px + 86px);
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--v3-line);
+    }
+    .tl-rail-fill {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, var(--v3-cyan), var(--v3-magenta) 45%, #f59e0b 75%, var(--v3-green));
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+    .tl-era {
+      position: relative;
+      padding: 34px 0 6px;
+    }
+    .tl-era-label {
+      margin-left: calc(86px + 34px);
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .tl-era-name {
+      font-family: var(--v3-serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(1.4rem, 3.4vw, 2rem);
+      color: var(--v3-ink);
+      line-height: 1.15;
+    }
+    .tl-era-tag {
+      font-family: var(--v3-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--v3-muted);
+      border: 1px solid var(--v3-line-strong);
+      border-radius: 999px;
+      padding: 4px 12px;
+      width: fit-content;
+    }
+    .tl-era-tag.agentic { color: var(--v3-green); border-color: currentColor; }
+
+    .tl-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 0 34px;
+      padding: 16px 0;
+    }
+    .tl-year {
+      font-family: var(--v3-serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--v3-muted);
+      text-align: right;
+      padding-top: 14px;
+      padding-right: 18px; /* keep clear of the rail dot */
+      font-variant-numeric: tabular-nums;
+    }
+    .tl-dot {
+      position: absolute;
+      left: 86px;
+      top: 30px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--v3-bg);
+      border: 3px solid var(--dot, var(--v3-muted));
+      transform: translateX(-6px);
+      z-index: 2;
+    }
+    .tl-card {
+      background: var(--v3-surface);
+      border: 1px solid var(--v3-line);
+      border-radius: var(--v3-radius);
+      padding: 20px 24px;
+      font-family: var(--v3-sans);
+      transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+    }
+    .tl-item:hover .tl-card {
+      transform: translateY(-4px);
+      box-shadow: var(--v3-shadow-lift);
+      border-color: var(--v3-line-strong);
+    }
+    .tl-card h3 {
+      margin: 0 0 6px;
+      font-family: var(--v3-serif) !important;
+      font-weight: 700;
+      font-size: 1.18rem;
+      color: var(--v3-ink);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .tl-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--v3-muted);
+    }
+    .tl-vtag {
+      font-family: var(--v3-sans);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      padding: 3px 10px;
+      color: var(--dot, var(--v3-muted));
+    }
+    a.tl-version {
+      display: block;
+      text-decoration: none;
+    }
+    a.tl-version .tl-card { border-left: 3px solid var(--dot, var(--v3-line-strong)); }
+    .tl-visit {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 12px;
+      font-size: 0.82rem;
+      font-weight: 650;
+      color: var(--v3-ink);
+      border-bottom: 1.5px solid var(--dot, var(--v3-ink));
+      padding-bottom: 3px;
+      width: fit-content;
+    }
+    .tl-visit .arr { transition: transform 0.25s ease; display: inline-block; }
+    a.tl-version:hover .arr { transform: translateX(5px); }
+
+    .tl-end {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 26px 28px 70px;
+      text-align: center;
+    }
+    .tl-end p {
+      font-family: var(--v3-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--v3-muted);
+      margin: 0;
+    }
+
+    @media (max-width: 599px) {
+      .tl-hero { padding: 64px 22px 18px; }
+      .timeline { padding: 10px 22px 30px; }
+      .tl-rail { left: calc(22px + 12px); }
+      .tl-item { grid-template-columns: 1fr; gap: 0; padding-left: 44px; }
+      .tl-year { text-align: left; padding: 0 0 6px; font-size: 1rem; }
+      .tl-dot { left: 12px; top: 8px; }
+      .tl-era-label { margin-left: 44px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tl-card, .tl-visit .arr { transition: none; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body class="versions-page">
+  <main style="flex:1;">
+    <section class="tl-hero">
+      <a class="versions-back" href="./">&larr; Back to the site</a>
+      <p class="micro-label" style="margin-top:42px;">Changelog &middot; 2014 &mdash; 2026</p>
+      <h1 class="tl-title">One designer.<br>Three <em>internets.</em></h1>
+      <p class="tl-sub">This site has been torn down and rebuilt across three eras of the web &mdash; every version preserved, warts and all. Scroll the decade.</p>
+    </section>
+
+    <section class="timeline" aria-label="Site version timeline">
+      <div class="tl-rail"><div class="tl-rail-fill" id="railFill"></div></div>
+
+      <!-- ERA 1 -->
+      <div class="tl-era">
+        <div class="tl-era-label">
+          <span class="tl-era-tag">Pre-AI &middot; Era I</span>
+          <span class="tl-era-name">The Hand-Coded Web</span>
+        </div>
+
+        <a class="tl-version" href="Archive/index-v1.html" style="--dot:#00AEEF;">
+          <div class="tl-item">
+            <div class="tl-year">2014</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>v1.0 &mdash; Where It All Started <span class="tl-vtag">Version</span></h3>
+              <p>Every line typed by hand in San Francisco, back when that&rsquo;s what &ldquo;building a website&rdquo; meant. jQuery, Featherlight lightboxes, and a Creative Commons badge in the footer.</p>
+              <span class="tl-visit">Visit v1.0 <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2015</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>First clients</h3>
+            <p>The freelance years begin &mdash; early product concepts like Safe Harbor and the first paying clients on the West Coast.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERA 2 -->
+      <div class="tl-era">
+        <div class="tl-era-label">
+          <span class="tl-era-tag">Pre-AI &middot; Era II</span>
+          <span class="tl-era-name">The Splash Era</span>
+        </div>
+
+        <a class="tl-version" href="Archive/index-v2.html" style="--dot:#EC008C;">
+          <div class="tl-item">
+            <div class="tl-year">2017</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>v2.0 &mdash; &ldquo;Hi, I&rsquo;m Ben.&rdquo; <span class="tl-vtag">Version</span></h3>
+              <p>Peak-jQuery internet: a full-bleed splash photo, a time-of-day greeting script, and one big hello. The web was a front door, and this one stayed open for years.</p>
+              <span class="tl-visit">Visit v2.0 <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">&rsquo;17&ndash;&rsquo;21</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>The studio years</h3>
+            <p>Slingshot Foods, Calm, Origin Materials, TrendGraphix &mdash; the archive fills up with shipped work across brand, web, and product.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#9aa3b2;">
+          <div class="tl-year">2022</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Ben becomes Theo</h3>
+            <p>A rebrand in the most literal sense. Nuanced Design carries on as a solo studio &mdash; new name, same hands on the keyboard.</p>
+          </div>
+        </div>
+
+        <div class="tl-item" style="--dot:#c2633e;">
+          <div class="tl-year">2024</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Rancho Bombero hits Men&rsquo;s Health</h3>
+            <p>The ranch-born body oil brand &mdash; designed and built here &mdash; lands a national press feature.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERA 3 -->
+      <div class="tl-era">
+        <div class="tl-era-label">
+          <span class="tl-era-tag agentic">Era III</span>
+          <span class="tl-era-name">The Agentic Era</span>
+        </div>
+
+        <div class="tl-item" style="--dot:#f59e0b;">
+          <div class="tl-year">2026</div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>The enterprise turn</h3>
+            <p>Flux Energy ($1B+ in wind assets) and Atlas Freight ship &mdash; full-stack product work, designed and engineered end to end.</p>
+          </div>
+        </div>
+
+        <a class="tl-version" href="./" style="--dot:#39B54A;">
+          <div class="tl-item">
+            <div class="tl-year">2026</div>
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <h3>v3.0 &mdash; The Portfolio, Reforged <span class="tl-vtag">Current</span></h3>
+              <p>Designed by Theo, built alongside AI agents. Enterprise case studies, a curated archive, floating reviews, and a GSAP-driven landing experience &mdash; the site you&rsquo;re standing in.</p>
+              <span class="tl-visit">Back to v3.0 <span class="arr">&rarr;</span></span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <div class="tl-end">
+      <p>Same craft, new tools. See you at v4.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <span>&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY</span>
+        <span class="footer-love">Proudly made with love in the USA 🇺🇸</span>
+        <span class="footer-version" style="cursor:default;">v3.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        gsap.from('.tl-hero > *', { y: 26, opacity: 0, duration: 0.8, stagger: 0.09, ease: 'power3.out' });
+
+        // The rail draws itself as you scroll the decade
+        gsap.fromTo('#railFill', { scaleY: 0 }, {
+          scaleY: 1, ease: 'none',
+          scrollTrigger: { trigger: '.timeline', start: 'top 70%', end: 'bottom 60%', scrub: 0.4 }
+        });
+
+        document.querySelectorAll('.tl-era-label').forEach(function (el) {
+          gsap.from(el, {
+            x: -26, opacity: 0, duration: 0.7, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%' }
+          });
+        });
+        document.querySelectorAll('.tl-item').forEach(function (el) {
+          gsap.from(el.querySelector('.tl-card'), {
+            y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 85%' }
+          });
+          gsap.from(el.querySelector('.tl-dot'), {
+            scale: 0, duration: 0.5, ease: 'back.out(2.2)',
+            scrollTrigger: { trigger: el, start: 'top 85%' }
+          });
+        });
+        gsap.from('.tl-end p', {
+          opacity: 0, y: 16, duration: 0.8,
+          scrollTrigger: { trigger: '.tl-end', start: 'top 92%' }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -42,6 +42,14 @@
   <!-- Preload critical CSS -->
   <link rel="preload" href="CSS/v2-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="CSS/v2-styles.css"></noscript>
+  <link rel="stylesheet" href="CSS/v3.css">
+
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- GSAP (progressive enhancement — content renders fine without it) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   
   <!-- Preload critical images -->
   <link rel="preload" href="IMG/nd-logo-v2c.png" as="image">
@@ -255,10 +263,28 @@
   </div>
 
   <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; position:relative; z-index:10;">
-    <a href="#home" onclick="navigateToPage('home'); return false;" class="header-logo" style="text-decoration:none; display:flex; align-items:center; transition:opacity 0.2s;">
+    <a href="#menu" onclick="toggleMegaMenu(); return false;" class="header-logo" aria-label="Open menu" aria-haspopup="true" aria-controls="megaMenu" style="text-decoration:none; display:flex; align-items:center; transition:opacity 0.2s;">
       <img src="IMG/nd-logo-v2c.png" alt="Nuanced Design Logo" style="width:60px; border-radius:50%;">
     </a>
-    <button id="modeSwitch" style="padding:8px 18px; border-radius:20px; border:none; background:#eee; color:#222; font-weight:600; font-size:1em; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;">🌙 Dark Mode</button>
+    <button id="modeSwitch" style="padding:8px 18px; border-radius:20px; border:none; background:#eee; color:#222; font-weight:600; font-size:1em; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.10); transition:background 0.2s, color 0.2s;"><i class="fa-solid fa-moon" aria-hidden="true"></i> Dark Mode</button>
+  </div>
+
+  <!-- Mega menu (opens from the logo) -->
+  <div class="mega-menu" id="megaMenu" aria-hidden="true" role="dialog" aria-label="Site menu">
+    <button class="mega-close" onclick="closeMegaMenu()" aria-label="Close menu"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <nav class="mega-nav" aria-label="Main menu">
+      <div class="menu-line-mask"><a class="menu-line" href="#home" onclick="megaGo(event, 'home')"><span class="menu-num">01</span><span class="menu-text">Home</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="#home" onclick="megaGoFeatured(event)"><span class="menu-num">02</span><span class="menu-text">Featured Work</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="#archive" onclick="megaGo(event, 'archive')"><span class="menu-num">03</span><span class="menu-text">Archive</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="#process" onclick="megaGo(event, 'process')"><span class="menu-num">04</span><span class="menu-text">Process</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="#about" onclick="megaGo(event, 'about')"><span class="menu-num">05</span><span class="menu-text">About</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line" href="#pricing" onclick="megaGo(event, 'pricing')"><span class="menu-num">06</span><span class="menu-text">Pricing</span></a></div>
+      <div class="menu-line-mask"><a class="menu-line menu-cta" href="#" onclick="event.preventDefault(); closeMegaMenu(); setTimeout(toggleBooking, 350);"><span class="menu-num">07</span><span class="menu-text">Book a Call <span class="menu-balloon" aria-hidden="true">🎈</span></span></a></div>
+    </nav>
+    <div class="mega-footer">
+      <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>
+      <a href="tel:6074445455">(607) 444-5455</a>
+    </div>
   </div>
 
           <div id="pauseOverlay" style="position:relative;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;background:rgba(0,0,0,0.3);z-index:1000;display:none;align-items:center;justify-content:center;cursor:pointer;border-radius:8px;backdrop-filter: blur(4px);">
@@ -271,8 +297,47 @@
   <div class="content" id="mainContent" style="opacity: 0; visibility: hidden;">
     <!-- Content will be dynamically loaded here -->
   </div>
+
+  <footer class="site-footer" id="siteFooter" style="opacity: 0; visibility: hidden;">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-wordmark">Nuanced Design</span>
+          <p class="footer-tag">Full-stack design &amp; engineering by Theo Grandy. Human-centered digital experiences, built with care.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-col-title">Explore</p>
+          <a href="#archive">Archive</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
+        </nav>
+        <nav class="footer-nav footer-studios" aria-label="Nuanced Studios">
+          <p class="footer-col-title">Nuanced Studios</p>
+          <p class="footer-studios-desc">Homegrown apps built by Nuanced Design &mdash; designed, built, and shipped in-house.</p>
+          <a class="footer-studios-link" href="nuanced-studios.html">Explore the studio <span aria-hidden="true">&rarr;</span></a>
+        </nav>
+        <div class="footer-contact">
+          <p class="footer-col-title">Contact</p>
+          <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>
+          <a href="tel:6074445455">(607) 444-5455</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY</span>
+        <span class="footer-love">Proudly made with love in the USA 🇺🇸</span>
+        <a class="footer-version" href="versions.html" title="View site version history">v3.0</a>
+      </div>
+      <div class="footer-legal">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="legal.html">Legal</a>
+      </div>
+    </div>
+  </footer>
   <div class="booking-page" id="bookingPage" style="opacity: 0; visibility: hidden;">
-  <button class="close-btn" onclick="closeBooking()">← 🤷 Nevermind</button>
+  <button class="close-btn" onclick="closeBooking()"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Nevermind</button>
 
     <!-- Background floating balloons -->
     <div class="bg-balloon color-1"></div>
@@ -287,7 +352,7 @@
     <div class="bookingContent">
       <h2>Let's Get Started</h2>
       <p style="margin-bottom:24px;">Want to tell Nuanced Design about your project or just get in touch?</p>
-      <a href="#" onclick="openIntakeModal(); return false;" class="phone-number">🧭 Start Project Intake</a><br/>
+      <a href="#" onclick="openIntakeModal(); return false;" class="phone-number"><i class="fa-solid fa-compass" aria-hidden="true"></i> Start Project Intake</a><br/>
       <p style="margin:8px 0 16px 0; font-size:0.9em; color:#666;">The survey is only four questions and will just take a minute.</p>
       <div style="margin-top:10px;">
         <div style="margin-bottom:8px; font-weight:500;">Or just call or email:</div>
@@ -314,24 +379,29 @@
     <div class="tab-bar" id="tabBar">
       <img src="IMG/Icons/balloon-book-a-call3.png" alt="Book a Call" class="balloon" fetchpriority="high" onclick="toggleBooking()" srcset="IMG/Icons/balloon-book-a-call3-mobile.png 768w, IMG/Icons/balloon-book-a-call3.png 1200w" sizes="(max-width: 768px) 100vw, 50vw" />
 
-      <div class="tab-item process" onclick="activateTab(this); setColor('#00AEEF'); closeBooking(); navigateToPage('process');">
-        <img src="IMG/Icons/process-icon.png" alt="Process">
-        Process
+      <div class="tab-item featured" onclick="activateTab(this); closeBooking(); goFeatured();" role="button" tabindex="0" aria-label="Featured case studies">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.7 5.5 6.1.9-4.4 4.3 1 6-5.4-2.8-5.4 2.8 1-6-4.4-4.3 6.1-.9z"/></svg>
+        <span class="tab-label">Featured</span>
       </div>
 
-      <div class="tab-item about" onclick="activateTab(this); setColor('#EC008C'); closeBooking(); navigateToPage('about');">
-        <img src="IMG/Icons/about-icon.png" alt="About">
-        About
+      <div class="tab-item process" onclick="activateTab(this); setColor('#00AEEF'); closeBooking(); navigateToPage('process');" role="button" tabindex="0" aria-label="Process">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2l-1.8 4.6-3.8-2.6 5.6-2z"/></svg>
+        <span class="tab-label">Process</span>
       </div>
 
-      <div class="tab-item portfolio" onclick="activateTab(this); setColor('#39B54A'); closeBooking(); navigateToPage('portfolio');">
-        <img src="IMG/Icons/portfolio-icon.png" alt="Portfolio">
-        Portfolio
+      <div class="tab-item about" onclick="activateTab(this); setColor('#EC008C'); closeBooking(); navigateToPage('about');" role="button" tabindex="0" aria-label="About">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-3.6 3.2-5.6 7-5.6s7 2 7 5.6"/></svg>
+        <span class="tab-label">About</span>
       </div>
 
-      <div class="tab-item pricing" onclick="activateTab(this); setColor('#FFCB05'); closeBooking(); navigateToPage('pricing');">
-        <img src="IMG/Icons/pricing-icon.png" alt="Pricing">
-        Pricing
+      <div class="tab-item portfolio" onclick="activateTab(this); setColor('#39B54A'); closeBooking(); navigateToPage('archive');" role="button" tabindex="0" aria-label="Archive">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v9a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/><path d="M10 13h4"/></svg>
+        <span class="tab-label">Archive</span>
+      </div>
+
+      <div class="tab-item pricing" onclick="activateTab(this); setColor('#FFCB05'); closeBooking(); navigateToPage('pricing');" role="button" tabindex="0" aria-label="Pricing">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.3L12.7 5.4A2 2 0 0 0 11.3 4.8H6a2 2 0 0 0-2 2v5.3c0 .5.2 1 .6 1.4l7.9 7.9a2 2 0 0 0 2.8 0l5.3-5.3a2 2 0 0 0 0-2.8z"/><circle cx="8.5" cy="9.3" r="1.2"/></svg>
+        <span class="tab-label">Pricing</span>
       </div>
     </div>
   </div>
@@ -375,7 +445,13 @@
             tabBarWrapper.style.opacity = '1';
             tabBarWrapper.style.visibility = 'visible';
           }
-          
+
+          const siteFooter = document.getElementById('siteFooter');
+          if (siteFooter) {
+            siteFooter.style.opacity = '1';
+            siteFooter.style.visibility = 'visible';
+          }
+
           // Remove curtain from DOM after content is shown
           if (loadingCurtain.parentNode) {
             loadingCurtain.parentNode.removeChild(loadingCurtain);
@@ -475,12 +551,16 @@
     '#home': loadDefaultContent,
     '#process': openProcess,
     '#about': openAbout,
-    '#portfolio': loadPortfolioSection,
+    '#archive': loadPortfolioSection,
+    '#portfolio': loadPortfolioSection, // legacy alias for old links
     '#pricing': openPricing
   };
   
   // Handle URL changes
   function handleRoute() {
+    // Tear down any scroll-driven animations from the previous route
+    killScrollAnimations();
+
     const hash = window.location.hash || '#';
     const route = routes[hash];
     
@@ -489,6 +569,7 @@
       const tabMap = {
         '#process': { selector: '.process', color: '#00AEEF' },
         '#about': { selector: '.about', color: '#EC008C' },
+        '#archive': { selector: '.portfolio', color: '#39B54A' },
         '#portfolio': { selector: '.portfolio', color: '#39B54A' },
         '#pricing': { selector: '.pricing', color: '#FFCB05' }
       };
@@ -563,6 +644,124 @@
       bookingPage.style.color = '#fff'; // Keep text white for better contrast
     }
 
+  // --- v3: GSAP scroll animations (progressive enhancement) ---
+  // Content is never hidden in CSS; if the GSAP CDN fails, everything still renders.
+  let homeAnimationsMM = null;
+  let gsapRegistered = false;
+
+  function ensureGsap() {
+    if (!window.gsap || !window.ScrollTrigger) return false;
+    if (!gsapRegistered) {
+      gsap.registerPlugin(ScrollTrigger);
+      gsapRegistered = true;
+    }
+    return true;
+  }
+
+  function killScrollAnimations() {
+    if (homeAnimationsMM) {
+      homeAnimationsMM.revert();
+      homeAnimationsMM = null;
+    }
+    if (window.ScrollTrigger) {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    }
+  }
+
+  function initHomeAnimations() {
+    if (!ensureGsap()) return;
+    if (!document.querySelector('.featured-work')) return;
+
+    homeAnimationsMM = gsap.matchMedia();
+    homeAnimationsMM.add({
+      desktop: '(min-width: 900px) and (prefers-reduced-motion: no-preference)',
+      mobile: '(max-width: 899px) and (prefers-reduced-motion: no-preference)'
+    }, (ctx) => {
+      const desktop = ctx.conditions.desktop;
+
+      gsap.from('.fw-header > *', {
+        y: 36, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.1,
+        scrollTrigger: { trigger: '.fw-header', start: 'top 85%' }
+      });
+
+      document.querySelectorAll('.case-panel').forEach((panel) => {
+        gsap.from(panel.querySelectorAll('.case-info > *'), {
+          y: 42, opacity: 0, duration: 0.85, ease: 'power3.out', stagger: 0.09,
+          scrollTrigger: { trigger: panel, start: 'top 75%' }
+        });
+        gsap.from(panel.querySelector('.case-media'), {
+          y: desktop ? 70 : 40, opacity: 0, duration: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: panel, start: 'top 78%' }
+        });
+
+        if (desktop) {
+          // Subtle parallax: image is over-scaled inside .img-wrap so it can drift
+          const img = panel.querySelector('.case-frame img');
+          if (img) {
+            gsap.fromTo(img,
+              { yPercent: -5, scale: 1.12 },
+              { yPercent: 5, scale: 1.12, ease: 'none',
+                scrollTrigger: { trigger: panel, start: 'top bottom', end: 'bottom top', scrub: true } }
+            );
+          }
+          const idx = panel.querySelector('.case-index');
+          if (idx) {
+            gsap.fromTo(idx, { y: 26 }, {
+              y: -26, ease: 'none',
+              scrollTrigger: { trigger: panel, start: 'top bottom', end: 'bottom top', scrub: true }
+            });
+          }
+        }
+      });
+
+      gsap.from('.archive-teaser', {
+        y: 30, opacity: 0, duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: '.archive-teaser', start: 'top 92%' }
+      });
+
+      // Micro reveals via CSS classes — kill-proof: if a trigger or tween dies
+      // mid-flight, elements are never left stranded at opacity 0.
+      const microReveal = (selector, triggerSel, stepMs = 100) => {
+        const els = Array.from(document.querySelectorAll(selector));
+        if (!els.length) return;
+        els.forEach(el => el.classList.add('v3-pre'));
+        ScrollTrigger.create({
+          trigger: triggerSel || els[0],
+          start: 'top 84%',
+          once: true,
+          onEnter: () => els.forEach((el, i) => setTimeout(() => el.classList.add('v3-in'), i * stepMs))
+        });
+      };
+      microReveal('.reviews-header > *', '#testimonialsBlock', 80);
+      microReveal('#fortuneSection > *', '#fortuneSection');
+      microReveal('#trustSection .trust-item', '#trustSection', 120);
+      microReveal('#sellingPointsStatic .stat-item', '#statsGrid', 80);
+      microReveal('.not-ready-box', '.not-ready-grid', 90);
+
+      // Bubbles pop in via GSAP (clearProps hands transform back to the CSS hover styles)
+      gsap.from('.t-bubble', {
+        scale: 0, opacity: 0, duration: 0.6, ease: 'back.out(1.7)',
+        stagger: { each: 0.06, from: 'random' },
+        clearProps: 'transform,opacity',
+        scrollTrigger: { trigger: '.bubble-field', start: 'top 82%', once: true }
+      });
+
+      // Count-up on the stats grid numbers (2x / 3x / 67% / 25+)
+      document.querySelectorAll('#statsGrid .stat-number').forEach((el) => {
+        const m = el.textContent.trim().match(/^(\d+)(.*)$/);
+        if (!m) return;
+        const end = parseInt(m[1], 10);
+        const suffix = m[2];
+        const counter = { v: 0 };
+        gsap.to(counter, {
+          v: end, duration: 1.2, ease: 'power1.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' },
+          onUpdate: () => { el.textContent = Math.round(counter.v) + suffix; }
+        });
+      });
+    });
+  }
+
   function toggleBooking() {
     const isOpen = bookingPage.classList.contains('open');
     if (isOpen) {
@@ -619,14 +818,68 @@
     document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
     el.classList.add('active');
   }
-  
+
+  // Keyboard support for the focusable tab bar items
+  document.querySelectorAll('.tab-item').forEach(item => {
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        item.click();
+      }
+    });
+  });
+
   function navigateToPage(page) {
     // Update URL without triggering the hashchange event
     const currentHash = window.location.hash;
     const newHash = page === 'home' ? '#home' : `#${page}`;
-    
+
     if (currentHash !== newHash) {
       window.location.hash = newHash;
+    }
+  }
+
+  // Mega menu (opened from the logo)
+  const megaMenu = document.getElementById('megaMenu');
+  function openMegaMenu() {
+    megaMenu.classList.add('open');
+    megaMenu.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('menu-open');
+  }
+  function closeMegaMenu() {
+    megaMenu.classList.remove('open');
+    megaMenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
+  }
+  function toggleMegaMenu() {
+    megaMenu.classList.contains('open') ? closeMegaMenu() : openMegaMenu();
+  }
+  function megaGo(e, page) {
+    e.preventDefault();
+    closeMegaMenu();
+    navigateToPage(page);
+    if (page === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function megaGoFeatured(e) {
+    e.preventDefault();
+    closeMegaMenu();
+    setTimeout(goFeatured, 250);
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && megaMenu.classList.contains('open')) closeMegaMenu();
+  });
+
+  // Star tab: jump to the featured case studies on the homepage
+  function goFeatured() {
+    const scrollToFW = () => {
+      const fw = document.getElementById('featuredWork');
+      if (fw) fw.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    if (document.getElementById('featuredWork')) {
+      scrollToFW();
+    } else {
+      navigateToPage('home');
+      setTimeout(scrollToFW, 700);
     }
   }
 
@@ -645,7 +898,7 @@
           const mainContent = document.getElementById('mainContent');
           mainContent.innerHTML = `
             <div class="markdown-content">
-              <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><span style="font-size:1.2em;vertical-align:middle;">← 🏠</span> Back to Home</a>
+              <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Back to Home</a>
               ${html}
             </div>
           `;
@@ -680,7 +933,7 @@
           const mainContent = document.getElementById('mainContent');
           mainContent.innerHTML = `
         <div class="about-page">
-          <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><span style="font-size:1.2em;vertical-align:middle;">← 🏠</span> Back to Home</a>
+          <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Back to Home</a>
           
           <!-- Main Story Section -->
           <div class="story-section">
@@ -922,123 +1175,175 @@
     }
 
     function openPricing() {
-      // Load pricing content from pricing.md file
-      fetch('pricing.md')
-        .then(response => response.text())
-        .then(content => {
-          // Convert markdown to HTML (basic conversion)
-          let htmlContent = content
-            // Convert headers
-            .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-            .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-            .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-            // Convert bold text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            // Convert italic text
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            // Convert horizontal rules
-            .replace(/^---$/gim, '<hr class="pricing-page-divider">')
-            // Convert unordered lists properly
-            .replace(/^((?:- .*\n?)+)/gm, function(match) {
-              const items = match.split('\n').filter(line => line.trim().startsWith('- '));
-              const listItems = items.map(item => 
-                '<li>' + item.replace(/^- /, '') + '</li>'
-              ).join('');
-              return '<ul>' + listItems + '</ul>';
-            })
-            // Convert links
-            .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-            // Convert line breaks, but preserve HTML structure
-            .replace(/\n/g, '<br>')
-            // Clean up multiple line breaks
-            .replace(/<br><br><br>/g, '<br><br>')
-            .replace(/<br><br><br>/g, '<br><br>')
-            // Remove ALL br tags between HTML elements to fix grid layout
-            .replace(/<\/div><br+><div/g, '</div><div')
-            .replace(/<\/h[1-6]><br+><div/g, '</h1><div')
-            .replace(/<\/ul><br+><div/g, '</ul><div')
-            .replace(/<\/p><br+><div/g, '</p><div')
-            .replace(/<\/li><br+><li/g, '</li><li')
-            .replace(/<\/div><br+><h[1-6]/g, '</div><h1')
-            .replace(/<\/div><br+><ul/g, '</div><ul')
-            .replace(/<\/div><br+><p/g, '</div><p')
-            .replace(/<\/h[1-6]><br+><h[1-6]/g, '</h1><h2')
-            .replace(/<\/h[1-6]><br+><p/g, '</h1><p')
-            .replace(/<\/p><br+><h[1-6]/g, '</p><h1')
-            .replace(/<\/p><br+><ul/g, '</p><ul')
-            .replace(/<\/ul><br+><p/g, '</ul><p')
-            .replace(/<\/ul><br+><h[1-6]/g, '</ul><h1')
-            // Remove br tags at the beginning and end of divs
-            .replace(/<div><br+>/g, '<div>')
-            .replace(/<br+><\/div>/g, '</div>')
-            // Remove br tags between any HTML elements (comprehensive cleanup)
-            .replace(/<\/[^>]+><br+><[^>]+>/g, function(match) {
-              return match.replace(/<br+>/g, '');
-            })
-            // Additional cleanup for any remaining br tags between HTML elements
-            .replace(/<br><br>/g, '<br>')
-            .replace(/<br><br>/g, '<br>');
-          
-          // Add the flexible pricing banner
-          const bannerHtml = `
-            <div class="pricing-callout" role="note" aria-label="Pricing flexibility">
-              <h2 class="pricing-callout__title">💡 Flexible Pricing for Every Budget</h2>
-              <p class="pricing-callout__text">
-                <strong>Prices listed are estimates only.</strong> Project scope can vary significantly, and Nuanced Design is committed to working with your budget.
-                Whether you're a startup with limited resources or an established business, services can be tailored to fit your needs.
-                <strong>Please reach out for a personalized quote!</strong>
-              </p>
+      const mainContent = document.getElementById('mainContent');
+
+      const estimatorOptions = [
+        { label: 'Marketing Website',          icon: 'fa-globe',         min: 2500, max: 5000 },
+        { label: 'E-Commerce Store',           icon: 'fa-cart-shopping', min: 4500, max: 8500 },
+        { label: 'Mobile App (iOS & Android)', icon: 'fa-mobile-screen', min: 8000, max: 25000 },
+        { label: 'Backend / API',              icon: 'fa-server',        min: 5000, max: 15000 },
+        { label: 'Brand & Logo',               icon: 'fa-pen-nib',       min: 495,  max: 2000 },
+        { label: 'SEO & Marketing',            icon: 'fa-chart-line',    min: 1000, max: 3500 }
+      ];
+
+      mainContent.innerHTML = `
+        <div class="markdown-content pricing-v3">
+          <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Back to Home</a>
+
+          <div class="pricing-head">
+            <p class="micro-label">Pricing &middot; Transparent &amp; Flexible</p>
+            <h1 class="pricing-title display-serif">Honest work, <em>honest pricing.</em></h1>
+            <p class="pricing-sub">Every project starts with a <strong>free 30-minute consultation</strong>. Prices are estimates &mdash; scope varies, and budgets are respected.</p>
+            <button class="pricing-cta" onclick="toggleBooking()"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book the free consult</button>
+          </div>
+
+          <section class="estimator" aria-label="Project estimator">
+            <p class="micro-label no-rule">Interactive &middot; Project Estimator</p>
+            <h2 class="est-title display-serif">What are you <em>building?</em></h2>
+            <p class="est-hint">Tap everything that applies &mdash; get a ballpark instantly.</p>
+            <div class="est-chips" id="estChips">
+              ${estimatorOptions.map(o => `
+                <button type="button" class="est-chip" data-min="${o.min}" data-max="${o.max}" aria-pressed="false">
+                  <i class="fa-solid ${o.icon}" aria-hidden="true"></i> ${o.label}
+                </button>`).join('')}
             </div>
-          `;
-          
-          // Insert banner after the first h1
-          htmlContent = htmlContent.replace('</h1>', '</h1>' + bannerHtml);
-          
-          // Clean up br tags between HTML elements to fix grid layout
-          htmlContent = htmlContent
-            // Remove br tags between any HTML elements
-            .replace(/<\/[^>]+><br+><[^>]+>/g, function(match) {
-              return match.replace(/<br+>/g, '');
-            })
-            // Remove br tags at the beginning and end of divs
-            .replace(/<div><br+>/g, '<div>')
-            .replace(/<br+><\/div>/g, '</div>')
-            // Remove br tags at the beginning and end of other elements
-            .replace(/<(h[1-6]|p|ul|li)><br+>/g, '<$1>')
-            .replace(/<br+><\/(h[1-6]|p|ul|li)>/g, '</$1>')
-            // Specific cleanup for pricing packages - remove ALL br tags within pricing-packages divs
-            .replace(/<div class="pricing-packages">([\s\S]*?)<\/div>/g, function(match, content) {
-              return '<div class="pricing-packages">' + content.replace(/<br+>/g, '') + '</div>';
-            })
-            // Also remove br tags within individual pricing-package elements
-            .replace(/<div class="pricing-package">([\s\S]*?)<\/div>/g, function(match, content) {
-              return '<div class="pricing-package">' + content.replace(/<br+>/g, '') + '</div>';
-            });
-          
-          // Update the main content area
-          const mainContent = document.getElementById('mainContent');
-          mainContent.innerHTML = `
-            <div class="markdown-content pricing-page">
-              <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><span style="font-size:1.2em;vertical-align:middle;">← 🏠</span> Back to Home</a>
-              ${htmlContent}
+            <div class="est-result">
+              <div class="est-readout">
+                <span class="est-label">Estimated range</span>
+                <strong id="estRange">Select to estimate</strong>
+              </div>
+              <button class="pricing-cta ghost" onclick="toggleBooking()">Get an exact quote <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
             </div>
-          `;
-          
-          // Scroll to top
-          window.scrollTo(0, 0);
-        })
-        .catch(error => {
-          console.error('Error loading pricing content:', error);
-          // Fallback to a simple message if the file can't be loaded
-          const mainContent = document.getElementById('mainContent');
-          mainContent.innerHTML = `
-            <div class="markdown-content pricing-page">
-              <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><span style="font-size:1.2em;vertical-align:middle;">← 🏠</span> Back to Home</a>
-              <h1>Pricing & Packages</h1>
-              <p>Sorry, pricing information is currently unavailable. Please get in touch directly for pricing information.</p>
+          </section>
+
+          <h2 class="pricing-section-title display-serif">Website packages</h2>
+          <div class="tier-grid">
+            <div class="tier-card">
+              <h3>Starter</h3>
+              <p class="tier-sub">Small businesses &amp; startups</p>
+              <div class="tier-price"><span>from</span> $2,500</div>
+              <ul>
+                <li>Custom design, up to 5 pages</li>
+                <li>Mobile-responsive build</li>
+                <li>Basic SEO + contact form</li>
+                <li>2 rounds of revisions</li>
+                <li>Launch support</li>
+              </ul>
             </div>
-          `;
+            <div class="tier-card popular">
+              <span class="tier-badge">Most popular</span>
+              <h3>Professional</h3>
+              <p class="tier-sub">Growing businesses</p>
+              <div class="tier-price"><span>from</span> $4,500</div>
+              <ul>
+                <li>Custom design, up to 10 pages</li>
+                <li>Advanced SEO + blog setup</li>
+                <li>Newsletter &amp; social integration</li>
+                <li>3 rounds of revisions</li>
+                <li>Launch support &amp; training</li>
+              </ul>
+            </div>
+            <div class="tier-card">
+              <h3>Enterprise</h3>
+              <p class="tier-sub">Established organizations</p>
+              <div class="tier-price"><span>from</span> $8,500</div>
+              <ul>
+                <li>Unlimited pages + CMS</li>
+                <li>E-commerce, booking &amp; custom features</li>
+                <li>Comprehensive SEO strategy</li>
+                <li>Analytics &amp; reporting setup</li>
+                <li>Ongoing support &amp; maintenance</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 class="pricing-section-title display-serif">&Agrave; la carte</h2>
+          <div class="rate-grid">
+            <div class="rate-card">
+              <h3><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> Design</h3>
+              <ul>
+                <li><span>Logo</span><strong>$495</strong></li>
+                <li><span>Style guide</span><strong>$495</strong></li>
+                <li><span>Design hourly</span><strong>$85/hr</strong></li>
+              </ul>
+            </div>
+            <div class="rate-card">
+              <h3><i class="fa-solid fa-globe" aria-hidden="true"></i> Web</h3>
+              <ul>
+                <li><span>Website audit</span><strong>$500</strong></li>
+                <li><span>Maintenance</span><strong>$100&ndash;500/mo</strong></li>
+                <li><span>SEO upgrade</span><strong>$1K</strong></li>
+                <li><span>SEO maintenance</span><strong>$350/mo</strong></li>
+                <li><span>Renovation</span><strong>$1K+</strong></li>
+                <li><span>Design &amp; build</span><strong>$3&ndash;5K</strong></li>
+                <li><span>Premium build</span><strong>$8&ndash;10K</strong></li>
+              </ul>
+            </div>
+            <div class="rate-card">
+              <h3><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> Mobile Apps <span class="rate-new">New</span></h3>
+              <ul>
+                <li><span>Clickable prototype</span><strong>$2.5K+</strong></li>
+                <li><span>iOS &amp; Android build</span><strong>from $8K</strong></li>
+                <li><span>App Store launch</span><strong>$1K</strong></li>
+                <li><span>Ongoing iteration</span><strong>$85/hr</strong></li>
+              </ul>
+              <p class="rate-note">One codebase, both platforms &mdash; designed and shipped end to end.</p>
+            </div>
+            <div class="rate-card">
+              <h3><i class="fa-solid fa-server" aria-hidden="true"></i> Backend / Full-Stack <span class="rate-new">New</span></h3>
+              <ul>
+                <li><span>API design &amp; build</span><strong>from $5K</strong></li>
+                <li><span>Database, auth &amp; infra</span><strong>$2.5K+</strong></li>
+                <li><span>SaaS MVP, end to end</span><strong>from $10K</strong></li>
+                <li><span>Integrations &amp; automation</span><strong>$85/hr</strong></li>
+              </ul>
+              <p class="rate-note">The same full-stack engineering behind Flux Energy and Atlas Freight.</p>
+            </div>
+          </div>
+
+          <div class="pay-terms">
+            <span><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> 50% deposit to begin</span>
+            <span><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i> Balance on completion</span>
+            <span><i class="fa-solid fa-hand-holding-dollar" aria-hidden="true"></i> Payment plans available</span>
+            <span><i class="fa-solid fa-dollar-sign" aria-hidden="true"></i> All prices USD</span>
+          </div>
+        </div>
+      `;
+
+      // Estimator behavior
+      const chips = mainContent.querySelectorAll('.est-chip');
+      const out = document.getElementById('estRange');
+      const fmt = (n) => n >= 1000 ? '$' + (Math.round(n / 100) / 10) + 'K' : '$' + Math.round(n);
+      const displayed = { min: 0, max: 0 };
+      function updateEstimate() {
+        let min = 0, max = 0, count = 0;
+        chips.forEach(c => {
+          if (c.classList.contains('on')) { min += +c.dataset.min; max += +c.dataset.max; count++; }
         });
+        if (!count) {
+          displayed.min = 0; displayed.max = 0;
+          out.textContent = 'Select to estimate';
+          return;
+        }
+        const render = () => { out.textContent = fmt(displayed.min) + ' \u2013 ' + fmt(displayed.max); };
+        if (window.gsap) {
+          gsap.to(displayed, { min, max, duration: 0.5, ease: 'power2.out', onUpdate: render });
+        } else {
+          displayed.min = min; displayed.max = max; render();
+        }
+      }
+      chips.forEach(c => c.addEventListener('click', () => {
+        c.classList.toggle('on');
+        c.setAttribute('aria-pressed', c.classList.contains('on'));
+        updateEstimate();
+      }));
+
+      window.scrollTo(0, 0);
+
+      // Entry reveal (respects reduced motion; content visible without GSAP)
+      if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        gsap.from('.pricing-v3 > *', { y: 24, opacity: 0, duration: 0.6, stagger: 0.07, ease: 'power3.out' });
+      }
     }
     
     function loadDefaultContent() {
@@ -1146,13 +1451,102 @@
                   <div class="balloon-icon" onclick="toggleBooking()" style="cursor: pointer;">🎈</div>
                   <h2 class="script-heading">Ready to get started?</h2>
                   <p><span style="color: #f2343d; text-decoration: underline; cursor: pointer;" onclick="toggleBooking()">Click here</span> or the white balloon to Book a Call! You'll answer a couple questions about your project so the project can hit the ground running!</p>
-                  <button class="repeat-button" onclick="restartAnimation()" id="repeatButton">🔄 Replay Animation</button>
+                  <button class="repeat-button" onclick="restartAnimation()" id="repeatButton"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Replay Animation</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
         
+        <!-- Featured Case Studies -->
+        <section class="featured-work" id="featuredWork" aria-label="Selected case studies">
+          <div class="fw-header">
+            <p class="micro-label">Selected Work</p>
+            <h2 class="fw-title display-serif">Three products, <em>end to end.</em></h2>
+            <p class="fw-sub">Strategy, interface, and engineering &mdash; from first wireframe to production.</p>
+          </div>
+
+          <article class="case-panel" data-case="flux">
+            <div class="case-media">
+              <a href="flux-energy.html" class="case-frame" aria-label="View the Flux Energy case study">
+                <span class="frame-chrome" aria-hidden="true"><i></i><i></i><i></i><b>fluxenergy.app</b></span>
+                <span class="img-wrap"><img src="IMG/Flux-Energy-thumbnail.jpg" alt="Flux Energy wind operations platform" loading="lazy"></span>
+              </a>
+            </div>
+            <div class="case-info">
+              <span class="case-index" aria-hidden="true">01</span>
+              <p class="micro-label">Enterprise SaaS &middot; Product Design &middot; Full-Stack</p>
+              <h3 class="case-name display-serif">Flux Energy</h3>
+              <p class="case-desc">An operating system for wind power operators &mdash; live turbine telemetry, work orders, and portfolio finance in a single pane of glass.</p>
+              <ul class="case-stats">
+                <li><strong>$1B+</strong><span>assets on platform</span></li>
+                <li><strong>Wind ops</strong><span>enterprise platform</span></li>
+              </ul>
+              <a class="case-cta" href="flux-energy.html">View case study <span class="cta-arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="case-panel" data-case="atlas">
+            <div class="case-media">
+              <a href="atlas-freight.html" class="case-frame" aria-label="View the Atlas Freight case study">
+                <span class="frame-chrome" aria-hidden="true"><i></i><i></i><i></i><b>atlas freight</b></span>
+                <span class="img-wrap"><img src="IMG/atlas-freight-thumbnail.svg" alt="Atlas Freight loadboard dashboard" loading="lazy"></span>
+              </a>
+            </div>
+            <div class="case-info">
+              <span class="case-index" aria-hidden="true">02</span>
+              <p class="micro-label">Logistics Platform &middot; UX Strategy &middot; Marketplace</p>
+              <h3 class="case-name display-serif">Atlas Freight</h3>
+              <p class="case-desc">A three-sided platform connecting shippers and suppliers while owner-operator truckers run their business &mdash; and get paid in hours, not weeks.</p>
+              <ul class="case-stats">
+                <li><strong>&lt; 24 hrs</strong><span>driver payouts</span></li>
+                <li><strong>3-sided</strong><span>marketplace</span></li>
+              </ul>
+              <a class="case-cta" href="atlas-freight.html">View case study <span class="cta-arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+          <article class="case-panel" data-case="rancho">
+            <div class="case-media">
+              <a href="rancho-bombero.html" class="case-frame" aria-label="View the Rancho Bombero case study">
+                <span class="frame-chrome" aria-hidden="true"><i></i><i></i><i></i><b>ranchobombero.com</b></span>
+                <span class="img-wrap"><img src="IMG/rancho-bombero-thumbnail.jpg" alt="Rancho Bombero skincare storefront" loading="lazy"></span>
+              </a>
+            </div>
+            <div class="case-info">
+              <span class="case-index" aria-hidden="true">03</span>
+              <p class="micro-label">E-Commerce &middot; Brand &middot; Shopify</p>
+              <h3 class="case-name display-serif">Rancho Bombero</h3>
+              <p class="case-desc">An all-in-one body oil for men &mdash; skin, beard, and hair. A storefront with ranch-born character, built to convert.</p>
+              <ul class="case-stats">
+                <li><strong>Men's Health</strong><span>featured product</span></li>
+                <li><strong>Shopify</strong><span>storefront</span></li>
+              </ul>
+              <a class="case-cta" href="rancho-bombero.html">View case study <span class="cta-arrow" aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>
+
+          <a class="archive-teaser" href="#archive">
+            <span class="micro-label no-rule">Everything else</span>
+            <span class="archive-teaser-title">Browse the <em>Archive</em> &mdash; ${archiveProjects.length} more projects <span class="cta-arrow" aria-hidden="true">&rarr;</span></span>
+          </a>
+        </section>
+
+        <!-- Testimonials Block: Floating Review Bubbles -->
+        <div class="dottedBox recommendations v3-reviews" id="testimonialsBlock" style="margin-top: 0;">
+          <div class="reviews-header">
+            <p class="micro-label">Client Reviews</p>
+            <h2 class="reviews-title display-serif">Ten years of <em>kind words.</em></h2>
+            <p class="reviews-hint" aria-hidden="true"><span class="hint-desktop">Hover a face to read their review.</span><span class="hint-mobile">Tap a face to read their review.</span></p>
+          </div>
+          <div class="bubble-field" id="testimonialAvatars" role="group" aria-label="Client reviews">
+            <!-- Review bubbles injected by JS -->
+          </div>
+          <div class="testimonial-content t-reveal" id="testimonialContent" aria-live="polite">
+            <!-- Selected review appears here -->
+          </div>
+        </div>
+
         <!-- Fortune Cookie Section -->
         <div class="dottedBox fortune-section" id="fortuneSection" style="margin-top: 0;">
           <h2 class="fortune-section-title">A Fortune for Your Journey</h2>
@@ -1161,18 +1555,7 @@
             <p class="fortune-cookie-text">Click the cookie to discover a guiding principle</p>
           </div>
         </div>
-        
-        <!-- Testimonials Block: Floating Avatars -->
-        <div class="dottedBox recommendations" id="testimonialsBlock" style="margin-top: 0;">
-          <h1 id="clients-talking">Testimonials</h1>
-          <div class="testimonial-avatars" id="testimonialAvatars">
-            <!-- Avatars will be injected here by JS -->
-          </div>
-          <div class="testimonial-content" id="testimonialContent">
-            <!-- Selected testimonial will appear here -->
-          </div>
-        </div>
-        
+
         <!-- Trusted Partners Section -->
         <div class="dottedBox trust-section" id="trustSection">
           <h2 class="trust-title">Trusted Partners</h2>
@@ -1229,22 +1612,22 @@
           <h2 class="not-ready-title">Not Ready to Book Yet?</h2>
           <div class="not-ready-grid">
             <a class="not-ready-box process" href="#process">
-              <div class="not-ready-icon" style="color:#00AEEF;">🔎</div>
+              <div class="not-ready-icon" style="color:#00AEEF;"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></div>
               <div class="not-ready-heading">See the Process</div>
               <div class="not-ready-desc">Learn how it works, step by step, to deliver results.</div>
             </a>
             <a class="not-ready-box about" href="#about">
-              <div class="not-ready-icon" style="color:#EC008C;">👋</div>
+              <div class="not-ready-icon" style="color:#EC008C;"><i class="fa-solid fa-hand" aria-hidden="true"></i></div>
               <div class="not-ready-heading">Meet the Designer</div>
               <div class="not-ready-desc">Get to know Nuanced Design.</div>
             </a>
-            <a class="not-ready-box portfolio" href="#portfolio">
-              <div class="not-ready-icon" style="color:#39B54A;">🖼️</div>
+            <a class="not-ready-box portfolio" href="#archive">
+              <div class="not-ready-icon" style="color:#39B54A;"><i class="fa-solid fa-images" aria-hidden="true"></i></div>
               <div class="not-ready-heading">View the Work</div>
               <div class="not-ready-desc">See real projects and results for past clients.</div>
             </a>
             <a class="not-ready-box pricing" href="#pricing">
-              <div class="not-ready-icon" style="color:#FFCB05;">💸</div>
+              <div class="not-ready-icon" style="color:#FFCB05;"><i class="fa-solid fa-tag" aria-hidden="true"></i></div>
               <div class="not-ready-heading">Explore Pricing</div>
               <div class="not-ready-desc">Find a package or service that fits your needs.</div>
             </a>
@@ -1278,8 +1661,11 @@
       setTimeout(() => {
         startHomepageAnimations();
       }, 500);
+
+      // v3: scroll-driven reveals for the featured case studies
+      requestAnimationFrame(() => initHomeAnimations());
     }
-    
+
     function startHomepageAnimations() {
       // Add dramatic entrance for the entire hero section
       const heroContent = document.querySelector('.hero-content');
@@ -1656,7 +2042,7 @@
     },
     {
       title: "Atlas Freight",
-      image: "IMG/atlas-freight-thumbnail.jpg",
+      image: "IMG/atlas-freight-thumbnail.svg",
       description: "A platform built for owner-operator truckers to connect drivers to loadboards, manage freight, and secure funds through a patented arbitration engine.",
       category: ["Enterprise", "App"],
       date: "2026",
@@ -1926,6 +2312,10 @@
     }
   ];
 
+  // v3: the three featured case studies live on the homepage, not in the Archive
+  const FEATURED_TITLES = ["Flux Energy", "Atlas Freight", "Rancho Bombero"];
+  const archiveProjects = portfolioProjects.filter(p => !FEATURED_TITLES.includes(p.title));
+
   const portfolioCategories = [
     "Enterprise",
     "App",
@@ -1965,7 +2355,7 @@
   }
 
   function renderPortfolioCards(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
-    let filtered = portfolioProjects;
+    let filtered = archiveProjects;
     
     // Apply category filter
     if (category !== "All") {
@@ -2131,7 +2521,7 @@
   }
 
   function renderPortfolioCardsOnly(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
-    let filtered = portfolioProjects;
+    let filtered = archiveProjects;
 
     // Apply filters
     if (category !== "All") filtered = filtered.filter(p => Array.isArray(p.category) ? p.category.includes(category) : p.category === category);
@@ -2244,7 +2634,7 @@
   }
 
   function renderPortfolioPagination(category = DEFAULT_PORTFOLIO_CATEGORY, yearFilter = "All", typeFilter = "All", platformFilter = "All", currentPage = 1) {
-    let filtered = portfolioProjects;
+    let filtered = archiveProjects;
 
     // Apply filters
     if (category !== "All") filtered = filtered.filter(p => Array.isArray(p.category) ? p.category.includes(category) : p.category === category);
@@ -2296,15 +2686,15 @@
     const categoryCounts = {};
     portfolioCategories.forEach(cat => {
       if (cat === "All") {
-        categoryCounts[cat] = portfolioProjects.length;
+        categoryCounts[cat] = archiveProjects.length;
       } else {
-        categoryCounts[cat] = portfolioProjects.filter(p => Array.isArray(p.category) ? p.category.includes(cat) : p.category === cat).length;
+        categoryCounts[cat] = archiveProjects.filter(p => Array.isArray(p.category) ? p.category.includes(cat) : p.category === cat).length;
       }
     });
     // Get unique years, project types, and platforms
-    const years = [...new Set(portfolioProjects.map(p => p.date))].sort((a, b) => b - a);
-    const projectTypes = [...new Set(portfolioProjects.map(p => p.projectType))].sort();
-    const platforms = [...new Set(portfolioProjects.map(p => p.platform).filter(p => p))].sort();
+    const years = [...new Set(archiveProjects.map(p => p.date))].sort((a, b) => b - a);
+    const projectTypes = [...new Set(archiveProjects.map(p => p.projectType))].sort();
+    const platforms = [...new Set(archiveProjects.map(p => p.platform).filter(p => p))].sort();
     // Mobile dropdown for categories with label
     const mobileDropdown = `<div class='portfolio-category-mobile-dropdown'><div class='filter-dropdown'><div class='filter-label'>Category</div><select id='categoryMobileFilter'>${portfolioCategories.map(cat => `<option value='${cat}'${cat === activeCategory ? " selected" : ""}>${cat} (${categoryCounts[cat]})</option>`).join('')}</select></div></div>`;
     // Desktop button row
@@ -2358,7 +2748,7 @@
     const mainContent = document.getElementById('mainContent');
     mainContent.innerHTML =
       `<div class="markdown-content portfolio-page">
-        <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><span style="font-size:1.2em;vertical-align:middle;">← 🏠</span> Back to Home</a>
+        <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Back to Home</a>
         
         <!-- Clients and Platforms Section -->
         <div class="clients-platforms-section">
@@ -2416,7 +2806,10 @@
           </div>
         </div>
         
-        <h1 style="text-align: center;font-size: 4em;">The Work</h1>
+        <div class="archive-header">
+          <p class="micro-label no-rule archive-sub">2015 &mdash; 2026 &middot; ${archiveProjects.length} projects</p>
+          <h1 class="archive-title">Archive</h1>
+        </div>
         ${renderPortfolioFilters(category)}
         ${renderPortfolioCardsOnly(category, yearFilter, typeFilter, platformFilter, currentPortfolioPage)}
         ${renderPortfolioPagination(category, yearFilter, typeFilter, platformFilter, currentPortfolioPage)}
@@ -2565,7 +2958,7 @@
   window.addEventListener('resize', () => {
     const isMobile = window.innerWidth <= 599;
     // Only reload portfolio if currently on portfolio page
-    if (isMobile !== lastIsMobile && window.location.hash === '#portfolio') {
+    if (isMobile !== lastIsMobile && (window.location.hash === '#archive' || window.location.hash === '#portfolio')) {
       loadPortfolioSection(currentPortfolioCategory, currentYearFilter, currentTypeFilter, currentPlatformFilter);
     }
     lastIsMobile = isMobile;
@@ -2577,12 +2970,12 @@
   function setMode(mode) {
     if(mode === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      modeSwitch.textContent = '🌙 Dark Mode';
+      modeSwitch.innerHTML = '<i class="fa-solid fa-moon" aria-hidden="true"></i> Dark Mode';
       modeSwitch.style.background = '#23272b';
       modeSwitch.style.color = '#fff';
     } else {
       document.documentElement.setAttribute('data-theme', 'light');
-      modeSwitch.textContent = '☀️ Light Mode';
+      modeSwitch.innerHTML = '<i class="fa-solid fa-sun" aria-hidden="true"></i> Light Mode';
       modeSwitch.style.background = '#eee';
       modeSwitch.style.color = '#222';
     }
@@ -2680,21 +3073,66 @@
     }
   ];
 
-  // Render avatars
+  // v3: floating review bubbles
+  // Bubble centers sit ON the infinity curve drawn behind the field (.bubble-infinity path).
+  const BUBBLE_POSITIONS = [
+    { x: 8,  y: 50, s: 1.0  },
+    { x: 19, y: 24, s: 0.88 },
+    { x: 36, y: 27, s: 0.95 },
+    { x: 36, y: 73, s: 0.86 },
+    { x: 19, y: 76, s: 0.92 },
+    { x: 64, y: 27, s: 0.9  },
+    { x: 81, y: 24, s: 0.86 },
+    { x: 92, y: 50, s: 1.0  },
+    { x: 81, y: 76, s: 0.9  },
+    { x: 64, y: 73, s: 0.94 }
+  ];
+  let currentTestimonialIdx = -1;
+
   function renderAvatars(selectedIdx = 0) {
     const avatarsContainer = document.getElementById('testimonialAvatars');
     const contentContainer = document.getElementById('testimonialContent');
-    
+
     if (!avatarsContainer || !contentContainer) {
-      console.log('Testimonial containers not found, retrying...');
       setTimeout(() => renderAvatars(selectedIdx), 100);
       return;
     }
-    
-    avatarsContainer.innerHTML = testimonials.map((t, idx) => `
-      <img src="${t.img}" alt="${t.name}" class="testimonial-avatar${idx === selectedIdx ? ' selected' : ''}" data-idx="${idx}" tabindex="0" aria-label="${t.name}" ${t.imgMobile ? `srcset="${t.imgMobile} 768w, ${t.img} 1200w" sizes="(max-width: 768px) 100vw, 50vw"` : ''} />
-    `).join('');
-    fadeToTestimonial(selectedIdx);
+
+    const infinitySvg = `
+      <svg class="bubble-infinity" viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M500 150 C380 40 80 40 80 150 C80 260 380 260 500 150 C620 40 920 40 920 150 C920 260 620 260 500 150 Z"/>
+      </svg>`;
+
+    avatarsContainer.innerHTML = infinitySvg + testimonials.map((t, idx) => {
+      const p = BUBBLE_POSITIONS[idx % BUBBLE_POSITIONS.length];
+      const duration = 6 + (idx % 5) * 0.9;
+      const delay = -(idx * 1.3);
+      const firstName = t.name.split(' ')[0];
+      return `
+      <button type="button" class="t-bubble${idx === selectedIdx ? ' selected' : ''}" data-idx="${idx}"
+        aria-label="Review from ${t.name}"
+        style="left:${p.x}%; top:${p.y}%; --bs:${p.s};">
+        <span class="t-drift" style="animation-duration:${duration}s; animation-delay:${delay}s;">
+          <img src="${t.img}" alt="" loading="lazy" ${t.imgMobile ? `srcset="${t.imgMobile} 768w, ${t.img} 1200w" sizes="80px"` : ''} />
+        </span>
+        <span class="t-name" aria-hidden="true">${firstName}</span>
+      </button>`;
+    }).join('');
+    currentTestimonialIdx = -1;
+    selectTestimonialBubble(selectedIdx, true);
+  }
+
+  function selectTestimonialBubble(idx, immediate = false) {
+    if (idx === currentTestimonialIdx) return;
+    currentTestimonialIdx = idx;
+    document.querySelectorAll('.t-bubble').forEach(b => {
+      b.classList.toggle('selected', parseInt(b.getAttribute('data-idx')) === idx);
+    });
+    if (immediate) {
+      renderTestimonial(idx);
+    } else {
+      fadeToTestimonial(idx);
+    }
   }
 
   function fadeToTestimonial(idx) {
@@ -2704,34 +3142,49 @@
     setTimeout(() => {
       renderTestimonial(idx);
       contentContainer.classList.remove('fading');
-    }, 350);
+    }, 250);
   }
 
   function renderTestimonial(idx) {
     const contentContainer = document.getElementById('testimonialContent');
     const t = testimonials[idx];
+    if (!contentContainer || !t) return;
     contentContainer.innerHTML = `
-      <div class="testimonial-quote">${t.text}</div>
-      <div class="testimonial-author"><strong>${t.name}</strong><br><span>${t.role}</span></div>
+      <div class="t-card">
+        <span class="t-quote-mark" aria-hidden="true">&ldquo;</span>
+        <div class="t-quote">${t.text}</div>
+        <div class="t-author"><strong>${t.name}</strong><span>${t.role}</span></div>
+      </div>
     `;
   }
 
-  // Add event listeners for testimonials
+  // Hover (desktop), tap (mobile), and keyboard all select a bubble
   function addTestimonialEventListeners() {
     const avatarsContainer = document.getElementById('testimonialAvatars');
     if (!avatarsContainer) return;
-    
+
+    const bubbleIdx = (e) => {
+      const bubble = e.target.closest('.t-bubble');
+      return bubble ? parseInt(bubble.getAttribute('data-idx')) : null;
+    };
+
     avatarsContainer.addEventListener('click', function(e) {
-      if (e.target.classList.contains('testimonial-avatar')) {
-        const idx = parseInt(e.target.getAttribute('data-idx'));
-        renderAvatars(idx);
-      }
+      const idx = bubbleIdx(e);
+      if (idx !== null) selectTestimonialBubble(idx);
     });
-    
+
+    avatarsContainer.addEventListener('mouseover', function(e) {
+      const idx = bubbleIdx(e);
+      if (idx !== null) selectTestimonialBubble(idx);
+    });
+
     avatarsContainer.addEventListener('keydown', function(e) {
-      if (e.target.classList.contains('testimonial-avatar') && (e.key === 'Enter' || e.key === ' ')) {
-        const idx = parseInt(e.target.getAttribute('data-idx'));
-        renderAvatars(idx);
+      if (e.key === 'Enter' || e.key === ' ') {
+        const idx = bubbleIdx(e);
+        if (idx !== null) {
+          e.preventDefault();
+          selectTestimonialBubble(idx);
+        }
       }
     });
   }

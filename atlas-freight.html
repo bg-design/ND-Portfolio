@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Freight — Case Study — Nuanced Design</title>
+  <meta name="description" content="Case study: Atlas Freight, a logistics platform connecting shippers and suppliers while empowering owner-operator truck drivers to run their business and get paid fast. Design and engineering by Theo Grandy." />
+  <link rel="icon" type="image/png" href="IMG/Icons/favicon-logo.png" />
+  <script>
+    (function () {
+      var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+  </script>
+  <style>
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 400; font-display: swap; src: url('fonts/playfair-display-400.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 700; font-display: swap; src: url('fonts/playfair-display-700.ttf') format('truetype'); }
+    @font-face { font-family: 'Playfair Display'; font-style: normal; font-weight: 900; font-display: swap; src: url('fonts/playfair-display-900.ttf') format('truetype'); }
+  </style>
+  <link rel="stylesheet" href="CSS/v3.css">
+  <link rel="stylesheet" href="CSS/case-study.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
+</head>
+<body class="cs-page" data-cs="atlas">
+
+  <header class="cs-topbar">
+    <a href="./">&larr; Nuanced Design</a>
+    <span class="cs-topbar-title">Atlas Freight</span>
+    <a href="rancho-bombero.html">Next: Rancho Bombero &rarr;</a>
+  </header>
+
+  <main>
+    <section class="cs-hero">
+      <div class="cs-wrap">
+        <p class="micro-label">Case Study &middot; 02 &middot; Logistics Platform</p>
+        <h1 class="cs-title">Atlas Freight</h1>
+        <p class="cs-tagline">A three-sided freight platform where owner-operators run the show &mdash; and get paid in hours, not weeks.</p>
+        <ul class="cs-meta">
+          <li><span>Role</span><strong>UX Strategy &middot; Product Design &middot; Full-Stack</strong></li>
+          <li><span>Sector</span><strong>Logistics / Freight</strong></li>
+          <li><span>Year</span><strong>2026</strong></li>
+          <li><span>Status</span><strong>In development</strong></li>
+        </ul>
+        <div class="cs-hero-media">
+          <span class="frame-chrome" aria-hidden="true"><i></i><i></i><i></i><b>atlas freight &middot; loadboard</b></span>
+          <img src="IMG/atlas-freight-thumbnail.svg" alt="The Atlas Freight loadboard dashboard" />
+        </div>
+
+        <div class="cs-stats">
+          <div class="cs-stat"><strong>&lt; 24 hrs</strong><span>from delivered load to money in the driver&rsquo;s account</span></div>
+          <div class="cs-stat"><strong>3 sides</strong><span>shippers, suppliers, and owner-operators on one platform</span></div>
+          <div class="cs-stat"><strong>Patented</strong><span>arbitration engine securing funds for every load</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cs-wrap">
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Overview</span>The business OS for the one-truck business</h2>
+          <div class="cs-body">
+            <p class="lede">Atlas Freight connects logistics shippers and suppliers while giving <strong>owner-operator truck drivers</strong> the tools of a real back office: a loadboard that respects their time, freight management on the road, and payment that doesn&rsquo;t take 30&ndash;60 days to arrive.</p>
+            <p>Most freight tech is built for brokers and fleets. Atlas starts from the driver&rsquo;s seat &mdash; the smallest business on the highway &mdash; and builds the marketplace around them.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">The Problem</span>Drive today, get paid in March</h2>
+          <div class="cs-body">
+            <p>Owner-operators live in a squeeze: loadboards full of spam and re-brokered freight, paperwork scattered between a cab and a kitchen table, and invoices that pay out in weeks while fuel is due today. Factoring companies fill the gap &mdash; for a punishing cut.</p>
+            <p>Shippers and suppliers have the mirror-image problem: finding reliable capacity without a wall of middlemen between them and the person actually driving the truck.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">My Role</span>From research to running code</h2>
+          <div class="cs-body">
+            <p>I led UX strategy and product design across all three sides of the marketplace, then carried the design into the full-stack build. The hardest design problem wasn&rsquo;t a screen &mdash; it was sequencing trust: what each side must see, prove, and escrow before money moves on its own.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Process</span>Designing for a moving cab</h2>
+          <div class="cs-body">
+            <ul class="cs-steps">
+              <li><div><h3>Ride along</h3><p>Interviews with owner-operators, dispatchers, and shipping managers &mdash; mapping where loads, paperwork, and payments actually stall.</p></div></li>
+              <li><div><h3>Design the trust rails</h3><p>Modeled the arbitration engine&rsquo;s states &mdash; funds committed, in transit, delivered, disputed, released &mdash; so the UI can always answer &ldquo;where is my money?&rdquo;</p></div></li>
+              <li><div><h3>One platform, three dashboards</h3><p>A shared design system with three lenses: shippers post and track, suppliers coordinate, drivers find, haul, and bank.</p></div></li>
+              <li><div><h3>Thumb-first UI</h3><p>The driver experience is designed for a phone mounted in a cab: big targets, glanceable status, and zero forms that can&rsquo;t wait for a rest stop.</p></div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Key Screens</span>Find it, haul it, bank it</h2>
+          <div class="cs-body">
+            <div class="cs-screens">
+              <figure class="cs-screen">
+                <div class="cs-screen-frame">
+                  <svg class="cs-mock" viewBox="0 0 760 860" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atlas Freight driver app — fast pay">
+                    <rect width="760" height="860" fill="#161d2b"/>
+                    <rect x="190" y="40" width="380" height="780" rx="44" fill="#121826" stroke="#2e3b58" stroke-width="3"/>
+                    <rect x="320" y="62" width="120" height="22" rx="11" fill="#0c111c"/>
+                    <g font-family="Arial">
+                      <text x="230" y="140" font-size="22" font-weight="700" fill="#e8ecf5">Earnings</text>
+                      <rect x="230" y="166" width="300" height="150" rx="18" fill="#f59e0b"/>
+                      <text x="254" y="208" font-size="13" font-weight="700" fill="#7c4a03" letter-spacing="2">AVAILABLE NOW</text>
+                      <text x="254" y="258" font-size="40" font-weight="800" fill="#121826">$8,460</text>
+                      <rect x="254" y="276" width="118" height="28" rx="14" fill="#121826"/>
+                      <text x="313" y="295" font-size="13" font-weight="700" fill="#fbbf24" text-anchor="middle">Cash out &rarr;</text>
+                      <text x="230" y="364" font-size="15" font-weight="700" fill="#8b97b2">THIS WEEK</text>
+                      <g font-size="14">
+                        <rect x="230" y="384" width="300" height="86" rx="14" fill="#1c2435"/>
+                        <text x="252" y="416" fill="#e8ecf5" font-weight="700">Dallas &rarr; Memphis</text>
+                        <text x="252" y="438" fill="#8b97b2">Delivered Tue &middot; POD confirmed</text>
+                        <text x="508" y="416" fill="#34d399" text-anchor="end" font-weight="700">+$2,840</text>
+                        <text x="508" y="438" fill="#34d399" text-anchor="end" font-size="12">paid in 14 hrs</text>
+                        <rect x="230" y="482" width="300" height="86" rx="14" fill="#1c2435"/>
+                        <text x="252" y="514" fill="#e8ecf5" font-weight="700">Memphis &rarr; Atlanta</text>
+                        <text x="252" y="536" fill="#8b97b2">Delivered Thu &middot; POD confirmed</text>
+                        <text x="508" y="514" fill="#34d399" text-anchor="end" font-weight="700">+$3,120</text>
+                        <text x="508" y="536" fill="#34d399" text-anchor="end" font-size="12">paid in 9 hrs</text>
+                        <rect x="230" y="580" width="300" height="86" rx="14" fill="#1c2435" stroke="#f59e0b" stroke-width="2"/>
+                        <text x="252" y="612" fill="#e8ecf5" font-weight="700">Atlanta &rarr; Nashville</text>
+                        <text x="252" y="634" fill="#fbbf24">In transit &middot; funds secured in escrow</text>
+                        <text x="508" y="612" fill="#fbbf24" text-anchor="end" font-weight="700">$2,500</text>
+                      </g>
+                      <rect x="230" y="700" width="300" height="2" fill="#2e3b58"/>
+                      <g font-size="12" fill="#8b97b2"><text x="258" y="760" text-anchor="middle">Loads</text><text x="380" y="760" text-anchor="middle" fill="#f59e0b">Earnings</text><text x="502" y="760" text-anchor="middle">Docs</text></g>
+                      <circle cx="380" cy="724" r="4" fill="#f59e0b"/>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><strong>Fast pay, visible always.</strong> Every load shows where its money is &mdash; escrowed, clearing, or cashed out. No more invoicing into the void.</figcaption>
+              </figure>
+
+              <figure class="cs-screen">
+                <div class="cs-screen-frame">
+                  <svg class="cs-mock" viewBox="0 0 760 860" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atlas Freight arbitration engine flow">
+                    <rect width="760" height="860" fill="#161d2b"/>
+                    <g font-family="Arial">
+                      <text x="70" y="92" font-size="24" font-weight="700" fill="#e8ecf5">How a load gets paid</text>
+                      <text x="70" y="120" font-size="14" fill="#8b97b2">The arbitration engine, from booking to bank</text>
+                      <g font-size="15">
+                        <rect x="70" y="160" width="620" height="100" rx="16" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+                        <circle cx="118" cy="210" r="20" fill="#1c2435" stroke="#60a5fa" stroke-width="2.5"/><text x="118" y="216" fill="#60a5fa" text-anchor="middle" font-weight="700">1</text>
+                        <text x="156" y="202" fill="#e8ecf5" font-weight="700">Shipper books &middot; funds committed</text>
+                        <text x="156" y="226" fill="#8b97b2" font-size="13">Full rate locked in escrow before the truck rolls</text>
+                        <path d="M380 260 v22" stroke="#3b4763" stroke-width="3"/>
+                        <rect x="70" y="282" width="620" height="100" rx="16" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+                        <circle cx="118" cy="332" r="20" fill="#1c2435" stroke="#fbbf24" stroke-width="2.5"/><text x="118" y="338" fill="#fbbf24" text-anchor="middle" font-weight="700">2</text>
+                        <text x="156" y="324" fill="#e8ecf5" font-weight="700">Driver hauls &middot; status tracked</text>
+                        <text x="156" y="348" fill="#8b97b2" font-size="13">GPS checkpoints and documents collected en route</text>
+                        <path d="M380 382 v22" stroke="#3b4763" stroke-width="3"/>
+                        <rect x="70" y="404" width="620" height="100" rx="16" fill="#222c44" stroke="#2e3b58" stroke-width="2"/>
+                        <circle cx="118" cy="454" r="20" fill="#1c2435" stroke="#34d399" stroke-width="2.5"/><text x="118" y="460" fill="#34d399" text-anchor="middle" font-weight="700">3</text>
+                        <text x="156" y="446" fill="#e8ecf5" font-weight="700">POD confirmed &middot; clock starts</text>
+                        <text x="156" y="470" fill="#8b97b2" font-size="13">Proof of delivery triggers the payout window</text>
+                        <path d="M380 504 v22" stroke="#3b4763" stroke-width="3"/>
+                        <rect x="70" y="526" width="620" height="120" rx="16" fill="#2a2415" stroke="#f59e0b" stroke-width="2.5"/>
+                        <circle cx="118" cy="586" r="20" fill="#f59e0b"/><text x="118" y="592" fill="#121826" text-anchor="middle" font-weight="800">4</text>
+                        <text x="156" y="572" fill="#fbbf24" font-weight="800" font-size="17">Funds released &lt; 24 hrs</text>
+                        <text x="156" y="598" fill="#d9b98a" font-size="13">Disputes route to arbitration instead of freezing the payout&hellip;</text>
+                        <text x="156" y="620" fill="#d9b98a" font-size="13">&hellip;so one bad load can&rsquo;t starve a one-truck business.</text>
+                        <rect x="70" y="690" width="620" height="100" rx="16" fill="#1c2435"/>
+                        <text x="100" y="730" fill="#8b97b2" font-size="13" letter-spacing="2">WHY IT WORKS</text>
+                        <text x="100" y="760" fill="#e8ecf5" font-size="15" font-weight="700">Money state is product state &mdash; every screen agrees on where the dollars are.</text>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+                <figcaption><strong>The arbitration engine, made legible.</strong> Escrow states drive the entire UI &mdash; trust isn&rsquo;t a marketing claim, it&rsquo;s a visible machine.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cs-section">
+        <div class="cs-section-grid">
+          <h2><span class="cs-kicker">Outcome</span>Capacity without the middlemen</h2>
+          <div class="cs-body">
+            <p>Atlas Freight gives shippers and suppliers a direct line to verified owner-operators, and gives drivers a back office that fits in a cup holder. The patented arbitration engine turns the industry&rsquo;s slowest promise &mdash; &ldquo;you&rsquo;ll get paid&rdquo; &mdash; into a state machine with a deadline.</p>
+            <div class="cs-pull">Design for the smallest business in the system, and the marketplace gets stronger for everyone in it.</div>
+          </div>
+        </div>
+      </section>
+
+      <a class="cs-next-project" href="rancho-bombero.html">
+        <span class="micro-label no-rule">Next case study</span>
+        <span class="cs-next-title">Rancho Bombero <span class="cta-arrow">&rarr;</span></span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-wordmark">Nuanced Design</span>
+          <p class="footer-tag">Full-stack design &amp; engineering by Theo Grandy. Human-centered digital experiences, built with care.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <p class="footer-col-title">Explore</p>
+          <a href="./#archive">Archive</a>
+          <a href="./#process">Process</a>
+          <a href="./#about">About</a>
+          <a href="./#pricing">Pricing</a>
+        </nav>
+        <nav class="footer-nav footer-studios" aria-label="Nuanced Studios">
+          <p class="footer-col-title">Nuanced Studios</p>
+          <p class="footer-studios-desc">Homegrown apps built by Nuanced Design &mdash; designed, built, and shipped in-house.</p>
+          <a class="footer-studios-link" href="nuanced-studios.html">Explore the studio <span aria-hidden="true">&rarr;</span></a>
+        </nav>
+        <div class="footer-contact">
+          <p class="footer-col-title">Contact</p>
+          <a href="mailto:hello@nuanceddesign.com">hello@nuanceddesign.com</a>
+          <a href="tel:6074445455">(607) 444-5455</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY</span>
+        <span class="footer-love">Proudly made with love in the USA 🇺🇸</span>
+        <a class="footer-version" href="versions.html" title="View site version history">v3.0</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function () {
+      if (!window.gsap || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        gsap.from('.cs-hero .cs-wrap > *', { y: 28, opacity: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out' });
+        document.querySelectorAll('.cs-section, .cs-next-project').forEach(function (sec) {
+          gsap.from(sec, {
+            y: 34, opacity: 0, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: sec, start: 'top 85%' }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
