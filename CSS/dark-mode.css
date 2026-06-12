@@ -63,6 +63,42 @@ body {
   transition: 1s;
 }
 
+.dark-mode p,
+.dark-mode li,
+.dark-mode .body,
+.dark-mode .small {
+  color: #e8e8e8;
+  transition: color 1s;
+}
+
+.dark-mode p a,
+.dark-mode p a:link,
+.dark-mode p a:visited {
+  color: #7dd3fc;
+}
+
+.dark-mode p a:hover {
+  color: #bae6fd;
+}
+
+.dark-mode strong {
+  color: #ffffff;
+}
+
+.dark-mode .tooltip .tooltiptext {
+  color: #c8c8c8;
+}
+
+.dark-mode .typing-wrap h1,
+.dark-mode .typing-wrap h1 span,
+.dark-mode .typed-cursor {
+  color: #f0f0f0;
+}
+
+.dark-mode hr {
+  border-bottom-color: #444;
+}
+
 .img-invert {
   transition: 1s;
   filter:invert(0%);
@@ -72,7 +108,7 @@ body {
   filter: invert(87.8%);
   transition: 1s;
 }
--
+
 .dark-mode .img-invert-full {
   filter: invert(100%);
   transition: 1s;

@@ -147,11 +147,6 @@ function scrollBoth (){
     // });
 
 // Disable loading screen when ready
-
-    $('html').css("overflow", "hidden");
-
-    $('.fade-in').addClass('placeholder').removeClass('fade-in')
-
 function domLoad (){
     $(document).ready( function() {
       $('.placeholder').addClass('fade-in').removeClass('placeholder')
@@ -166,6 +161,37 @@ function domLoad (){
 
     imgLoad();
   }
+
+if (document.querySelector('.loading-bg')) {
+    if (window.jQuery) {
+      jQuery('html').css("overflow", "hidden");
+      jQuery('.fade-in').addClass('placeholder').removeClass('fade-in');
+    }
+}
+
+(function hideArchiveLoader() {
+  var loader = document.querySelector('.loading-bg');
+  if (!loader) return;
+
+  function reveal() {
+    if (window.jQuery) {
+      jQuery('.placeholder').addClass('fade-in').removeClass('placeholder');
+    }
+    window.setTimeout(function () {
+      loader.style.opacity = '0';
+      window.setTimeout(function () {
+        loader.style.display = 'none';
+        document.documentElement.style.overflow = 'auto';
+      }, 500);
+    }, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', reveal);
+  } else {
+    reveal();
+  }
+})();
 
   function imgLoad (){
     $(window).on("load", function() {

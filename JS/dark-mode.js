@@ -21,6 +21,7 @@ function darkModeOn() {
 
 document.addEventListener('DOMContentLoaded', function () {
   var checkbox = document.querySelector('input[type="checkbox"]');
+  if (!checkbox) return;
 
   checkbox.addEventListener('change', function () {
     if (checkbox.checked) {
@@ -39,19 +40,23 @@ var time = new Date();
 var hour = time.getHours();
 if ( sessionStorage.getItem('setDarkMode') === 'true') {
       document.body.classList.add("dark-mode");
-      document.getElementById("checkbox").checked = true;
+      var checkbox = document.getElementById("checkbox");
+      if (checkbox) checkbox.checked = true;
     }
 else if ( sessionStorage.getItem('setDarkMode') === 'false') {
     document.body.classList.remove("dark-mode");
-    document.getElementById("checkbox").checked = false;
+    var checkboxOff = document.getElementById("checkbox");
+    if (checkboxOff) checkboxOff.checked = false;
 }
 else if ((hour <= 5) || (hour >= 17)) {
     document.body.classList.add("dark-mode");
-    document.getElementById("checkbox").checked = true;
+    var checkboxNight = document.getElementById("checkbox");
+    if (checkboxNight) checkboxNight.checked = true;
 }
 else {
   document.body.classList.remove("dark-mode");
-  document.getElementById("checkbox").checked = false;
+  var checkboxDay = document.getElementById("checkbox");
+  if (checkboxDay) checkboxDay.checked = false;
 }
 
 // var time = new Date();

@@ -332,7 +332,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">&copy; 2015&ndash;2026 Nuanced Design<br>Binghamton, NY<br>Proudly made with love in the USA 🇺🇸</p>
+        <p class="footer-copyright">&copy; 2011&ndash;2026 Nuanced Design<br>Binghamton, NY<br>Proudly made with love in the USA 🇺🇸</p>
         <a class="footer-version" href="versions.html" title="View site version history">v3.0</a>
       </div>
       <div class="footer-legal">
@@ -2506,26 +2506,6 @@
       date: "2017",
       projectType: "Fabrication & Signage"
     },
-    {
-      title: "EntheoZen",
-      image: "IMG/Client%20Logos/entheozen-logo.png",
-      description: "Website facelift for EntheoZen.",
-      link: "https://entheozen.com",
-      category: "Products",
-      platform: "WordPress",
-      date: "2016",
-      projectType: "Facelift"
-    },
-    {
-      title: "Safe Harbor",
-      image: "IMG/Safe-Harbor/safe-harbor-mock2.jpg",
-      description: "Winner of 2015 Global Entrepreneuship Summit Hackathon, Safe Harbor is a mobile app concept that helps vicitms of domestic abuse find safe shelter.",
-      link: "safe-harbor.html",
-      category: ["Non-Profit", "App"],
-      platform: "Hackathon",
-      date: "2015",
-      projectType: "Mobile App"
-    }
   ];
 
   // v3: the three featured case studies live on the homepage, not in the Archive
@@ -2548,7 +2528,7 @@
 
   // Helper function to get button text and attributes for projects
   function getProjectButton(project) {
-    const caseStudyProjects = ["OneOf", "AWA Fit", "Slingshot Foods", "Safe Harbor"];
+    const caseStudyProjects = ["OneOf", "AWA Fit", "Slingshot Foods"];
     const isCaseStudy = caseStudyProjects.includes(project.title);
     return {
       text: isCaseStudy ? 'Case Study' : 'Visit Site',
@@ -2558,14 +2538,14 @@
 
   // Helper function to get button text only
   function getButtonText(project) {
-    const caseStudyProjects = ["OneOf", "AWA Fit", "Slingshot Foods", "Safe Harbor"];
+    const caseStudyProjects = ["OneOf", "AWA Fit", "Slingshot Foods"];
     if (!project.link) return ''; // No button for projects without links
     return caseStudyProjects.includes(project.title) ? 'Case Study' : 'Visit Site';
   }
 
   // Helper function to get button attributes
   function getButtonAttributes(project) {
-    const caseStudyProjects = ["OneOf", "AWA Fit", "Slingshot Foods", "Safe Harbor"];
+    const caseStudyProjects = ["OneOf", "AWA Fit", "Slingshot Foods"];
     if (!project.link) return ''; // No button for projects without links
     return caseStudyProjects.includes(project.title) ? '' : 'target="_blank" rel="noopener"';
   }
@@ -2967,7 +2947,7 @@
         <a href="#home" class="back-link" style="font-size:1.1em;" onclick="navigateToPage('home'); return false;"><i class="fa-solid fa-arrow-left-long" aria-hidden="true"></i> Back to Home</a>
         
         <div class="archive-header" id="archive">
-          <p class="micro-label no-rule archive-sub">2015 &mdash; 2026 &middot; ${archiveProjects.length} projects</p>
+          <p class="micro-label no-rule archive-sub">2017 &mdash; 2026 &middot; ${archiveProjects.length} projects</p>
           <h1 class="archive-title">Archive</h1>
         </div>
 

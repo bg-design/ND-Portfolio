@@ -8,12 +8,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>What | Ben Grandy</title>
 
-	<link rel="stylesheet" href="CSS/global.css" media="screen">
-	<link rel="icon" type="image/png" href="IMG/favicon.png">
+	<link rel="stylesheet" href="../CSS/global.css" media="screen">
+	<link rel="icon" type="image/png" href="../IMG/favicon.png">
 	
 	<!-- 	3rd Party -->
-	<link rel="stylesheet" type="text/css" href="CSS/fullpage.css"  media="screen"/>
-    <link rel="stylesheet" type="text/css" href="CSS/lity.css"  media="screen"/>
+	<link rel="stylesheet" type="text/css" href="../CSS/fullpage.css"  media="screen"/>
+    <link rel="stylesheet" type="text/css" href="../CSS/lity.css"  media="screen"/>
 
 	<style>
 
@@ -32,32 +32,32 @@
 		/* Defining each section background and styles
 	* --------------------------------------- */
 	#section0{
-		background-image: url(IMG/awa-fit-mock3.jpg);
+		background-image: url(../IMG/awa-fit-mock3.jpg);
 		padding: 0% 0 0 0;
 	}
 	#section1{
-		background-image: url(IMG/safe-harbor-mock3.jpg);
+		background-image: url(../IMG/safe-harbor-mock3.jpg);
 		padding: 0% 0 0 0;
 	}
 	#section2{
-		background-image: url(IMG/shyft-mock3.jpg);
+		background-image: url(../IMG/shyft-mock3.jpg);
 		padding: 0% 0 0 0;
 	}
 	#section3{
-		background-image: url(IMG/life-alert-mock4.jpg);
+		background-image: url(../IMG/life-alert-mock4.jpg);
 		padding: 0% 0 0 0;
 	}
 	#section4{
-		background-image: url(IMG/refer-me-mock3.jpg);
+		background-image: url(../IMG/refer-me-mock3.jpg);
 		padding: 0% 0 0 0;
 	}
 /*
 	#section3{
-		background-image: url(IMG/gumball-mock.jpg);
+		background-image: url(../IMG/gumball-mock.jpg);
 		padding: 0% 0 0 0;
 	}
 	#section5{
-		background-image: url(IMG/archive-mock.jpg);
+		background-image: url(../IMG/archive-mock.jpg);
 		padding: 0% 0 0 0;
 	}*/
 
@@ -184,7 +184,7 @@
 	</style>
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 
-	<script type="text/javascript" src="JS/fullpage.js"></script>
+	<script type="text/javascript" src="../JS/fullpage.js"></script>
 
 </head>
 <body>
@@ -197,8 +197,8 @@
 	</div>
 	<nav class="navbar">
   		<div class="nav-wrapper what-bg">
-<!--   		  	<div class="hamburger" onclick="showNav()"><img src="IMG/menu.png"/ class="ham-menu"></div>
-			<img class="logo" src="IMG/ben-grandy-sig.png"> -->
+<!--   		  	<div class="hamburger" onclick="showNav()"><img src="../IMG/menu.png"/ class="ham-menu"></div>
+			<img class="logo" src="../IMG/ben-grandy-sig.png"> -->
 			<ul class="nav-menu">
 				<li><a href="what.html" id="active" class="fade-in one what-bg">What</a></li><li><a href="how.html" class="fade-in two what-bg">How</a></li><li><a href="who.html" class="fade-in two what-bg">Who</a></li><li><a href="when-where.html" class="fade-in three what-bg">When</a></li><li><a href="why.html" class="fade-in three what-bg">Why</a></li>
 			</ul>
@@ -219,7 +219,7 @@
 		<div class="what-box safe-harbor">
 			<h1>Safe Harbor</h1>
 			<br>
-<!-- 			<img src="IMG/GES2016Logo.png" id="GES2016Logo"/>
+<!-- 			<img src="../IMG/GES2016Logo.png" id="GES2016Logo"/>
  -->			<p>Won a hackathon at the Global Entrepeneupship Summit for an app that helps victims of domestic abuse find shelter.</p>			<br>
 			<a href="safe-harbor.html" ><button class="project-button center">Case Study</button></a>
 			<p class="made-in">Made in Jun. 2016</p>
@@ -316,10 +316,10 @@
 </script>
 
 <!-- Lity -->
-<script src="JS/lity.js"></script>
+<script src="../JS/lity.js"></script>
 	
 <!-- Bunch of scripts-->
-<script src="JS/custom.js"></script>
+<script src="../JS/custom.js"></script>
 <script>
 
 	// Dark Mode detector
@@ -343,6 +343,19 @@ console.log('%cCredits', 'background: #fff;color: #000;font-family:serif;font-si
 console.log('%cA big shout-out to AlvaroTrigo.com for this full page scrolling effect, and big thanks to Jan Sorgalla (sorgalla.com/lity/) for this lightbox script.', 'background: #fff;color: #000;font-family:serif;font-size:14px;');
 
 
+</script>
+<script>
+window.addEventListener('load', function () {
+  var loader = document.querySelector('.loading-bg');
+  if (!loader) return;
+  window.setTimeout(function () {
+    loader.style.opacity = '0';
+    window.setTimeout(function () {
+      loader.style.display = 'none';
+      document.documentElement.style.overflow = 'auto';
+    }, 500);
+  }, 800);
+});
 </script>
 </body>
 <hr>
