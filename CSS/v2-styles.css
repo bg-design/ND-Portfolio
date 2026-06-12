@@ -1174,6 +1174,19 @@ grid-template-columns: repeat(2, 1fr);
 [data-theme="dark"] .accordion-header:hover .accordion-icon {
   color: #e8f8fd;
 }
+[data-theme="dark"] .accordion-content {
+  background: #222;
+  color: #eee;
+}
+[data-theme="dark"] .accordion-content ul,
+[data-theme="dark"] .accordion-content p,
+[data-theme="dark"] .accordion-content li,
+[data-theme="dark"] .accordion-content figcaption {
+  color: #eee;
+}
+[data-theme="dark"] .accordion-content figcaption {
+  color: #aaa;
+}
 
 /* Accordion styles for process page */
 .accordion-header {
@@ -5261,6 +5274,19 @@ html[data-theme="light"] .accordion-content,
 body[data-theme="light"] .accordion-content {
   background: #fafbfc;
   color: #222;
+}
+html[data-theme="dark"] .accordion-content,
+body[data-theme="dark"] .accordion-content {
+  background: #222;
+  color: #eee;
+}
+html[data-theme="dark"] .accordion-content ul,
+html[data-theme="dark"] .accordion-content p,
+html[data-theme="dark"] .accordion-content li,
+body[data-theme="dark"] .accordion-content ul,
+body[data-theme="dark"] .accordion-content p,
+body[data-theme="dark"] .accordion-content li {
+  color: #eee;
 }
 html[data-theme="light"] .portfolio-page h1,
 html[data-theme="light"] .portfolio-page h2,
