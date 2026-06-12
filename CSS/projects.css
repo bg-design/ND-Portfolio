@@ -91,11 +91,23 @@ margin-right: 100px;
 }
 
 .dark-mode .project-title {
-  background: #1f1f20;
-  color: white !important;
-  transition:3s;
+  background: transparent;
+  color: rgb(34, 34, 34) !important;
+  transition: 3s;
 }
 
+body.dark-mode .project-content p,
+body.dark-mode .project-content p.body {
+  color: #e8e8e8 !important;
+}
+
+body.dark-mode .project-content li {
+  color: #e8e8e8 !important;
+}
+
+body.dark-mode .project-content figcaption {
+  color: #d7d7d7 !important;
+}
 
 #darkModeSwitchProject {
   width: 176px;
@@ -154,9 +166,8 @@ margin-right: 100px;
 
 .dark-mode .vertical-nav hr {
   margin: 10px 0;
-  border-bottom: 1px solid #1f1f20;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.25);
 }
-
 
 .projectImgHalf {
   width: 45%;
